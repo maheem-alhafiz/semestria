@@ -20,7 +20,7 @@ const COURSE_COLORS = [
 ];
 
 export function colorForCourse(courseId: number): string {
-  return COURSE_COLORS[courseId % COURSE_COLORS.length];
+  return COURSE_COLORS[courseId % COURSE_COLORS.length] ?? "#8FBC94";
 }
 
 interface PlannerCourseCardProps {
