@@ -139,7 +139,9 @@ export function CourseGroupPicker({ courseId }: { courseId: number }) {
                     ))}
                   </select>
                 ) : (
-                  <span className="text-slate-500">{optionLabel(slot.options[0])}</span>
+                  <span className="text-slate-500">
+                    {slot.options[0] ? optionLabel(slot.options[0]) : "—"}
+                  </span>
                 )}
               </label>
             );
