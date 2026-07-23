@@ -23,7 +23,9 @@ const DAYS: [key: keyof PlannerEvent, label: string][] = [
 ];
 
 function toMinutes(hhmmss: string): number {
-  const [h, m] = hhmmss.split(":").map(Number);
+  const parts = hhmmss.split(":").map(Number);
+  const h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
   return h * 60 + m;
 }
 
