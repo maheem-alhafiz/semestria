@@ -62,9 +62,11 @@ export interface ScheduleConflict {
 export function findConflicts(events: PlannerEvent[]): ScheduleConflict[] {
   const conflicts: ScheduleConflict[] = [];
   for (let i = 0; i < events.length; i++) {
+    const a = events[i];
+    if (!a) continue;
     for (let j = i + 1; j < events.length; j++) {
-      const a = events[i];
       const b = events[j];
+      if (!b) continue;
       if (a.courseId === b.courseId) continue;
       if (sharesADay(a, b) && timesOverlap(a, b)) {
         conflicts.push({ a, b });
