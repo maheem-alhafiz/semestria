@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { ApiError, deletePlan, getTerms, listPlans } from "@/lib/api";
+// Added finalizePlan to the imports here
+import { ApiError, deletePlan, getTerms, listPlans, finalizePlan } from "@/lib/api";
 import { usePlannerBuilderStore } from "@/store/plannerBuilderStore";
 import type { PlanSummary, Term } from "@/types/api";
 
@@ -27,6 +28,9 @@ export default function PlansPage() {
   // Modal states
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [planToDelete, setPlanToDelete] = useState<PlanSummary | null>(null);
+  
+  // Finalize loading state
+  const [finalizingId, setFinalizingId] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -61,7 +65,7 @@ export default function PlansPage() {
     try {
       await deletePlan(planToDelete.id);
       setPlans((prev) => prev.filter((p) => p.id !== planToDelete.id));
-      setPlanToDelete(null); // Close modal on success
+      setPlanToDelete(null); 
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Couldn't delete that plan.");
     } finally {
@@ -69,9 +73,24 @@ export default function PlansPage() {
     }
   }
 
+  // New function to handle the Finalize API call
+  async function handleFinalize(plan: PlanSummary) {
+    setFinalizingId(plan.id);
+    setError(null);
+    try {
+      await finalizePlan(plan.id);
+      // Update the local state so the "Finalized" badge appears instantly
+      setPlans((prev) =>
+        prev.map((p) => (p.id === plan.id ? { ...p, is_final: true } : p))
+      );
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Couldn't finalize that plan.");
+    } finally {
+      setFinalizingId(null);
+    }
+  }
+
   function handleNewPlan() {
-    // A "new plan" should start from a blank slate, not whatever draft
-    // happens to still be sitting in the persisted store.
     resetPlanner();
     router.push("/planner");
   }
@@ -146,6 +165,16 @@ export default function PlansPage() {
                 >
                   Load
                 </Link>
+                
+                {/* New Finalize Button */}
+                <button
+                  onClick={() => handleFinalize(plan)}
+                  disabled={finalizingId === plan.id}
+                  className="rounded-full border border-accent px-3 py-1.5 text-sm text-accent transition-colors hover:bg-accent hover:text-canvas disabled:opacity-50"
+                >
+                  {finalizingId === plan.id ? "Syncing..." : plan.is_final ? "Update Tracker" : "Finalize"}
+                </button>
+
                 <button
                   onClick={() => setPlanToDelete(plan)}
                   className="rounded-full px-3 py-1.5 text-sm text-muted transition-colors hover:text-danger"
