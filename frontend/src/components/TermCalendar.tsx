@@ -22,6 +22,17 @@ const DAYS: [key: keyof PlannerEvent, label: string][] = [
   ["saturday", "Sat"],
 ];
 
+const MEETING_TYPE_LABELS: Record<string, string> = {
+  CLAS: "Lecture",
+  LECL: "Lecture",
+  LAB: "Lab",
+  TUT: "Tutorial",
+};
+
+function formatMeetingType(type: string): string {
+  return MEETING_TYPE_LABELS[type] ?? type;
+}
+
 //time formatter helper
 function formatEventTime(hhmmss: string): string {
   const parts = hhmmss.split(":");
@@ -160,12 +171,11 @@ export function TermCalendar({ slot, terms }: TermCalendarProps) {
                           }}
                           title={`${e.subject} ${e.courseNumber} — ${e.meetingType} ${e.startTime}-${e.endTime}`}
                         >
-                          <div className="font-semibold">
-                            {e.subject} {e.courseNumber}
+                          <div className="font-semibold truncate">
+                            {e.courseNumber} {formatMeetingType(e.meetingType)}
                           </div>
-                          <div className="opacity-80">{e.meetingType}</div>
-                          <div className="mt-0.5 text-[9px] opacity-75">
-                            {formatEventTime(e.startTime!)} - {formatEventTime(e.endTime!)}
+                          <div className="text-[10px] opacity-90 truncate">
+                            {formatEventTime(e.startTime!)}-{formatEventTime(e.endTime!)}
                           </div>
                         </div>
                       );
