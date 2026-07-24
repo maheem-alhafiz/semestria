@@ -3,11 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+//NEW NAV_ITEMS from GEMINI:
 const NAV_ITEMS = [
   { href: "/", label: "Search" },
   { href: "/planner", label: "Planner" },
   { href: "/plans", label: "Plans" },
+  { href: "/tracker", label: "Degree Tracker" },
 ] as const;
+
+// OLD NAV_ITEMS
+//const NAV_ITEMS = [
+  //{ href: "/", label: "Search" },
+  //{ href: "/planner", label: "Planner" },
+  //{ href: "/plans", label: "Plans" },
+//] as const;
 
 export function NavBar() {
   const pathname = usePathname();
@@ -40,18 +49,7 @@ export function NavBar() {
             );
           })}
 
-          {/* Not a real route yet -- shows the intended IA without
-              pretending Degree Tracker exists. */}
-          <span
-            className="ml-1 flex cursor-default items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm text-muted/50"
-            title="Coming soon"
-          >
-            Degree Tracker
-            <span className="rounded-full bg-elevated px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted">
-              Soon
-            </span>
-          </span>
-        </nav>
+          </nav>
       </div>
     </header>
   );
