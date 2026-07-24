@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTrackerStore } from "@/store/trackerStore";
+import { deleteAcademicRecord, addPastCourse, getTerms } from "@/lib/api";
+import type { Term } from "@/types/api";
 
-// Helper to convert UM letter grades to quality points
 const getGradePoints = (grade: string | null): number | null => {
   if (!grade) return null;
   const scale: Record<string, number> = {
@@ -12,26 +13,33 @@ const getGradePoints = (grade: string | null): number | null => {
   return scale[grade.toUpperCase()] ?? null;
 };
 
-// Helper to parse UM term codes (e.g., "202610" -> { year: "2026", term: "Fall" })
+// Corrected U of M term code mapping
 const parseTermCode = (termCode: string) => {
   const year = termCode.substring(0, 4);
-  const termSuffix = termCode.substring(4);
+  const suffix = termCode.substring(4);
   let termName = termCode;
-  if (termSuffix === "10") termName = "Fall";
-  else if (termSuffix === "50") termName = "Winter";
-  else if (termSuffix === "90") termName = "Summer";
+  if (suffix === "10") termName = "Fall";
+  else if (suffix === "30") termName = "Summer";
+  else if (suffix === "50") termName = "Winter";
   
   return { year, termName };
 };
 
 export default function TrackerPage() {
   const { records, isLoading, fetchRecords } = useTrackerStore();
+  const [isAddingCourse, setIsAddingCourse] = useState(false);
+  const [terms, setTerms] = useState<Term[]>([]);
+  
+  // Form state for adding past course
+  const [selectedTermCode, setSelectedTermCode] = useState("");
+  const [courseIdInput, setCourseIdInput] = useState("");
+  const [gradeInput, setGradeInput] = useState("Planned");
 
   useEffect(() => {
     fetchRecords();
+    getTerms().then(setTerms).catch(() => {});
   }, [fetchRecords]);
 
-  // Dynamically calculate global stats
   const stats = useMemo(() => {
     let earnedCredits = 0;
     let gradedCredits = 0;
@@ -41,7 +49,6 @@ export default function TrackerPage() {
       const pts = getGradePoints(record.grade);
       if (pts !== null) {
         const credits = Number(record.credit_hours_snapshot);
-        // Assuming D (1.0) and above gives credits
         if (pts > 0) earnedCredits += credits; 
         gradedCredits += credits;
         qualityPoints += pts * credits;
@@ -56,7 +63,6 @@ export default function TrackerPage() {
     };
   }, [records]);
 
-  // Group records by Year -> Term
   const transcript = useMemo(() => {
     const grouped: Record<string, Record<string, typeof records>> = {};
     records.forEach((r) => {
@@ -68,6 +74,31 @@ export default function TrackerPage() {
     return grouped;
   }, [records]);
 
+  async function handleDeleteRecord(id: number) {
+    try {
+      await deleteAcademicRecord(id);
+      fetchRecords(); // Refresh state
+    } catch (err) {
+      alert("Failed to delete record");
+    }
+  }
+
+  async function handleAddPastCourse(e: React.FormEvent) {
+    e.preventDefault();
+    try {
+      await addPastCourse({
+        term_code: selectedTermCode || (terms[0]?.term_code ?? "202610"),
+        course_id: parseInt(courseIdInput, 10),
+        grade: gradeInput === "Planned" ? null : gradeInput,
+      });
+      setIsAddingCourse(false);
+      setCourseIdInput("");
+      fetchRecords();
+    } catch (err: any) {
+      alert(err.message || "Failed to add course");
+    }
+  }
+
   if (isLoading) {
     return (
       <main className="mx-auto flex max-w-[1600px] items-center justify-center px-6 py-20">
@@ -78,9 +109,17 @@ export default function TrackerPage() {
 
   return (
     <main className="mx-auto max-w-[1600px] space-y-6 px-6 py-10">
-      <header className="mb-2">
-        <h1 className="text-2xl font-semibold text-paper">Degree Tracker</h1>
-        <p className="text-sm text-muted">Track your progress and plan your prerequisite chains.</p>
+      <header className="mb-2 flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-paper">Degree Tracker</h1>
+          <p className="text-sm text-muted">Track your progress and plan your prerequisite chains.</p>
+        </div>
+        <button
+          onClick={() => setIsAddingCourse(true)}
+          className="rounded-xl bg-accent px-4 py-2 text-sm font-medium text-canvas transition-colors hover:opacity-90"
+        >
+          Add past course
+        </button>
       </header>
 
       {/* Top Dashboard: Dynamic Stats */}
@@ -100,7 +139,7 @@ export default function TrackerPage() {
       </div>
 
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
-        {/* Left Column: Requirements Sidebar (Static for now until scraper is built) */}
+        {/* Left Column: Requirements Sidebar */}
         <div className="sticky top-24 space-y-5 rounded-2xl border border-hairline bg-panel p-5 shadow-sm lg:col-span-4 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto custom-scrollbar">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-medium text-paper">Mechanical Engineering B.Sc.</h2>
@@ -142,39 +181,26 @@ export default function TrackerPage() {
                       <h3 className="text-sm font-semibold text-paper">{term}</h3>
                     </div>
 
-                    <div className="space-y-2">
+                    {/* Unified Semester Box with Clean Dividers */}
+                    <div className="divide-y divide-hairline rounded-xl border border-hairline bg-elevated/20">
                       {(transcript[year]?.[term] || []).map((record) => (
-                        <div key={record.id} className="flex items-center justify-between rounded-xl border border-hairline bg-transparent px-4 py-3 transition-colors hover:bg-elevated/50">
+                        <div key={record.id} className="flex items-center justify-between px-4 py-3 transition-colors hover:bg-elevated/50">
                           <div className="flex flex-1 items-center gap-4">
-                            {/* Wait for scraper to link real subject/course codes, using snapshot title for now */}
                             <span className="flex-1 truncate text-sm font-medium text-paper">{record.title_snapshot}</span>
                           </div>
                           <div className="flex items-center gap-4 md:gap-8">
                             <span className="w-12 text-sm text-muted">{Number(record.credit_hours_snapshot).toFixed(1)} CH</span>
                             
-                            <div className="relative">
-                              <select 
-                                className="appearance-none rounded-lg border border-hairline bg-elevated py-1.5 pl-3 pr-8 text-sm text-paper outline-none transition-colors hover:border-muted focus:border-accent"
-                                value={record.grade || "Planned"}
-                                onChange={(e) => console.log("Will update grade to:", e.target.value)}
-                              >
-                                <option value="Planned">Planned</option>
-                                <option value="IP">IP</option>
-                                <option value="A+">A+</option>
-                                <option value="A">A</option>
-                                <option value="B+">B+</option>
-                                <option value="B">B</option>
-                                <option value="C+">C+</option>
-                                <option value="C">C</option>
-                                <option value="D">D</option>
-                                <option value="F">F</option>
-                              </select>
-                              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-muted">
-                                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                              </div>
-                            </div>
+                            <span className="text-sm font-medium text-paper">{record.grade || "Planned"}</span>
+
+                            {/* Delete single record button */}
+                            <button
+                              onClick={() => handleDeleteRecord(record.id)}
+                              className="text-muted transition-colors hover:text-danger"
+                              title="Remove from tracker"
+                            >
+                              ✕
+                            </button>
                           </div>
                         </div>
                       ))}
@@ -186,6 +212,71 @@ export default function TrackerPage() {
           )}
         </div>
       </div>
+
+      {/* Modal for Adding Past Course */}
+      {isAddingCourse && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-canvas/80 p-4 backdrop-blur-sm">
+          <form onSubmit={handleAddPastCourse} className="w-full max-w-md rounded-2xl border border-hairline bg-panel p-6 shadow-xl space-y-4">
+            <h3 className="text-lg font-medium text-paper">Add Past Course</h3>
+            <div>
+              <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Term</label>
+              <select
+                value={selectedTermCode}
+                onChange={(e) => setSelectedTermCode(e.target.value)}
+                className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
+              >
+                {terms.map((t) => (
+                  <option key={t.term_code} value={t.term_code}>{t.description} ({t.term_code})</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Course ID (Internal Database ID)</label>
+              <input
+                type="number"
+                placeholder="e.g. 123"
+                value={courseIdInput}
+                onChange={(e) => setCourseIdInput(e.target.value)}
+                required
+                className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Grade</label>
+              <select
+                value={gradeInput}
+                onChange={(e) => setGradeInput(e.target.value)}
+                className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
+              >
+                <option value="Planned">Planned / In Progress</option>
+                <option value="A+">A+</option>
+                <option value="A">A</option>
+                <option value="B+">B+</option>
+                <option value="B">B</option>
+                <option value="C+">C+</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
+              </select>
+            </div>
+            <div className="flex justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setIsAddingCourse(false)}
+                className="rounded-xl px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-elevated"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="rounded-xl bg-accent px-4 py-2 text-sm font-medium text-canvas transition-colors hover:opacity-90"
+              >
+                Add Course
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </main>
   );
 }
