@@ -18,9 +18,9 @@ const parseTermCode = (termCode: string) => {
   const year = termCode.substring(0, 4);
   const suffix = termCode.substring(4);
   let termName = termCode;
-  if (suffix === "10") termName = "Fall";
-  else if (suffix === "30") termName = "Summer";
-  else if (suffix === "50") termName = "Winter";
+  if (suffix === "90") termName = "Fall";
+  else if (suffix === "50") termName = "Summer";
+  else if (suffix === "10") termName = "Winter";
   
   return { year, termName };
 };
