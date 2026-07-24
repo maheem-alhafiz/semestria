@@ -175,3 +175,30 @@ export interface PlanFinalizeResponse {
 export interface PlanShareResponse {
   share_token: string;
 }
+
+// -- Academic Record (Degree Tracker) ------------------------------------
+
+export interface AcademicRecordCreate {
+  term_code: string;
+  course_id: number;
+  crn?: string | null;
+  grade?: string | null;
+}
+
+export interface AcademicRecordUpdate {
+  grade?: string | null;
+  crn?: string | null;
+}
+
+export interface AcademicRecordRead {
+  id: number;
+  term_code: string;
+  course_id: number;
+  source_plan_id: number | null;
+  crn: string | null;
+  title_snapshot: string;
+  credit_hours_snapshot: number;
+  grade: string | null;
+  created_at: string;
+  updated_at: string;
+}

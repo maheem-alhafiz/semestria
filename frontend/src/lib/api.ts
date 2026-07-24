@@ -1,6 +1,9 @@
 import type {
   Course,
   CourseSections,
+  AcademicRecordCreate,
+  AcademicRecordUpdate,
+  AcademicRecordRead,
   PlanCreate,
   PlanFinalizeResponse,
   PlanItemsReplace,
@@ -136,6 +139,33 @@ export function sharePlan(planId: number): Promise<PlanShareResponse> {
 
 export function getSharedPlan(token: string): Promise<PlanRead> {
   return apiFetch<PlanRead>(`/plans/shared/${token}`);
+}
+
+// -- Academic Record (Degree Tracker) -------------------------------------
+
+export function getAcademicRecord(): Promise<AcademicRecordRead[]> {
+  return apiFetch<AcademicRecordRead[]>("/academic-record");
+}
+
+export function addPastCourse(payload: AcademicRecordCreate): Promise<AcademicRecordRead> {
+  return apiFetch<AcademicRecordRead>("/academic-record", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function updateAcademicRecord(
+  recordId: number,
+  payload: AcademicRecordUpdate,
+): Promise<AcademicRecordRead> {
+  return apiFetch<AcademicRecordRead>(`/academic-record/${recordId}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteAcademicRecord(recordId: number): Promise<void> {
+  return apiFetch<void>(`/academic-record/${recordId}`, { method: "DELETE" });
 }
 
 export { ApiError };
