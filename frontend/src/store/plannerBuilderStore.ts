@@ -8,6 +8,8 @@ type Slot = "top" | "bottom";
 interface CourseSelectionState {
   activeTop: boolean;
   activeBottom: boolean;
+  topEnabled: boolean;
+  bottomEnabled: boolean;
   topSectionChoices: Record<string, string>;
   bottomSectionChoices: Record<string, string>;
   // "This course is being taken via its distance/online section" --
@@ -22,6 +24,8 @@ function emptySelection(): CourseSelectionState {
   return {
     activeTop: false,
     activeBottom: false,
+    topEnabled: true,
+    bottomEnabled: true,
     topSectionChoices: {},
     bottomSectionChoices: {},
     topDistanceMode: false,
@@ -54,6 +58,7 @@ interface PlannerBuilderState {
   setIsSearching: (value: boolean) => void;
   setSearchResults: (courses: Course[]) => void;
   toggleCourseSlot: (course: Course, slot: Slot) => void;
+  toggleCourseEnabled: (courseId: number, slot: Slot) => void;
   removeCourseEntirely: (courseId: number) => void;
   setCourseSections: (courseId: number, termCode: string, data: CourseSections) => void;
   setSectionChoice: (courseId: number, slot: Slot, slotKey: string, crn: string) => void;
@@ -135,6 +140,19 @@ export const usePlannerBuilderStore = create<PlannerBuilderState>()(
                 [key]: turningOn,
                 ...(turningOn ? {} : { [choicesKey]: {}, [distanceKey]: false }),
               },
+            },
+          };
+        }),
+
+      toggleCourseEnabled: (courseId, slot) =>
+        set((state) => {
+          const existing = state.selections[courseId];
+          if (!existing) return state;
+          const key = slot === "top" ? "topEnabled" : "bottomEnabled";
+          return {
+            selections: {
+              ...state.selections,
+              [courseId]: { ...existing, [key]: !existing[key] },
             },
           };
         }),

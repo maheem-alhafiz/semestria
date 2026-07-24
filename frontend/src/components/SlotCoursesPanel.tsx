@@ -90,7 +90,14 @@ function CourseEntry({ course, termCode, slot }: CourseEntryProps) {
         ? s.selections[course.course_id]?.topSectionChoices
         : s.selections[course.course_id]?.bottomSectionChoices) ?? {},
   );
-  const toggleCourseSlot = usePlannerBuilderStore((s) => s.toggleCourseSlot);
+  
+  const toggleCourseEnabled = usePlannerBuilderStore((s) => s.toggleCourseEnabled);
+  const removeCourseEntirely = usePlannerBuilderStore((s) => s.removeCourseEntirely);
+  const enabled = usePlannerBuilderStore((s) => {
+    const sel = s.selections[course.course_id];
+    return slot === "top" ? (sel?.topEnabled ?? true) : (sel?.bottomEnabled ?? true);
+  });
+  
   const setError = usePlannerBuilderStore((s) => s.setError);
 
   useEffect(() => {
@@ -140,18 +147,21 @@ function CourseEntry({ course, termCode, slot }: CourseEntryProps) {
   const primaryInstructor = visibleGroups[0]?.slots[0]?.options[0]?.instructor ?? null;
 
   return (
-    <div className="rounded-xl border border-hairline bg-elevated px-3 py-2.5">
+    <div className={`rounded-xl border border-hairline bg-elevated px-3 py-2.5 transition-opacity ${enabled ? "" : "opacity-50"}`}>
       <div className="flex items-start gap-2.5">
-        <span
-          className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-sm"
-          style={{ backgroundColor: color }}
-          aria-hidden
+        <button
+          onClick={() => toggleCourseEnabled(course.course_id, slot)}
+          className={`mt-1.5 h-3 w-3 shrink-0 rounded-sm border transition-colors ${
+            enabled ? "border-transparent" : "border-muted bg-transparent"
+          }`}
+          style={enabled ? { backgroundColor: color } : {}}
+          aria-label={`Toggle ${course.subject} ${course.course_number} on calendar`}
+          title={enabled ? "Hide from calendar" : "Show on calendar"}
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
             <p className="truncate text-sm font-medium text-paper">
-              {course.subject}
-              {course.course_number}{" "}
+              {`${course.subject} ${course.course_number}`}{" "}
               <span className="font-normal text-muted">{course.title}</span>
             </p>
             <span className="shrink-0 text-xs text-muted">{course.credit_hours} CH</span>
@@ -222,10 +232,10 @@ function CourseEntry({ course, termCode, slot }: CourseEntryProps) {
         </div>
 
         <button
-          onClick={() => toggleCourseSlot(course, slot)}
+          onClick={() => removeCourseEntirely(course.course_id)}
           className="shrink-0 px-1 text-sm text-muted transition-colors hover:text-danger"
-          aria-label={`Remove ${course.subject} ${course.course_number} from this term`}
-          title="Remove from this term"
+          aria-label={`Remove ${course.subject} ${course.course_number} entirely`}
+          title="Remove completely"
         >
           ×
         </button>

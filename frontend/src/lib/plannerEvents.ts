@@ -79,6 +79,8 @@ export function findConflicts(events: PlannerEvent[]): ScheduleConflict[] {
 interface SelectionLike {
   activeTop: boolean;
   activeBottom: boolean;
+  topEnabled?: boolean;
+  bottomEnabled?: boolean;
   topSectionChoices: Record<string, string>;
   bottomSectionChoices: Record<string, string>;
   // Per-slot "this course is being taken via its distance/online
@@ -108,8 +110,12 @@ export function buildSlotEvents(
 
   for (const [courseIdStr, sel] of Object.entries(selections)) {
     const courseId = Number(courseIdStr);
+    
     const active = slot === "top" ? sel.activeTop : sel.activeBottom;
     if (!active) continue;
+    
+    const enabled = slot === "top" ? (sel.topEnabled ?? true) : (sel.bottomEnabled ?? true);
+    if (!enabled) continue;
 
     const data = courseSectionsCache[`${courseId}:${termCode}`];
     if (!data) continue;
