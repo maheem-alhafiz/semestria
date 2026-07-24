@@ -75,6 +75,7 @@ function CourseEntry({ course, termCode, slot }: CourseEntryProps) {
   const data = usePlannerBuilderStore(
     (s) => s.courseSectionsCache[`${course.course_id}:${termCode}`],
   );
+  const toggleCourseSlot = usePlannerBuilderStore((s) => s.toggleCourseSlot);
   const setCourseSections = usePlannerBuilderStore((s) => s.setCourseSections);
   const setSectionChoice = usePlannerBuilderStore((s) => s.setSectionChoice);
   const setDistanceMode = usePlannerBuilderStore((s) => s.setDistanceMode);
@@ -232,10 +233,10 @@ function CourseEntry({ course, termCode, slot }: CourseEntryProps) {
         </div>
 
         <button
-          onClick={() => removeCourseEntirely(course.course_id)}
+          onClick={() => toggleCourseSlot(course, slot)}
           className="shrink-0 px-1 text-sm text-muted transition-colors hover:text-danger"
-          aria-label={`Remove ${course.subject} ${course.course_number} entirely`}
-          title="Remove completely"
+          aria-label={`Remove ${course.subject} ${course.course_number} from this term`}
+          title="Remove from this term"
         >
           ×
         </button>

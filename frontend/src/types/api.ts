@@ -194,6 +194,8 @@ export interface AcademicRecordRead {
   id: number;
   term_code: string;
   course_id: number;
+  subject: string;
+  course_number: string;
   source_plan_id: number | null;
   crn: string | null;
   title_snapshot: string;

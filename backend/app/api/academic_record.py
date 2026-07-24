@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import select
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from app.core.database import get_db
 from app.core.visitor import get_current_owner_id
@@ -16,18 +16,46 @@ from app.schemas.academic_record import (
 router = APIRouter(prefix="/academic-record", tags=["academic-record"])
 
 
+def _to_read(record: AcademicRecord) -> AcademicRecordRead:
+    """
+    Builds the response schema explicitly rather than relying on
+    from_attributes' auto-conversion -- subject/course_number live on
+    record.course, not as flat columns on AcademicRecord itself, so a
+    plain ORM-to-schema pass can't pick them up on its own. Assumes
+    record.course is already loaded (selectinload in every query below)
+    -- accessing an unloaded relationship here would trigger a surprise
+    lazy-load per row.
+    """
+    return AcademicRecordRead(
+        id=record.id,
+        term_code=record.term_code,
+        course_id=record.course_id,
+        subject=record.course.subject,
+        course_number=record.course.course_number,
+        source_plan_id=record.source_plan_id,
+        crn=record.crn,
+        title_snapshot=record.title_snapshot,
+        credit_hours_snapshot=float(record.credit_hours_snapshot),
+        grade=record.grade,
+        created_at=record.created_at,
+        updated_at=record.updated_at,
+    )
+
+
 @router.get("", response_model=list[AcademicRecordRead])
 def list_academic_record(
     db: Session = Depends(get_db), owner_id: str = Depends(get_current_owner_id)
-) -> list[AcademicRecord]:
+) -> list[AcademicRecordRead]:
     """Every row belonging to this visitor, oldest term first -- what the
     Degree Tracker groups by year/term to render."""
     stmt = (
         select(AcademicRecord)
         .where(AcademicRecord.owner_id == owner_id)
+        .options(selectinload(AcademicRecord.course))
         .order_by(AcademicRecord.term_code)
     )
-    return db.execute(stmt).scalars().all()
+    records = db.execute(stmt).scalars().all()
+    return [_to_read(r) for r in records]
 
 
 @router.post("", response_model=AcademicRecordRead, status_code=201)
@@ -35,7 +63,7 @@ def add_past_course(
     payload: AcademicRecordCreate,
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
-) -> AcademicRecord:
+) -> AcademicRecordRead:
     """
     Manually add a past course -- for courses taken before this system
     existed (the existing "Add Past Course" flow). NOT plan-sourced:
@@ -75,7 +103,8 @@ def add_past_course(
     db.add(record)
     db.commit()
     db.refresh(record)
-    return record
+    record.course = course  # already have it in hand, skip a re-fetch/lazy-load
+    return _to_read(record)
 
 
 @router.patch("/{record_id}", response_model=AcademicRecordRead)
@@ -84,16 +113,16 @@ def update_academic_record(
     payload: AcademicRecordUpdate,
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
-) -> AcademicRecord:
+) -> AcademicRecordRead:
     """
     The Degree Tracker's own inline edit -- fixing a grade typo or
     correcting an accidental finalize, independent of whatever Plan (if
     any) originally created this row via /plans/{id}/finalize.
     """
     record = db.execute(
-        select(AcademicRecord).where(
-            AcademicRecord.id == record_id, AcademicRecord.owner_id == owner_id
-        )
+        select(AcademicRecord)
+        .where(AcademicRecord.id == record_id, AcademicRecord.owner_id == owner_id)
+        .options(selectinload(AcademicRecord.course))
     ).scalar_one_or_none()
     if record is None:
         raise HTTPException(status_code=404, detail=f"Academic record {record_id} not found")
@@ -104,7 +133,7 @@ def update_academic_record(
 
     db.commit()
     db.refresh(record)
-    return record
+    return _to_read(record)
 
 
 @router.delete("/{record_id}", status_code=204, response_model=None)

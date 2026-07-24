@@ -41,6 +41,16 @@ class AcademicRecordRead(BaseModel):
     id: int
     term_code: str
     course_id: int
+    # NOT columns on AcademicRecord itself -- sourced from the joined
+    # Course at read time (see app.api.academic_record's list/create/
+    # update handlers, which construct this explicitly rather than
+    # relying on from_attributes' auto-conversion, since these values
+    # live on record.course, not on the record row directly). Unlike
+    # title_snapshot/credit_hours_snapshot, subject/course_number are
+    # never worth snapshotting -- a course's subject+number essentially
+    # never change once assigned, unlike its title or credit weight.
+    subject: str
+    course_number: str
     source_plan_id: int | None
     # NOTE: for rows created via Plan finalization, this is always NULL --
     # a course made up of multiple sections (lecture + lab) has no single

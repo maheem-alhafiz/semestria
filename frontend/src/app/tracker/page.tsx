@@ -13,16 +13,13 @@ const getGradePoints = (grade: string | null): number | null => {
 };
 
 // Corrected U of M term code mapping
-const parseTermCode = (termCode: string) => {
+function getTermInfo(termCode: string, terms: Term[]): { year: string; termName: string } {
+  const match = terms.find((t) => t.term_code === termCode);
+  const description = match?.description ?? termCode; 
   const year = termCode.substring(0, 4);
-  const suffix = termCode.substring(4);
-  let termName = termCode;
-  if (suffix === "90") termName = "Fall";
-  else if (suffix === "50") termName = "Summer";
-  else if (suffix === "10") termName = "Winter";
-  
+  const termName = description.split(" ")[0] || termCode; 
   return { year, termName };
-};
+}
 
 export default function TrackerPage() {
   const { records, isLoading, fetchRecords } = useTrackerStore();
@@ -65,13 +62,13 @@ export default function TrackerPage() {
   const transcript = useMemo(() => {
     const grouped: Record<string, Record<string, typeof records>> = {};
     records.forEach((r) => {
-      const { year, termName } = parseTermCode(r.term_code);
+      const { year, termName } = getTermInfo(r.term_code, terms);
       if (!grouped[year]) grouped[year] = {};
       if (!grouped[year][termName]) grouped[year][termName] = [];
       grouped[year][termName].push(r);
     });
     return grouped;
-  }, [records]);
+  }, [records, terms]);
 
   async function handleDeleteRecord(id: number) {
     try {
@@ -211,8 +208,8 @@ export default function TrackerPage() {
                           return (
                             <div key={record.id} className="grid grid-cols-12 items-center px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 group">
                               <span className="col-span-3 font-medium text-paper">
-                              {`COURSE #${record.course_id}`}
-                            </span>
+                                {`${record.subject} ${record.course_number}`}
+                              </span>
                               <span className="col-span-5 truncate text-muted">{record.title_snapshot}</span>
                               <span className="col-span-1 text-center text-muted">{cr.toFixed(0)}</span>
                               
