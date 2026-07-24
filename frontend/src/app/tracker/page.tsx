@@ -190,43 +190,65 @@ export default function TrackerPage() {
                       <h3 className="text-sm font-semibold text-paper">{term}</h3>
                     </div>
 
-                    {/* Unified Semester Box with Clean Dividers */}
-                    <div className="divide-y divide-hairline rounded-xl border border-hairline bg-elevated/20">
-                      {(transcript[year]?.[term] || []).map((record) => (
-                        <div key={record.id} className="flex items-center justify-between px-4 py-3 transition-colors hover:bg-elevated/50">
-                          <div className="flex flex-1 items-center gap-4">
-                            <span className="flex-1 truncate text-sm font-medium text-paper">{record.title_snapshot}</span>
-                          </div>
-                          <div className="flex items-center gap-4 md:gap-8">
-                            <span className="w-12 text-sm text-muted">{Number(record.credit_hours_snapshot).toFixed(1)} CH</span>
-                            <select
-                              value={record.grade || "Planned"}
-                              onChange={(e) => handleGradeChange(record.id, e.target.value)}
-                              className="appearance-none rounded-lg border border-hairline bg-elevated px-2 py-1 text-xs text-paper outline-none transition-colors hover:border-muted focus:border-accent"
-                            >
-                              <option value="Planned">Planned</option>
-                              <option value="IP">IP</option>
-                              <option value="A+">A+</option>
-                              <option value="A">A</option>
-                              <option value="B+">B+</option>
-                              <option value="B">B</option>
-                              <option value="C+">C+</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                              <option value="F">F</option>
-                            </select>
+                    {/* Table Container */}
+                    <div className="overflow-hidden rounded-xl border border-hairline bg-elevated/20">
+                      {/* Table Header */}
+                      <div className="grid grid-cols-12 border-b border-hairline bg-elevated/50 px-4 py-2 text-[10px] font-medium uppercase tracking-wider text-muted">
+                        <span className="col-span-3">Code</span>
+                        <span className="col-span-5">Title</span>
+                        <span className="col-span-1 text-center">CH</span>
+                        <span className="col-span-2 text-center">Grade</span>
+                        <span className="col-span-1 text-right">Points</span>
+                      </div>
 
-                            {/* Delete single record button */}
-                            <button
-                              onClick={() => handleDeleteRecord(record.id)}
-                              className="text-muted transition-colors hover:text-danger"
-                              title="Remove from tracker"
-                            >
-                              ✕
-                            </button> 
-                          </div>
-                        </div>
-                      ))}
+                      {/* Table Rows */}
+                      <div className="divide-y divide-hairline">
+                        {(transcript[year]?.[term] || []).map((record) => {
+                          const pts = getGradePoints(record.grade);
+                          const cr = Number(record.credit_hours_snapshot);
+                          const rowPoints = pts !== null ? (pts * cr).toFixed(2) : "—";
+
+                          return (
+                            <div key={record.id} className="grid grid-cols-12 items-center px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 group">
+                              <span className="col-span-3 font-medium text-paper">Course</span>
+                              <span className="col-span-5 truncate text-muted">{record.title_snapshot}</span>
+                              <span className="col-span-1 text-center text-muted">{cr.toFixed(0)}</span>
+                              
+                              {/* Grade Dropdown */}
+                              <div className="col-span-2 flex justify-center">
+                                <select
+                                  value={record.grade || "Planned"}
+                                  onChange={(e) => handleGradeChange(record.id, e.target.value)}
+                                  className="appearance-none rounded-lg border border-hairline bg-elevated px-2 py-1 text-xs text-paper outline-none transition-colors hover:border-muted focus:border-accent"
+                                >
+                                  <option value="Planned">Planned</option>
+                                  <option value="IP">IP</option>
+                                  <option value="A+">A+</option>
+                                  <option value="A">A</option>
+                                  <option value="B+">B+</option>
+                                  <option value="B">B</option>
+                                  <option value="C+">C+</option>
+                                  <option value="C">C</option>
+                                  <option value="D">D</option>
+                                  <option value="F">F</option>
+                                </select>
+                              </div>
+
+                              {/* Points & Delete Action */}
+                              <div className="col-span-1 flex items-center justify-end gap-2 text-right">
+                                <span className="text-muted">{rowPoints}</span>
+                                <button
+                                  onClick={() => handleDeleteRecord(record.id)}
+                                  className="opacity-0 group-hover:opacity-100 text-muted transition-opacity hover:text-danger"
+                                  title="Remove"
+                                >
+                                  ✕
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 ))}
