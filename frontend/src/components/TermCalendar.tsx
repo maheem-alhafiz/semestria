@@ -172,7 +172,7 @@ export function TermCalendar({ slot, terms }: TermCalendarProps) {
                           title={`${e.subject} ${e.courseNumber} — ${e.meetingType} ${e.startTime}-${e.endTime}`}
                         >
                           <div className="font-semibold truncate">
-                            {e.courseNumber} {formatMeetingType(e.meetingType)}
+                            {e.subject} {e.courseNumber} {formatMeetingType(e.meetingType)}
                           </div>
                           <div className="text-[10px] opacity-90 truncate">
                             {formatEventTime(e.startTime!)}-{formatEventTime(e.endTime!)}
