@@ -125,7 +125,7 @@ export default function TrackerPage() {
           {Object.keys(transcript).length === 0 ? (
             <div className="rounded-2xl border border-dashed border-hairline bg-panel/50 p-10 text-center">
               <p className="text-paper">Your transcript is empty.</p>
-              <p className="text-sm text-muted">Go to the Planner tab and "Finalize" a plan to see it here.</p>
+              <p className="text-sm text-muted">Go to the Planner tab and &quot;Finalize&quot; a plan to see it here.</p>
             </div>
           ) : (
             Object.keys(transcript).sort().map((year) => (
