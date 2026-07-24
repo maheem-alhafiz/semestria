@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { getAcademicRecord, AcademicRecordRead } from "@/lib/api";
-
+import { getAcademicRecord } from "@/lib/api";
+import type { AcademicRecordRead } from "@/types/api";
 interface TrackerState {
   records: AcademicRecordRead[];
   isLoading: boolean;
