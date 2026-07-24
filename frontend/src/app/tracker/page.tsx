@@ -2,8 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTrackerStore } from "@/store/trackerStore";
-import { deleteAcademicRecord, addPastCourse, getTerms } from "@/lib/api";
-import type { Term } from "@/types/api";
+import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord } from "@/lib/api";import type { Term } from "@/types/api";
 
 const getGradePoints = (grade: string | null): number | null => {
   if (!grade) return null;
@@ -80,6 +79,16 @@ export default function TrackerPage() {
       fetchRecords(); // Refresh state
     } catch (err) {
       alert("Failed to delete record");
+    }
+  }
+
+  async function handleGradeChange(recordId: number, newGrade: string) {
+    const gradeVal = newGrade === "Planned" ? null : newGrade;
+    try {
+      await updateAcademicRecord(recordId, { grade: gradeVal });
+      fetchRecords();
+    } catch {
+      alert("Failed to update grade");
     }
   }
 
@@ -190,8 +199,22 @@ export default function TrackerPage() {
                           </div>
                           <div className="flex items-center gap-4 md:gap-8">
                             <span className="w-12 text-sm text-muted">{Number(record.credit_hours_snapshot).toFixed(1)} CH</span>
-                            
-                            <span className="text-sm font-medium text-paper">{record.grade || "Planned"}</span>
+                            <select
+                              value={record.grade || "Planned"}
+                              onChange={(e) => handleGradeChange(record.id, e.target.value)}
+                              className="appearance-none rounded-lg border border-hairline bg-elevated px-2 py-1 text-xs text-paper outline-none transition-colors hover:border-muted focus:border-accent"
+                            >
+                              <option value="Planned">Planned</option>
+                              <option value="IP">IP</option>
+                              <option value="A+">A+</option>
+                              <option value="A">A</option>
+                              <option value="B+">B+</option>
+                              <option value="B">B</option>
+                              <option value="C+">C+</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
+                              <option value="F">F</option>
+                            </select>
 
                             {/* Delete single record button */}
                             <button
@@ -200,7 +223,7 @@ export default function TrackerPage() {
                               title="Remove from tracker"
                             >
                               ✕
-                            </button>
+                            </button> 
                           </div>
                         </div>
                       ))}
@@ -226,7 +249,7 @@ export default function TrackerPage() {
                 className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
               >
                 {terms.map((t) => (
-                  <option key={t.term_code} value={t.term_code}>{t.description} ({t.term_code})</option>
+                  <option key={t.term_code} value={t.term_code}>{t.description}</option>
                 ))}
               </select>
             </div>
