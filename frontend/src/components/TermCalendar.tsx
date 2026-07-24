@@ -22,6 +22,17 @@ const DAYS: [key: keyof PlannerEvent, label: string][] = [
   ["saturday", "Sat"],
 ];
 
+//time formatter helper
+function formatEventTime(hhmmss: string): string {
+  const parts = hhmmss.split(":");
+  const h = Number(parts[0]);
+  const m = Number(parts[1]);
+  if (Number.isNaN(h) || Number.isNaN(m)) return hhmmss;
+  const period = h >= 12 ? "PM" : "AM";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}:${m.toString().padStart(2, "0")}${period}`;
+}
+
 function toMinutes(hhmmss: string): number {
   const parts = hhmmss.split(":").map(Number);
   const h = parts[0] ?? 0;
@@ -153,6 +164,9 @@ export function TermCalendar({ slot, terms }: TermCalendarProps) {
                             {e.subject} {e.courseNumber}
                           </div>
                           <div className="opacity-80">{e.meetingType}</div>
+                          <div className="mt-0.5 text-[9px] opacity-75">
+                            {formatEventTime(e.startTime!)} - {formatEventTime(e.endTime!)}
+                          </div>
                         </div>
                       );
                     })}
