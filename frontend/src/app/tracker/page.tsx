@@ -2,7 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTrackerStore } from "@/store/trackerStore";
-import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord } from "@/lib/api";import type { Term } from "@/types/api";
+import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord, searchCourses } from "@/lib/api";
+import type { Term, Course } from "@/types/api";
 
 const getGradePoints = (grade: string | null): number | null => {
   if (!grade) return null;
@@ -30,6 +31,26 @@ export default function TrackerPage() {
   const [selectedTermCode, setSelectedTermCode] = useState("");
   const [courseIdInput, setCourseIdInput] = useState("");
   const [gradeInput, setGradeInput] = useState("Planned");
+
+  // Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<Course[]>([]);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+
+  // Live search trigger
+  useEffect(() => {
+    if (searchQuery.trim().length < 2) {
+      setSearchResults([]);
+      return;
+    }
+    const delay = setTimeout(() => {
+      const termToSearch = selectedTermCode || (terms[0]?.term_code ?? "202610");
+      searchCourses(termToSearch, searchQuery)
+        .then(setSearchResults)
+        .catch(() => setSearchResults([]));
+    }, 300);
+    return () => clearTimeout(delay);
+  }, [searchQuery, selectedTermCode, terms]);
 
   useEffect(() => {
     fetchRecords();
@@ -91,6 +112,10 @@ export default function TrackerPage() {
 
   async function handleAddPastCourse(e: React.FormEvent) {
     e.preventDefault();
+    if (!courseIdInput) {
+      alert("Please search for and select a course first.");
+      return;
+    }
     try {
       await addPastCourse({
         term_code: selectedTermCode || (terms[0]?.term_code ?? "202610"),
@@ -99,6 +124,8 @@ export default function TrackerPage() {
       });
       setIsAddingCourse(false);
       setCourseIdInput("");
+      setSelectedCourse(null);
+      setSearchQuery("");
       fetchRecords();
     } catch (err: any) {
       alert(err.message || "Failed to add course");
@@ -275,15 +302,51 @@ export default function TrackerPage() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Course ID (Internal Database ID)</label>
-              <input
-                type="number"
-                placeholder="e.g. 123"
-                value={courseIdInput}
-                onChange={(e) => setCourseIdInput(e.target.value)}
-                required
-                className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
-              />
+              <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Course</label>
+              {selectedCourse ? (
+                <div className="flex items-center justify-between rounded-xl border border-accent bg-elevated px-3 py-2 text-sm text-paper">
+                  <span className="font-medium text-paper">
+                    {selectedCourse.subject} {selectedCourse.course_number} <span className="ml-1 font-normal text-muted truncate">{selectedCourse.title}</span>
+                  </span>
+                  <button 
+                    type="button" 
+                    onClick={() => { setSelectedCourse(null); setCourseIdInput(""); }} 
+                    className="text-muted transition-colors hover:text-danger"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ) : (
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search courses (e.g. MECH 2112)"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper outline-none focus:border-accent"
+                  />
+                  {searchResults.length > 0 && (
+                    <div className="absolute z-10 mt-2 max-h-48 w-full overflow-y-auto rounded-xl border border-hairline bg-panel shadow-lg custom-scrollbar">
+                      {searchResults.map((course) => (
+                        <button
+                          key={course.course_id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedCourse(course);
+                            setCourseIdInput(course.course_id.toString());
+                            setSearchQuery("");
+                            setSearchResults([]);
+                          }}
+                          className="flex w-full flex-col px-4 py-2.5 text-left transition-colors hover:bg-elevated"
+                        >
+                          <span className="text-sm font-medium text-paper">{course.subject} {course.course_number}</span>
+                          <span className="text-xs text-muted truncate">{course.title}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
             <div>
               <label className="block text-xs font-medium uppercase tracking-wider text-muted mb-1">Grade</label>
