@@ -211,7 +211,7 @@ export default function TrackerPage() {
                           return (
                             <div key={record.id} className="grid grid-cols-12 items-center px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 group">
                               <span className="col-span-3 font-medium text-paper">
-                              {record.title_snapshot ? record.title_snapshot.split(" - ")[0] : "Course"}
+                              {`COURSE #${record.course_id}`}
                             </span>
                               <span className="col-span-5 truncate text-muted">{record.title_snapshot}</span>
                               <span className="col-span-1 text-center text-muted">{cr.toFixed(0)}</span>
