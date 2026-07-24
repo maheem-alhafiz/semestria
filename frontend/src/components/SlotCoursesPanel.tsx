@@ -258,9 +258,9 @@ export function SlotCoursesPanel({ slot, termCode }: SlotCoursesPanelProps) {
   }
 
   return (
-    <div className="max-h-[600px] space-y-2 overflow-y-auto rounded-2xl border border-hairline bg-panel p-3">
+    <div className="custom-scrollbar max-h-[600px] space-y-2 overflow-y-auto rounded-2xl border border-hairline bg-panel p-3">
       {courses.length === 0 ? (
-        <p className="text-xs text-muted">No courses added yet — search above and add some.</p>
+        <p className="text-xs text-muted">No courses added yet - search above and add some.</p>
       ) : (
         courses.map((course) => (
           <CourseEntry key={course.course_id} course={course} termCode={termCode} slot={slot} />
