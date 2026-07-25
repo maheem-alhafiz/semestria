@@ -17,19 +17,26 @@ cookie if present; if absent (first-ever visit), it generates a new
 random id and sets it on the response so every subsequent request from
 that browser carries it automatically.
 
-COOKIE SETTINGS ARE ENVIRONMENT-DEPENDENT, on purpose:
-- In production, frontend (Vercel) and backend (Render) live on
-  DIFFERENT domains -- that makes every API call cross-site as far as
-  the browser is concerned. A cross-site cookie is only ever sent if
-  it's marked `SameSite=None`, and browsers refuse `SameSite=None`
-  unless the cookie is also `Secure` (HTTPS-only). So production needs
-  secure=True, samesite="none".
-- In local dev, frontend and backend are both on http://localhost --
-  `Secure` cookies are silently dropped by browsers over plain HTTP, so
-  a hardcoded secure=True would break local development entirely. Local
-  dev needs secure=False, samesite="lax".
-Hardcoding either combination breaks the other environment; this reads
-settings.app_env to pick the right pair automatically.
+COOKIE SETTINGS, and why they're simpler than they used to be:
+- Originally, production (frontend on Vercel, backend on Render --
+  different domains) made every API call cross-site as far as the
+  browser was concerned, which required SameSite=None (+ the Secure it
+  mandates) to have the cookie sent back at all.
+- SameSite=None cookies are cross-site cookies, and Safari ITP / Chrome
+  Incognito both block third-party cookies outright regardless of
+  SameSite/Secure -- that's what caused plans to fail to save in those
+  contexts (the create request succeeded, but the follow-up request
+  carried no cookie, so it looked like a brand-new anonymous visitor to
+  a plan that visitor didn't create).
+- The actual fix was upstream of this file: the frontend now proxies
+  /api/v1/* through its own Next.js server (see
+  frontend/next.config.js), so the browser only ever talks to its own
+  origin -- there is no cross-site relationship left, in production or
+  local dev. That makes SameSite=Lax correct (and strictly more
+  CSRF-resistant than None) in both environments now.
+- secure still needs to differ by environment: local dev serves plain
+  http://localhost, where browsers silently drop `Secure` cookies
+  entirely; production is real HTTPS, where Secure should stay on.
 """
 
 from __future__ import annotations
@@ -58,12 +65,13 @@ def get_current_owner_id(request: Request, response: Response) -> str:
         value=new_id,
         max_age=_COOKIE_MAX_AGE_SECONDS,
         httponly=True,
-        # See module docstring: production is cross-site (Vercel <->
-        # Render), which requires SameSite=None + Secure together, but
-        # Secure cookies are dropped entirely over local dev's plain
-        # http://localhost, so this must differ by environment rather
-        # than being one fixed value.
-        samesite="none" if is_production else "lax",
+        # See module docstring: the Next.js proxy makes every request
+        # first-party now, in both environments, so Lax is correct (and
+        # more CSRF-resistant than the None this used to need).
+        samesite="lax",
+        # Still environment-dependent: Secure cookies are silently
+        # dropped over local dev's plain http://localhost, but should
+        # stay on for real production HTTPS.
         secure=is_production,
     )
     return new_id
