@@ -4,7 +4,7 @@ Courses table.
 Represents the catalog-level concept of a course (e.g. "MECH 2202 -
 Thermodynamics") independent of any term. The same course recurs across many
 terms and has many sections per term, so `course_id` is a surrogate integer
-PK and (subject, course_number) is enforced unique — that pair is Aurora's
+PK and (subject, course_number) is enforced unique -- that pair is Aurora's
 natural key for "what course is this", separate from CRN which identifies
 "which specific section, in which specific term".
 """
@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Numeric, String, UniqueConstraint
+from sqlalchemy import Numeric, String, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
@@ -36,6 +36,19 @@ class Course(Base):
     # Numeric, not Integer/Float: Aurora has fractional/variable credit courses
     # (e.g. 1.5, 3.0, 6.0), and Numeric avoids floating-point rounding surprises.
     credit_hours: Mapped[float] = mapped_column(Numeric(4, 2), nullable=False)
+
+    # Raw prose exactly as scraped from the catalog's course description
+    # page, e.g. "Pre-Calculus Mathematics 40S (60%) (or one of MATH 0401,
+    # ... ) and Physics 40S (60%) (or ...)". This is the reliable tier --
+    # always shown to students as-is, never re-derived. It routinely
+    # mixes real Aurora courses with high-school course codes, grade
+    # thresholds, and "the former X" references that don't correspond to
+    # any current course_id, which is exactly why this is free text and
+    # not exclusively a set of course_id FKs. See CoursePrerequisite for
+    # the separate, best-effort STRUCTURED tier (only populated for the
+    # subset of cases confidently parseable into real course references).
+    prerequisites_text: Mapped[str | None] = mapped_column(Text, nullable=True)
+    corequisites_text: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     sections: Mapped[list["Section"]] = relationship(
         back_populates="course",
