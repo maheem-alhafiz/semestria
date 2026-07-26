@@ -56,7 +56,7 @@ export const useTrackerStore = create<TrackerState>((set, get) => ({
       // isn't left empty -- only when nothing's been picked yet, so this
       // never clobbers a selection the user already made.
       const { selectedProgramId } = get();
-      if (selectedProgramId === null && data.length > 0) {
+      if (selectedProgramId === null && data.length > 0 && data[0]) {
         get().selectProgram(data[0].id);
       }
     } catch (err: any) {
