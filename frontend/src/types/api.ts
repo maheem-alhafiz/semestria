@@ -204,3 +204,53 @@ export interface AcademicRecordRead {
   created_at: string;
   updated_at: string;
 }
+
+export interface CourseDetailRead extends Course {
+  description: string | null;
+  prerequisites_text: string | null;
+  corequisites_text: string | null;
+}
+
+// -- Degree Programs (Degree Tracker requirements) ------------------------
+// Mirrors app.schemas.degree_program exactly. See that module's docstring
+// and app.api.degree_programs for how completed_course_ids/is_satisfied
+// get computed (fresh per-request, against the requesting visitor's
+// AcademicRecord -- never stored).
+
+export interface DegreeProgramSummary {
+  id: number;
+  name: string;
+  faculty: string;
+  catalog_year: string;
+}
+
+export interface RequirementGroupPattern {
+  subject: string | null;
+  level_min: number;
+  level_max: number;
+}
+
+export interface RequirementGroupRead {
+  id: number;
+  parent_group_id: number | null;
+  label: string;
+  kind: "ALL" | "ONE_OF" | "N_OF";
+  courses_required: number | null;
+  credit_hours_required: number | null;
+  sort_order: number;
+  courses: Course[];
+  patterns: RequirementGroupPattern[];
+  // Computed per-request against the current visitor -- see module note above.
+  completed_course_ids: number[];
+  completed_count: number;
+  completed_credit_hours: number;
+  is_satisfied: boolean;
+}
+
+export interface DegreeProgramProgressRead {
+  id: number;
+  name: string;
+  faculty: string;
+  catalog_year: string;
+  groups: RequirementGroupRead[];
+}

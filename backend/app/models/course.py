@@ -47,6 +47,7 @@ class Course(Base):
     # not exclusively a set of course_id FKs. See CoursePrerequisite for
     # the separate, best-effort STRUCTURED tier (only populated for the
     # subset of cases confidently parseable into real course references).
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
     prerequisites_text: Mapped[str | None] = mapped_column(Text, nullable=True)
     corequisites_text: Mapped[str | None] = mapped_column(Text, nullable=True)
 

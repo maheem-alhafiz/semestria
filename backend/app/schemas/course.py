@@ -22,3 +22,16 @@ class CourseBrief(BaseModel):
     subject: str
     course_number: str
     title: str
+
+
+class CourseDetailRead(CourseRead):
+    """Full detail for the Course Details Modal -- CourseRead plus the
+    scraped catalog text. All three text fields are nullable: a course
+    the Aurora importer created but the catalog scraper hasn't reached
+    yet (or one with genuinely no prerequisites) will have them as None,
+    not empty strings -- the frontend should treat that as "not available"
+    rather than "confirmed empty"."""
+
+    description: str | None
+    prerequisites_text: str | None
+    corequisites_text: str | None

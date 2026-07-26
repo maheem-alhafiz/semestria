@@ -1,0 +1,2239 @@
+{
+  "program_label": "Civil Engineering, B.Sc.",
+  "source_url": "/undergraduate-studies/engineering/civil-engineering/civil-engineering-bsc/",
+  "groups": [
+    {
+      "label": "Civil Engineering Departmental Program",
+      "rows": [
+        {
+          "raw_text": "Students must complete the Preliminary Engineering Program requirements for graduation. | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a01110 | Introductory Chemistry 2: Interaction, Reactivity, and Chemical Properties 1 | 3",
+          "course_code": "CHEM 1110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "CHEM\u00a01126 | Introduction to Chemistry Techniques for Engineering 2 1 | 1.5",
+          "course_code": "CHEM 1126",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "CIVL\u00a02770 | Civil Engineering Materials | 5",
+          "course_code": "CIVL 2770",
+          "is_alternative": false,
+          "hours_text": "5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a02780 | Civil Engineering Systems | 4",
+          "course_code": "CIVL 2780",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a02790 | Fluid Mechanics | 4",
+          "course_code": "CIVL 2790",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a02800 | Solid Mechanics 1 | 4",
+          "course_code": "CIVL 2800",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a02830 | Graphics for Civil Engineers | 2",
+          "course_code": "CIVL 2830",
+          "is_alternative": false,
+          "hours_text": "2",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a02840 | Civil Engineering Geomatics | 3",
+          "course_code": "CIVL 2840",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03590 | Numerical Methods in Engineering Analysis | 4",
+          "course_code": "CIVL 3590",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03690 | Environmental Engineering Analysis | 4",
+          "course_code": "CIVL 3690",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03700 | Environmental Engineering Design | 4",
+          "course_code": "CIVL 3700",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03730 | Geotechnical Materials and Analysis | 4",
+          "course_code": "CIVL 3730",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03740 | Hydraulics | 4",
+          "course_code": "CIVL 3740",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03750 | Hydrology | 4",
+          "course_code": "CIVL 3750",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03760 | Structural Analysis | 4",
+          "course_code": "CIVL 3760",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03770 | Design of Steel Structures | 4",
+          "course_code": "CIVL 3770",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03790 | Fundamentals of Transportation and Traffic Engineering | 4",
+          "course_code": "CIVL 3790",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04220 | Geotechnical Design | 4",
+          "course_code": "CIVL 4220",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04380 | Infrastructure Engineering and Construction Management | 4",
+          "course_code": "CIVL 4380",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04390 | Reinforced Concrete Structures | 4",
+          "course_code": "CIVL 4390",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04400 | Transportation Engineering Design | 4",
+          "course_code": "CIVL 4400",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04590 | Design Project | 6",
+          "course_code": "CIVL 4590",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a02030 | Engineering Communication: Strategies for the Profession | 3",
+          "course_code": "ENG 2030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or ENG\u00a02040 | Engineering Communication: Strategies, Practice and Design",
+          "course_code": "ENG 2040",
+          "is_alternative": true,
+          "hours_text": "Engineering Communication: Strategies, Practice and Design",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a03000 | Engineering Economics | 3",
+          "course_code": "ENG 3000",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a03020 | Technology, Society and the Future | 3",
+          "course_code": "ENG 3020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOL\u00a01340 | The Dynamic Earth | 3",
+          "course_code": "GEOL 1340",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02130 | Engineering Mathematical Analysis 1 | 3",
+          "course_code": "MATH 2130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02132 | Engineering Mathematical Analysis 2 | 3",
+          "course_code": "MATH 2132",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT\u00a02220 | Contemporary Statistics for Engineers | 3",
+          "course_code": "STAT 2220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Five Technical Electives 2 | 19-20",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "19-20",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "One course from the list of Indigenous Knowledge Courses 3 | 3-4",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-4",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "Total Hours | 165-167",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "165-167",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "The former CHEM 1310 may be used in lieu of the combination of CHEM\u00a01110 and CHEM\u00a01126 . 2 Technical electives completed as part of a Stream take the place of these general technical electives. Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 3 Students are required to take at least one of the courses from the list of Indigenous Knowledge courses.\u00a0 ENG 4100 may be used to meet this requirement when the course content satisfies the requirements for an indigenous course."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Civil Engineering Technical Electives (5 courses)1,2,3,4",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a03710 | Finite Element Analysis | 4",
+          "course_code": "CIVL 3710",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04020 | Masonry Design and Construction | 4",
+          "course_code": "CIVL 4020",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04022 | Properties and Design of Concrete Mixtures | 4",
+          "course_code": "CIVL 4022",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04024 | Sustainable Building Design: Principles of Best Practice 3 | 4",
+          "course_code": "CIVL 4024",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "CIVL\u00a04028 | Building Information Modeling in Construction | 4",
+          "course_code": "CIVL 4028",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04030 | Advanced Structural Design | 4",
+          "course_code": "CIVL 4030",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04032 | Bridge Engineering | 4",
+          "course_code": "CIVL 4032",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04040 | Structural Dynamics | 4",
+          "course_code": "CIVL 4040",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04100 | Engineering Management and the Environment | 4",
+          "course_code": "CIVL 4100",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04120 | Water Treatment Plant Design | 4",
+          "course_code": "CIVL 4120",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04130 | Solid Waste Management | 4",
+          "course_code": "CIVL 4130",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04180 | Environmental Systems | 4",
+          "course_code": "CIVL 4180",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04200 | Groundwater Contamination | 4",
+          "course_code": "CIVL 4200",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04230 | Geotechnical Engineering | 4",
+          "course_code": "CIVL 4230",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04232 | Geotechnical Earthquake Engineering | 4",
+          "course_code": "CIVL 4232",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04250 | Groundwater Hydrology | 4",
+          "course_code": "CIVL 4250",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04300 | Design of Urban Water Systems | 4",
+          "course_code": "CIVL 4300",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04350 | Hazardous Waste Treatment | 4",
+          "course_code": "CIVL 4350",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04360 | Water Resources Planning and Management | 4",
+          "course_code": "CIVL 4360",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04410 | Transportation Systems | 4",
+          "course_code": "CIVL 4410",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04412 | Design and Operation of Public Transportation Systems | 4",
+          "course_code": "CIVL 4412",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04420 | Pavement Engineering | 4",
+          "course_code": "CIVL 4420",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04470 | Watershed Processes | 4",
+          "course_code": "CIVL 4470",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are\u00a0encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 CIVL 4024 can not be held with BIOE 4412\u00a0 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Civil Engineering Technical Electives (5 courses)1,2,3,4",
+      "rows": [
+        {
+          "raw_text": "BIOE\u00a04560 | Structural Design in Wood | 4",
+          "course_code": "BIOE 4560",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04000 | Uncertainty Analysis in Civil Engineering Systems | 4",
+          "course_code": "CIVL 4000",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04332 | Civil Engineering Thesis Project | 4",
+          "course_code": "CIVL 4332",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04500 | Contemporary Topics in Civil Engineering | 4",
+          "course_code": "CIVL 4500",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are\u00a0encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 CIVL 4024 can not be held with BIOE 4412\u00a0 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Indigenous Knowledge Courses",
+      "rows": [
+        {
+          "raw_text": "INDG\u00a01200 | Indigenous Peoples in Canada | 6",
+          "course_code": "INDG 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01220 | Indigenous Peoples in Canada, Part 1 | 3",
+          "course_code": "INDG 1220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01240 | Indigenous Peoples in Canada, Part 2 | 3",
+          "course_code": "INDG 1240",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
+          "course_code": "INDG 2012",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02010 | Indigenous History in Canada (C)",
+          "course_code": "HIST 2010",
+          "is_alternative": true,
+          "hours_text": "Indigenous History in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02020 | The M\u00e9tis in Canada (C)",
+          "course_code": "HIST 2020",
+          "is_alternative": true,
+          "hours_text": "The M\u00e9tis in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a02802 | Introduction to Indigenous Politics | 3",
+          "course_code": "POLS 2802",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a04100 | Contemporary Topics in Engineering Practice 1 | 4",
+          "course_code": "ENG 4100",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": " | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "ENG\u00a04100 may be used to meet this requirement when the course content satisfies the requirements of an Indigenous course."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST A (select 3 to 5 courses)",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a04100 | Engineering Management and the Environment | 4",
+          "course_code": "CIVL 4100",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04120 | Water Treatment Plant Design | 4",
+          "course_code": "CIVL 4120",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04130 | Solid Waste Management | 4",
+          "course_code": "CIVL 4130",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04180 | Environmental Systems | 4",
+          "course_code": "CIVL 4180",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04200 | Groundwater Contamination | 4",
+          "course_code": "CIVL 4200",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04250 | Groundwater Hydrology | 4",
+          "course_code": "CIVL 4250",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04300 | Design of Urban Water Systems | 4",
+          "course_code": "CIVL 4300",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04350 | Hazardous Waste Treatment | 4",
+          "course_code": "CIVL 4350",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04360 | Water Resources Planning and Management | 4",
+          "course_code": "CIVL 4360",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04470 | Watershed Processes | 4",
+          "course_code": "CIVL 4470",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST B (up to 2 courses, only 1 from ouside of civil engineering)",
+      "rows": [
+        {
+          "raw_text": "BIOE\u00a04460 | Air Pollution Assessment and Management | 4",
+          "course_code": "BIOE 4460",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04000 | Uncertainty Analysis in Civil Engineering Systems | 4",
+          "course_code": "CIVL 4000",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04332 | Civil Engineering Thesis Project 3 | 4",
+          "course_code": "CIVL 4332",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "SOIL\u00a04500 | Remediation of Contaminated Land | 3",
+          "course_code": "SOIL 4500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST A",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a03710 | Finite Element Analysis | 4",
+          "course_code": "CIVL 3710",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04130 | Solid Waste Management | 4",
+          "course_code": "CIVL 4130",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04200 | Groundwater Contamination | 4",
+          "course_code": "CIVL 4200",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04230 | Geotechnical Engineering | 4",
+          "course_code": "CIVL 4230",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04232 | Geotechnical Earthquake Engineering | 4",
+          "course_code": "CIVL 4232",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04250 | Groundwater Hydrology | 4",
+          "course_code": "CIVL 4250",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST B",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a04332 | Civil Engineering Thesis Project 3 | 4",
+          "course_code": "CIVL 4332",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            3
+          ]
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST A (SELECT 3 TO 5 COURSES)",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a03710 | Finite Element Analysis | 4",
+          "course_code": "CIVL 3710",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04020 | Masonry Design and Construction | 4",
+          "course_code": "CIVL 4020",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04022 | Properties and Design of Concrete Mixtures | 4",
+          "course_code": "CIVL 4022",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04024 | Sustainable Building Design: Principles of Best Practice 5 | 4",
+          "course_code": "CIVL 4024",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            5
+          ]
+        },
+        {
+          "raw_text": "CIVL\u00a04028 | Building Information Modeling in Construction | 4",
+          "course_code": "CIVL 4028",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04030 | Advanced Structural Design | 4",
+          "course_code": "CIVL 4030",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04032 | Bridge Engineering | 4",
+          "course_code": "CIVL 4032",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04040 | Structural Dynamics | 4",
+          "course_code": "CIVL 4040",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST B (up to 2 COURSES)",
+      "rows": [
+        {
+          "raw_text": "BIOE\u00a04560 | Structural Design in Wood | 4",
+          "course_code": "BIOE 4560",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04000 | Uncertainty Analysis in Civil Engineering Systems | 4",
+          "course_code": "CIVL 4000",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04332 | Civil Engineering Thesis Project 3 | 4",
+          "course_code": "CIVL 4332",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            3
+          ]
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST A (SELECT 3 TO 5 COURSES)",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a03710 | Finite Element Analysis | 4",
+          "course_code": "CIVL 3710",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04022 | Properties and Design of Concrete Mixtures | 4",
+          "course_code": "CIVL 4022",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04032 | Bridge Engineering | 4",
+          "course_code": "CIVL 4032",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04410 | Transportation Systems | 4",
+          "course_code": "CIVL 4410",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04412 | Design and Operation of Public Transportation Systems | 4",
+          "course_code": "CIVL 4412",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04420 | Pavement Engineering | 4",
+          "course_code": "CIVL 4420",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "LIST B (Up to 2 courses)",
+      "rows": [
+        {
+          "raw_text": "CIVL\u00a04000 | Uncertainty Analysis in Civil Engineering Systems | 4",
+          "course_code": "CIVL 4000",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04332 | Civil Engineering Thesis Project 3 | 4",
+          "course_code": "CIVL 4332",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            3
+          ]
+        }
+      ],
+      "footnotes": {
+        "1": "Technical elective courses offered vary from year to year and may have limited enrollment. Courses offered in the current year are listed on the online timetables on the Department website. 2 Students are encouraged to discuss their program of courses with members of the instructional staff to obtain advice concerning the best choice of electives for their needs. 3 Subject to approval of Faculty Advisor. 4 Current students already admitted to Civil Engineering prior to the introduction of the streams will be eligible to declare a stream. 5 CIVL 4024 can not be held with BIOE 4412 or BIOE 4700."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Preliminary Engineering Program",
+      "rows": [
+        {
+          "raw_text": "CHEM\u00a01100 | Introductory Chemistry 1: Atomic and Molecular Structure and Energetics 1 | 3",
+          "course_code": "CHEM 1100",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "CHEM\u00a01122 | Introduction to Chemistry Techniques for Engineering 1 1 | 1.5",
+          "course_code": "CHEM 1122",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "COMP\u00a01012 | Computer Programming for Scientists and Engineers | 3",
+          "course_code": "COMP 1012",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01430 | Design in Engineering | 3",
+          "course_code": "ENG 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01440 | Introduction to Statics | 3",
+          "course_code": "ENG 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01450 | Introduction to Electrical and Computer Engineering | 3",
+          "course_code": "ENG 1450",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01460 | Introduction to Thermal Sciences | 3",
+          "course_code": "ENG 1460",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a01210 | Techniques of Classical and Linear Algebra 2 | 3",
+          "course_code": "MATH 1210",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01510 | Applied Calculus 1 3 | 3",
+          "course_code": "MATH 1510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01710 | Applied Calculus 2 3 | 3",
+          "course_code": "MATH 1710",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "PHIL\u00a01290 | Critical Thinking 4 | 3",
+          "course_code": "PHIL 1290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            4
+          ]
+        },
+        {
+          "raw_text": "PHYS\u00a01050 | Physics 1: Mechanics | 3",
+          "course_code": "PHYS 1050",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Written English Course 5,6 | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            5,
+            6
+          ]
+        },
+        {
+          "raw_text": "Total Hours | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "The former CHEM 1300 may be used in lieu of the combination of CHEM\u00a01100 and CHEM\u00a01122 . 2 MATH\u00a01300 is not an acceptable equivalent to MATH\u00a01210 . 3 Students intending to obtain a degree in Engineering are strongly advised to complete MATH\u00a01510 and MATH\u00a01710 . However, MATH\u00a01500 or MATH\u00a01230 may be taken in lieu of MATH\u00a01510 ; MATH\u00a01700 or MATH\u00a01232 may be taken in lieu of MATH\u00a01710 . MATH\u00a01524 is not an acceptable equivalent to MATH\u00a01510 . 4 PHIL\u00a01290 is the recommended complementary studies elective. Students may; however, select any course from the Faculties of Arts or Management (Asper School of Business) at the 1000 level or above, except for ARTS\u00a01110 . 5 Course selected from the list of approved Written English Courses for Engineering students. 6 Three credit hours are required to satisfy the Written English course requirement.\u00a0 Should a student complete a six credit hour course, the additional three credit hours may be used to satisfy general complementary studies requirements within a student's program. 7 Equivalent courses offered through Universit\u00e9 de Saint-Boniface may be used to satisfy program requirements."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Written English Courses for Engineering Students",
+      "rows": [
+        {
+          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
+          "course_code": "ASIA 1420",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
+          "course_code": "ASIA 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
+          "course_code": "CATH 1190",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01200 | Representative Literary Works | 6",
+          "course_code": "ENGL 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01300 | Literature since 1900 | 6",
+          "course_code": "ENGL 1300",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01340 | Introduction to Literary Analysis | 3",
+          "course_code": "ENGL 1340",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01400 | Thematic Approaches to the Study of Literature | 3",
+          "course_code": "ENGL 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
+          "course_code": "GPE 2700",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
+          "course_code": "GRMN 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 1310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Any 1000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "Any 2000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
+          "course_code": "POL 1900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
+          "course_code": "POL 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
+          "course_code": "POL 2610",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a01502 | Introduction to Political Science 2 | 3",
+          "course_code": "POLS 1502",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
+          "course_code": "RLGN 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
+          "course_code": "RLGN 2036",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
+          "course_code": "RLGN 2140",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
+          "course_code": "RLGN 2160",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
+          "course_code": "RLGN 2170",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
+          "course_code": "RLGN 2222",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
+          "course_code": "RLGN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
+          "course_code": "RUSN 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
+          "course_code": "RUSN 2280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
+          "course_code": "RUSN 2290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
+          "course_code": "RUSN 2310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
+          "course_code": "UKRN 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
+          "course_code": "UKRN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
+          "course_code": "UKRN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
+          "course_code": "UKRN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
+          "course_code": "UKRN 2780",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
+          "course_code": "UKRN 2820",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
+          "course_code": "WOMN 1500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
+          "course_code": "WOMN 1600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
+          "course_code": "WOMN 2560",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Unallocated credits may not be used 2 This course requires a laboratory"
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Written English Courses",
+      "rows": [
+        {
+          "raw_text": "AGRI\u00a02030 | Technical Communications | 3",
+          "course_code": "AGRI 2030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ANTH\u00a02020 | Relatedness in a Globalizing World | 3",
+          "course_code": "ANTH 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ARTS\u00a01110 | Introduction to University | 3",
+          "course_code": "ARTS 1110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
+          "course_code": "ASIA 1420",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
+          "course_code": "ASIA 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
+          "course_code": "CATH 1190",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a02010 | Literature and Catholic Culture 1 | 3",
+          "course_code": "CATH 2010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a02020 | Literature and Catholic Culture 2 | 3",
+          "course_code": "CATH 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CLAS\u00a02612 | Greek Literature in Translation | 3",
+          "course_code": "CLAS 2612",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CLAS\u00a02622 | Latin Literature in Translation | 3",
+          "course_code": "CLAS 2622",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a00930 | English Composition | 3",
+          "course_code": "ENGL 0930",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a00940 | Writing About Literature | 3",
+          "course_code": "ENGL 0940",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL 1XXX | All English courses at the 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL 2XXX | All English courses at the 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a02810 | Environmental Critical Thinking and Scientific Research | 3",
+          "course_code": "ENVR 2810",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FAAH\u00a02930 | Writing about Art | 3",
+          "course_code": "FAAH 2930",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FILM\u00a02280 | Film and Literature | 6",
+          "course_code": "FILM 2280",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a02900 | Geography of Canadian Prairie Landscapes (A) | 3",
+          "course_code": "GEOG 2900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOL\u00a03130 | Communication Methods in the Geological Sciences | 3",
+          "course_code": "GEOL 3130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GMGT\u00a01010 | Business and Society | 3",
+          "course_code": "GMGT 1010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GMGT\u00a02010 | Business Communications | 3",
+          "course_code": "GMGT 2010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
+          "course_code": "GPE 2700",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
+          "course_code": "GRMN 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 1310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02120 | Introduction to German Culture from 1918 to the Present (C) | 3",
+          "course_code": "GRMN 2120",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02130 | Introduction to German Culture from the Beginnings to 1918 (C) | 3",
+          "course_code": "GRMN 2130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02500 | Special Topics in German in English Translation (C) | 3",
+          "course_code": "GRMN 2500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02510 | German Fairy Tales from the Brothers Grimm to Hollywood (C) | 3",
+          "course_code": "GRMN 2510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02520 | Spies: Stories of Secret Agents, Treason, and Surveillance (C) | 3",
+          "course_code": "GRMN 2520",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02530 | My Friend the Tree: Environment and Ecology in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02540 | Heroes, Feathers, and Tipis: German Fascination with North American Indigenous Peoples | 3",
+          "course_code": "GRMN 2540",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03262 | Representations of the Holocaust in English Translation (C) | 3",
+          "course_code": "GRMN 3262",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03270 | Studies in Contemporary German Cinema (C) | 3",
+          "course_code": "GRMN 3270",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03282 | Sex, Gender and Cultural Politics in the German-Speaking World in English Translation (C) | 3",
+          "course_code": "GRMN 3282",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03390 | German Representations of War (C) | 3",
+          "course_code": "GRMN 3390",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03510 | Special Topics in German in English Translation (C) | 3",
+          "course_code": "GRMN 3510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03530 | Special Topics in Comparative German and Slavic Studies (C) | 3",
+          "course_code": "GRMN 3530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST 1XXX | All History courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST 2XXX | All History courses at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a02530 | History of the Modern Middle East (R) | 3",
+          "course_code": "HIST 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a02540 | History of the Islamic World (R) | 3",
+          "course_code": "HIST 2540",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HNSC\u00a02000 | Research Methods and Presentation | 3",
+          "course_code": "HNSC 2000",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HYGN\u00a01340 | Communications | 2",
+          "course_code": "HYGN 1340",
+          "is_alternative": false,
+          "hours_text": "2",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
+          "course_code": "INDG 2012",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02110 | Introduction to Indigenous Community Development | 3",
+          "course_code": "INDG 2110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02530 | Introduction to Indigenous Theory | 3",
+          "course_code": "INDG 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "KPER\u00a02120 | Academic Skills in Kinesiology and Recreation Management | 3",
+          "course_code": "KPER 2120",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a01260 | Working for a Living | 3",
+          "course_code": "LABR 1260",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a01290 | Labour Unions and Workers' Rights in Canada | 3",
+          "course_code": "LABR 1290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a02200 | Labour History: Canada and Beyond (C) | 3",
+          "course_code": "LABR 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a02300 | Workers, Employers and the State | 3",
+          "course_code": "LABR 2300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a04510 | Labour Studies Field Placement Seminar | 3",
+          "course_code": "LABR 4510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LAW\u00a01540 | Legal Methods | 5",
+          "course_code": "LAW 1540",
+          "is_alternative": false,
+          "hours_text": "5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LAW\u00a02650 | Introduction to Advocacy | 3",
+          "course_code": "LAW 2650",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LING\u00a02740 | Interpretation Theory | 3",
+          "course_code": "LING 2740",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02612 | A Philosophical History of Science | 3",
+          "course_code": "PHIL 2612",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02614 | Philosophy of Science | 3",
+          "course_code": "PHIL 2614",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02790 | Moral Philosophy | 6",
+          "course_code": "PHIL 2790",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a03220 | Feminist Philosophy | 3",
+          "course_code": "PHIL 3220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
+          "course_code": "POL 1900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
+          "course_code": "POL 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
+          "course_code": "POL 2610",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02660 | Special Topics in Polish Literature and Culture | 3",
+          "course_code": "POL 2660",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a01502 | Introduction to Political Science | 3",
+          "course_code": "POLS 1502",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a03380 | Nature, Nurture and Behaviour | 3",
+          "course_code": "PSYC 3380",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a04520 | Honours Research Seminar | 6",
+          "course_code": "PSYC 4520",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
+          "course_code": "RLGN 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02032 | Introduction to the Study of Religion | 3",
+          "course_code": "RLGN 2032",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
+          "course_code": "RLGN 2036",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02052 | Conservative Christianity in the United States | 3",
+          "course_code": "RLGN 2052",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02112 | Medicine, Magic, and Miracle in the Ancient World | 3",
+          "course_code": "RLGN 2112",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02116 | Cognitive Science and Religion | 3",
+          "course_code": "RLGN 2116",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
+          "course_code": "RLGN 2140",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
+          "course_code": "RLGN 2160",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02162 | Great Jewish Books | 3",
+          "course_code": "RLGN 2162",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
+          "course_code": "RLGN 2170",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
+          "course_code": "RLGN 2222",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
+          "course_code": "RLGN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02770 | Contemporary Judaism | 3",
+          "course_code": "RLGN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a03102 | Myth and Mythmaking: Narrative, Ideology, Scholarship | 3",
+          "course_code": "RLGN 3102",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a03280 | Hasidism | 3",
+          "course_code": "RLGN 3280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
+          "course_code": "RUSN 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01410 | Love in Russian Culture in English Translation | 3",
+          "course_code": "RUSN 1410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
+          "course_code": "RUSN 2280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
+          "course_code": "RUSN 2290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
+          "course_code": "RUSN 2310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02410 | Russian Literature after Stalin | 3",
+          "course_code": "RUSN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02600 | Special Topics in Russian Culture in English Translation | 3",
+          "course_code": "RUSN 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02740 | Literature and Revolution | 3",
+          "course_code": "RUSN 2740",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a03770 | Tolstoy | 3",
+          "course_code": "RUSN 3770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SLAV\u00a03530 | Special Topics in Comparative German and Slavic Studies | 3",
+          "course_code": "SLAV 3530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a03100 | Practicum in Criminological/Sociological Research | 6",
+          "course_code": "SOC 3100",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a03350 | Feminism and Sociological Theory | 3",
+          "course_code": "SOC 3350",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
+          "course_code": "UKRN 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
+          "course_code": "UKRN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
+          "course_code": "UKRN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02600 | Special Topics in Ukrainian Studies | 3",
+          "course_code": "UKRN 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
+          "course_code": "UKRN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
+          "course_code": "UKRN 2780",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
+          "course_code": "UKRN 2820",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a03970 | Women and Ukrainian Literature | 3",
+          "course_code": "UKRN 3970",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
+          "course_code": "WOMN 1500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
+          "course_code": "WOMN 1600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
+          "course_code": "WOMN 2560",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a03520 | Transnational Feminisms | 3",
+          "course_code": "WOMN 3520",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {},
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Mathematics Courses",
+      "rows": [
+        {
+          "raw_text": "AGRI\u00a02400 | Experimental Methods in Agricultural and Food Sciences | 3",
+          "course_code": "AGRI 2400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ECON\u00a02040 | Quantitative Methods in Economics | 3",
+          "course_code": "ECON 2040",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FA\u00a01020 | Mathematics in Art | 3",
+          "course_code": "FA 1020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a03810 | Quantitative Research Methods in Geography (TS) | 3",
+          "course_code": "GEOG 3810",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 1XXX | All Mathematics courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 2XXX | All Mathematics at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 3XXX | All Mathematics at 3000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 4XXX | All Mathematics at 4000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MUSC\u00a03230 | Acoustics of Music | 3",
+          "course_code": "MUSC 3230",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a01300 | Introduction to Logic | 3",
+          "course_code": "PHIL 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a01020 | General Physics 1 | 3",
+          "course_code": "PHYS 1020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a01030 | General Physics 2 | 3",
+          "course_code": "PHYS 1030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a02260 | Introduction to Research Methods in Psychology | 3",
+          "course_code": "PSYC 2260",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a02294 | Understanding Social Statistics | 3",
+          "course_code": "SOC 2294",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 1XXX | All Statistics courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 2XXX | All Statistics courses at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 3XXX | All Statistics courses at 3000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 4XXX | All Statistics courses at 4000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {},
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    }
+  ]
+}

@@ -1,0 +1,740 @@
+{
+  "program_label": "Mechanical Engineering, B.Sc.",
+  "source_url": "/undergraduate-studies/engineering/mechanical-engineering/mechanical-engineering-bsc/",
+  "groups": [
+       {
+      "label": "Preliminary Engineering Program",
+      "rows": [
+        {
+          "raw_text": "CHEM\u00a01100 | Introductory Chemistry 1: Atomic and Molecular Structure and Energetics 1 | 3",
+          "course_code": "CHEM 1100",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "CHEM\u00a01122 | Introduction to Chemistry Techniques for Engineering 1 1 | 1.5",
+          "course_code": "CHEM 1122",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "COMP\u00a01012 | Computer Programming for Scientists and Engineers | 3",
+          "course_code": "COMP 1012",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01430 | Design in Engineering | 3",
+          "course_code": "ENG 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01440 | Introduction to Statics | 3",
+          "course_code": "ENG 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01450 | Introduction to Electrical and Computer Engineering | 3",
+          "course_code": "ENG 1450",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01460 | Introduction to Thermal Sciences | 3",
+          "course_code": "ENG 1460",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a01210 | Techniques of Classical and Linear Algebra 2 | 3",
+          "course_code": "MATH 1210",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01510 | Applied Calculus 1 3 | 3",
+          "course_code": "MATH 1510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01710 | Applied Calculus 2 3 | 3",
+          "course_code": "MATH 1710",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "PHIL\u00a01290 | Critical Thinking 4 | 3",
+          "course_code": "PHIL 1290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            4
+          ]
+        },
+        {
+          "raw_text": "PHYS\u00a01050 | Physics 1: Mechanics | 3",
+          "course_code": "PHYS 1050",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Total Hours | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "The former CHEM 1300 may be used in lieu of the combination of CHEM\u00a01100 and CHEM\u00a01122 . 2 MATH\u00a01300 is not an acceptable equivalent to MATH\u00a01210 . 3 Students intending to obtain a degree in Engineering are strongly advised to complete MATH\u00a01510 and MATH\u00a01710 . However, MATH\u00a01500 or MATH\u00a01230 may be taken in lieu of MATH\u00a01510 ; MATH\u00a01700 or MATH\u00a01232 may be taken in lieu of MATH\u00a01710 . MATH\u00a01524 is not an acceptable equivalent to MATH\u00a01510 . 4 PHIL\u00a01290 is the recommended complementary studies elective. Students may; however, select any course from the Faculties of Arts or Management (Asper School of Business) at the 1000 level or above, except for ARTS\u00a01110 . 5 Course selected from the list of approved Written English Courses for Engineering students. 6 Three credit hours are required to satisfy the Written English course requirement.\u00a0 Should a student complete a six credit hour course, the additional three credit hours may be used to satisfy general complementary studies requirements within a student's program. 7 Equivalent courses offered through Universit\u00e9 de Saint-Boniface may be used to satisfy program requirements."
+      },
+      "kind": "ALL",
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Mechanical Engineering Degree Requirements",
+      "rows": [
+        {
+          "raw_text": "Students must complete the Preliminary Engineering Program requirements for graduation. | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a01110 | Introductory Chemistry 2: Interaction, Reactivity, and Chemical Properties | 3",
+          "course_code": "CHEM 1110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a01126 | Introduction to Chemistry Techniques for Engineering 2 | 1.5",
+          "course_code": "CHEM 1126",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a03000 | Engineering Economics | 3",
+          "course_code": "ENG 3000",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a03020 | Technology, Society and the Future | 3",
+          "course_code": "ENG 3020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a02030 | Engineering Communication: Strategies for the Profession | 3",
+          "course_code": "ENG 2030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or ENG\u00a02040 | Engineering Communication: Strategies, Practice and Design",
+          "course_code": "ENG 2040",
+          "is_alternative": true,
+          "hours_text": "Engineering Communication: Strategies, Practice and Design",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02130 | Engineering Mathematical Analysis 1 | 3",
+          "course_code": "MATH 2130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02132 | Engineering Mathematical Analysis 2 | 3",
+          "course_code": "MATH 2132",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a03132 | Engineering Mathematical Analysis 3 | 3",
+          "course_code": "MATH 3132",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02112 | Fundamentals of Mechanical and Computer Aided Design | 5",
+          "course_code": "MECH 2112",
+          "is_alternative": false,
+          "hours_text": "5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02150 | Mechanical Engineering Modelling and Numerical Methods | 4",
+          "course_code": "MECH 2150",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02202 | Thermodynamics | 4",
+          "course_code": "MECH 2202",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02222 | Mechanics of Materials | 4",
+          "course_code": "MECH 2222",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02262 | Fundamentals of Fluid Mechanics | 4",
+          "course_code": "MECH 2262",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02272 | Engineering Materials 1 | 4",
+          "course_code": "MECH 2272",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03170 | Project Management | 4",
+          "course_code": "MECH 3170",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03212 | Electromechanical System Design | 4",
+          "course_code": "MECH 3212",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03420 | Vibrations and Acoustics | 4",
+          "course_code": "MECH 3420",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03430 | Measurements and Control | 4",
+          "course_code": "MECH 3430",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03460 | Heat Transfer | 4",
+          "course_code": "MECH 3460",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03482 | Kinematics and Dynamics | 4",
+          "course_code": "MECH 3482",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03492 | Fluid Mechanics and Applications | 4",
+          "course_code": "MECH 3492",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03502 | Stress Analysis and Design | 4",
+          "course_code": "MECH 3502",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03542 | Engineering Materials 2 | 4",
+          "course_code": "MECH 3542",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03652 | Machine Design | 4",
+          "course_code": "MECH 3652",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03982 | Mechanical Laboratories in Solid Mechanics | 2",
+          "course_code": "MECH 3982",
+          "is_alternative": false,
+          "hours_text": "2",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03992 | Mechanical Laboratories in Thermofluids | 2",
+          "course_code": "MECH 3992",
+          "is_alternative": false,
+          "hours_text": "2",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a04860 | Engineering Design | 5",
+          "course_code": "MECH 4860",
+          "is_alternative": false,
+          "hours_text": "5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a01070 | Physics 2: Waves and Modern Physics | 3",
+          "course_code": "PHYS 1070",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT\u00a02220 | Contemporary Statistics for Engineers | 3",
+          "course_code": "STAT 2220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Five Technical Electives (TE) 1, 2 | 20-22",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "20-22",
+          "footnote_refs": [
+            1,
+            2
+          ]
+        },
+        {
+          "raw_text": "One Course from the list of Indigenous Knowledge Courses 3 | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "Total Hours | 163-165",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "163-165",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "A minimum of 20 credit hours of technical electives is required with 18 hours required if completing MECH\u00a04162 (5 courses at 4 credit hours each or 3 courses at 4 credit hours each plus MECH\u00a04162 at 6 credit hours). 2 For courses continuing through both terms, credit is given on completion of course 3 Students admitted to Mechanical Engineering in Fall 2021 who have completed two complementary studies elective courses prior to admission to the program, may use on of those courses in place of the Indigenous knowledge course.\u00a0 A complementary studies course is any course from the Faculty of Arts or the Faculty of Management at the 1000 level or above, with the exception of ARTS 1110 Introduction to the University which may not\u00a0 be used for credit in the Price Faculty of Engineering. 4 Student must select one course from the list of Indigenous Knowledge Courses"
+      },
+      "kind": "ALL",
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Indigenous Knowledge Courses",
+      "rows": [
+        {
+          "raw_text": "INDG\u00a01200 | Indigenous Peoples in Canada | 6",
+          "course_code": "INDG 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01220 | Indigenous Peoples in Canada, Part 1 | 3",
+          "course_code": "INDG 1220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01240 | Indigenous Peoples in Canada, Part 2 | 3",
+          "course_code": "INDG 1240",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
+          "course_code": "INDG 2012",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02010 | Indigenous History in Canada (C)",
+          "course_code": "HIST 2010",
+          "is_alternative": true,
+          "hours_text": "Indigenous History in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02020 | The M\u00e9tis in Canada (C)",
+          "course_code": "HIST 2020",
+          "is_alternative": true,
+          "hours_text": "The M\u00e9tis in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a02802 | Introduction to Indigenous Politics | 3",
+          "course_code": "POLS 2802",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "A minimum of 20 credit hours of technical electives is required with 18 hours required if completing MECH\u00a04162 (5 courses at 4 credit hours each or 3 courses at 4 credit hours each plus MECH\u00a04162 at 6 credit hours). 2 For courses continuing through both terms, credit is given on completion of course 3 Students admitted to Mechanical Engineering in Fall 2021 who have completed two complementary studies elective courses prior to admission to the program, may use on of those courses in place of the Indigenous knowledge course.\u00a0 A complementary studies course is any course from the Faculty of Arts or the Faculty of Management at the 1000 level or above, with the exception of ARTS 1110 Introduction to the University which may not\u00a0 be used for credit in the Price Faculty of Engineering. 4 Student must select one course from the list of Indigenous Knowledge Courses"
+      },
+      "kind": "ONE_OF",
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Technical Electives in Mechanical Engineering1",
+      "parent_label": null,
+      "rows": [],
+      "footnotes": {
+        "1": "The Department of Mechanical Engineering may not be able to offer all technical electives listed above. Students are urged to consult the Mechanical Engineering office for a current list of technical electives. 2 Students must be in their graduating year to register for MECH\u00a04162 . 3 Students may NOT use the same technical elective to count toward multiple streams."
+      },
+      "kind": "N_OF",
+      "courses_required": null,
+      "credit_hours_required": 20,
+      "patterns": []
+    },
+    {
+      "label": "Written English Courses for Engineering Students",
+      "parent_label": "Preliminary Engineering Program",
+      "rows": [
+        {
+          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
+          "course_code": "ASIA 1420",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
+          "course_code": "ASIA 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
+          "course_code": "CATH 1190",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01200 | Representative Literary Works | 6",
+          "course_code": "ENGL 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01300 | Literature since 1900 | 6",
+          "course_code": "ENGL 1300",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01340 | Introduction to Literary Analysis | 3",
+          "course_code": "ENGL 1340",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01400 | Thematic Approaches to the Study of Literature | 3",
+          "course_code": "ENGL 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
+          "course_code": "GPE 2700",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
+          "course_code": "GRMN 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 1310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Any 1000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "Any 2000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
+          "course_code": "POL 1900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
+          "course_code": "POL 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
+          "course_code": "POL 2610",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a01502 | Introduction to Political Science 2 | 3",
+          "course_code": "POLS 1502",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
+          "course_code": "RLGN 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
+          "course_code": "RLGN 2036",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
+          "course_code": "RLGN 2140",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
+          "course_code": "RLGN 2160",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
+          "course_code": "RLGN 2170",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
+          "course_code": "RLGN 2222",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
+          "course_code": "RLGN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
+          "course_code": "RUSN 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
+          "course_code": "RUSN 2280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
+          "course_code": "RUSN 2290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
+          "course_code": "RUSN 2310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
+          "course_code": "UKRN 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
+          "course_code": "UKRN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
+          "course_code": "UKRN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
+          "course_code": "UKRN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
+          "course_code": "UKRN 2780",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
+          "course_code": "UKRN 2820",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
+          "course_code": "WOMN 1500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
+          "course_code": "WOMN 1600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
+          "course_code": "WOMN 2560",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Unallocated credits may not be used 2 This course requires a laboratory"
+      },
+      "kind": "ONE_OF",
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": [
+        {
+          "subject": "HIST",
+          "level_min": 1000,
+          "level_max": 2999
+        }
+      ]
+    }
+  ]
+}

@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session, selectinload
 from app.core.database import get_db
 from app.models import Course, Section
 from app.schemas import CourseRead
+from app.schemas.course import CourseDetailRead
 from app.schemas.section_groups import (
     CourseSectionsRead,
     SectionGroupRead,
@@ -52,6 +53,18 @@ def search_courses(
 
     stmt = stmt.distinct().order_by(Course.subject, Course.course_number)
     return db.execute(stmt).scalars().all()
+
+
+@router.get("/{course_id}", response_model=CourseDetailRead)
+def get_course_detail(course_id: int, db: Session = Depends(get_db)) -> Course:
+    """Full detail for one course -- description, prerequisites, and
+    corequisites -- for the Course Details Modal. No term_code needed:
+    unlike search/sections, this is catalog-level data independent of
+    any specific term's offerings."""
+    course = db.get(Course, course_id)
+    if course is None:
+        raise HTTPException(status_code=404, detail=f"Course {course_id} not found")
+    return course
 
 
 @router.get("/{course_id}/sections", response_model=CourseSectionsRead)
@@ -107,8 +120,6 @@ def get_course_sections(
         for link_group_id, slots_by_name in linked_groups.items()
     ]
 
-    """
-    OLD CODE
     for section in standalone:
         groups.append(
             SectionGroupRead(
@@ -118,34 +129,6 @@ def get_course_sections(
                         link_slot=section.link_slot or "SECTION",
                         options=[to_option(section)],
                     )
-                ],
-            )
-        )
-
-    return CourseSectionsRead(
-        course_id=course.course_id,
-        subject=course.subject,
-        course_number=course.course_number,
-        title=course.title,
-        credit_hours=float(course.credit_hours),
-        groups=groups,
-    )"""
-
-    #NEW code
-    if standalone:
-        # Group standalone sections by their slot name (usually "SECTION")
-        # so they populate a single dropdown instead of separate mandatory boxes.
-        standalone_slots = defaultdict(list)
-        for section in standalone:
-            slot_name = section.link_slot or "SECTION"
-            standalone_slots[slot_name].append(to_option(section))
-
-        groups.append(
-            SectionGroupRead(
-                link_group_id=None,
-                slots=[
-                    SectionSlotRead(link_slot=slot_name, options=options)
-                    for slot_name, options in standalone_slots.items()
                 ],
             )
         )

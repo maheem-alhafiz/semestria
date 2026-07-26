@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTrackerStore } from "@/store/trackerStore";
 import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord, searchCourses } from "@/lib/api";
-import type { Term, Course } from "@/types/api";
+import type { Term, Course, RequirementGroupRead } from "@/types/api";
+import { CourseDetailsModal } from "@/components/CourseDetailsModal";
 
 const getGradePoints = (grade: string | null): number | null => {
   if (!grade) return null;
@@ -22,10 +23,45 @@ function getTermInfo(termCode: string, terms: Term[]): { year: string; termName:
   return { year, termName };
 }
 
+// "3/5 Courses", "12/20 CH", "3/5 Courses · 12/20 CH", or "Satisfied" /
+// "Choose 1" for a ONE_OF group (which has no single meaningful count).
+function formatGroupProgress(group: RequirementGroupRead): string {
+  if (group.kind === "ONE_OF") {
+    return group.is_satisfied ? "Satisfied" : "Choose 1";
+  }
+
+  const parts: string[] = [];
+  if (group.kind === "ALL") {
+    parts.push(`${group.completed_count}/${group.courses.length} Courses`);
+  } else {
+    if (group.courses_required !== null) {
+      parts.push(`${group.completed_count}/${group.courses_required} Courses`);
+    }
+    if (group.credit_hours_required !== null) {
+      parts.push(`${group.completed_credit_hours}/${group.credit_hours_required} CH`);
+    }
+  }
+  return parts.length > 0 ? parts.join(" · ") : group.is_satisfied ? "Satisfied" : "Not started";
+}
+
 export default function TrackerPage() {
-  const { records, isLoading, fetchRecords } = useTrackerStore();
+  const {
+    records,
+    isLoading,
+    fetchRecords,
+    programs,
+    selectedProgramId,
+    programProgress,
+    isLoadingPrograms,
+    isLoadingProgress,
+    fetchPrograms,
+    selectProgram,
+  } = useTrackerStore();
   const [isAddingCourse, setIsAddingCourse] = useState(false);
   const [terms, setTerms] = useState<Term[]>([]);
+  
+  // Course details modal state
+  const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
   
   // Form state for adding past course
   const [selectedTermCode, setSelectedTermCode] = useState("");
@@ -54,8 +90,9 @@ export default function TrackerPage() {
 
   useEffect(() => {
     fetchRecords();
+    fetchPrograms();
     getTerms().then(setTerms).catch(() => {});
-  }, [fetchRecords]);
+  }, [fetchRecords, fetchPrograms]);
 
   const stats = useMemo(() => {
     let earnedCredits = 0;
@@ -174,21 +211,86 @@ export default function TrackerPage() {
       <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-12">
         {/* Left Column: Requirements Sidebar */}
         <div className="sticky top-24 space-y-5 rounded-2xl border border-hairline bg-panel p-5 shadow-sm lg:col-span-4 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto custom-scrollbar">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-medium text-paper">Mechanical Engineering B.Sc.</h2>
-            <span className="rounded bg-elevated px-2 py-0.5 text-[10px] uppercase text-muted">Pending Catalog Sync</span>
+          <div className="flex items-center justify-between gap-2">
+            <select
+              value={selectedProgramId ?? ""}
+              onChange={(e) => selectProgram(Number(e.target.value))}
+              disabled={programs.length === 0}
+              className="min-w-0 flex-1 truncate rounded-lg border border-hairline bg-elevated px-2 py-1 text-sm font-medium text-paper outline-none focus:border-accent"
+            >
+              {programs.length === 0 ? (
+                <option value="">No degree programs yet</option>
+              ) : (
+                programs.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.name}
+                  </option>
+                ))
+              )}
+            </select>
           </div>
-          
+
           <div className="space-y-6">
-            <div>
-              <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-muted">Preliminary Core</h3>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between rounded-lg border border-hairline bg-transparent px-3 py-2 text-sm">
-                  <span className="font-medium text-paper">MATH 1510</span>
-                  <span className="text-xs text-muted">3.0 CH</span>
-                </div>
-              </div>
-            </div>
+            {isLoadingPrograms || isLoadingProgress ? (
+              <p className="text-xs text-muted">Loading requirements…</p>
+            ) : !programProgress ? (
+              <p className="text-xs text-muted">Select a degree program to see requirements.</p>
+            ) : (
+              [...programProgress.groups]
+                .sort((a, b) => a.sort_order - b.sort_order)
+                .map((group) => (
+                  <div key={group.id}>
+                    <div className="mb-2.5 flex items-center justify-between gap-2">
+                      <h3 className="text-xs font-medium uppercase tracking-wider text-muted">
+                        {group.label}
+                      </h3>
+                      <span
+                        className={`shrink-0 text-[10px] font-medium ${
+                          group.is_satisfied ? "text-accent" : "text-muted"
+                        }`}
+                      >
+                        {group.is_satisfied ? "✓ " : ""}
+                        {formatGroupProgress(group)}
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      {group.courses.length === 0 &&
+                        group.patterns.map((p, i) => (
+                          <div
+                            key={i}
+                            className="rounded-lg border border-dashed border-hairline bg-transparent px-3 py-2 text-xs text-muted"
+                          >
+                            {`Any ${p.subject ?? ""} course, level ${p.level_min}–${p.level_max}`.trim()}
+                          </div>
+                        ))}
+                      {group.courses.length > 0 && (
+                        <div className="overflow-hidden rounded-xl border border-hairline bg-transparent divide-y divide-hairline">
+                          {group.courses.map((course) => {
+                            const isDone = group.completed_course_ids.includes(course.course_id);
+                            return (
+                              <div
+                                key={course.course_id}
+                                className="flex items-center justify-between bg-transparent px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 cursor-pointer"
+                                onClick={() => setSelectedCourseId(course.course_id)}
+                              >
+                                <span
+                                  className={
+                                    isDone ? "font-medium text-muted line-through" : "font-medium text-paper"
+                                  }
+                                >
+                                  {isDone && <span className="mr-1.5 text-accent no-underline">✓</span>}
+                                  {course.subject} {course.course_number}
+                                </span>
+                                <span className="text-xs text-muted">{course.credit_hours} CH</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
+            )}
           </div>
         </div>
 
@@ -383,6 +485,14 @@ export default function TrackerPage() {
             </div>
           </form>
         </div>
+      )}
+
+      {/* Course Details Modal */}
+      {selectedCourseId && (
+        <CourseDetailsModal 
+          courseId={selectedCourseId} 
+          onClose={() => setSelectedCourseId(null)} 
+        />
       )}
     </main>
   );

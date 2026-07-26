@@ -1,0 +1,2558 @@
+{
+  "program_label": "Biosystems Engineering, B.Sc.",
+  "source_url": "/undergraduate-studies/engineering/biosystems-engineering/biosystems-engineering-bsc/",
+  "groups": [
+    {
+      "label": "Program Core Courses",
+      "rows": [
+        {
+          "raw_text": "Students must complete the Preliminary Engineering Program requirements for graduation. | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a02480 | Impact of Engineering on the Environment | 3",
+          "course_code": "BIOE 2480",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a02590 | Biology for Engineers 1 | 3",
+          "course_code": "BIOE 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "BIOE\u00a02790 | Fluid Mechanics | 4",
+          "course_code": "BIOE 2790",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a02800 | Solid Mechanics | 4",
+          "course_code": "BIOE 2800",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a02900 | Biosystems Engineering Design 1 | 4",
+          "course_code": "BIOE 2900",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03110 | Heat Transfer in Biological Systems | 4",
+          "course_code": "BIOE 3110",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03270 | Instrumentation and Measurement for Biosystems | 4",
+          "course_code": "BIOE 3270",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03320 | Engineering Properties of Biological Materials | 4",
+          "course_code": "BIOE 3320",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03400 | Design of Structural Components in Machines | 4",
+          "course_code": "BIOE 3400",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03590 | Mechanics of Materials in Biosystems | 4",
+          "course_code": "BIOE 3590",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a03900 | Biosystems Engineering Design 2 | 4",
+          "course_code": "BIOE 3900",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04240 | Graduation Project | 3",
+          "course_code": "BIOE 4240",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04900 | Biosystems Engineering Design 3 | 4",
+          "course_code": "BIOE 4900",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04950 | Biosystems Engineering Design 4 | 4",
+          "course_code": "BIOE 4950",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a01110 | Introductory Chemistry 2: Interaction, Reactivity, and Chemical Properties 2 | 3",
+          "course_code": "CHEM 1110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "CHEM\u00a01126 | Introduction to Chemistry Techniques for Engineering 2 2 | 1.5",
+          "course_code": "CHEM 1126",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "ENG\u00a02022 | Engineering CAD Technology for Biosystems | 3",
+          "course_code": "ENG 2022",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a03000 | Engineering Economics | 3",
+          "course_code": "ENG 3000",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02130 | Engineering Mathematical Analysis 1 | 3",
+          "course_code": "MATH 2130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a02132 | Engineering Mathematical Analysis 2 | 3",
+          "course_code": "MATH 2132",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MBIO\u00a01220 | Essentials of Microbiology | 3",
+          "course_code": "MBIO 1220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or MBIO\u00a01010 | Microbiology I",
+          "course_code": "MBIO 1010",
+          "is_alternative": true,
+          "hours_text": "Microbiology I",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a02150 | Mechanical Engineering Modelling and Numerical Methods | 4",
+          "course_code": "MECH 2150",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a03482 | Kinematics and Dynamics | 4",
+          "course_code": "MECH 3482",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT\u00a02220 | Contemporary Statistics for Engineers | 3",
+          "course_code": "STAT 2220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One course in Technology and Society ( ENG\u00a03020 or ANTH\u00a02430 ) | 3",
+          "course_code": "ENG 3020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One course from the List of Indigenous Knowledge Courses 3 | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "Two Science Electives (see list below) | 6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Three Biosystems Engineering Design Electives | 12",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "12",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One Complementary Studies Electives | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Two Free Electives | 6-8",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "6-8",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Total Hours | 154-156",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "154-156",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Please note the combination of BIOL\u00a01020 Biology 1: Principles and Themes and BIOL\u00a01030 Biology 2: Biological Diversity, Function and Interactions can be used in place of BIOE\u00a02590 Biology for Engineers. 2 The former CHEM 1310 may be used in place of the combination of CHEM\u00a01110 and CHEM\u00a01126 . 3 Students are required to take at least one of the courses from the list of Indigenous Knowledge courses."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Science Electives",
+      "rows": [
+        {
+          "raw_text": "AGEC\u00a02370 | Principles of Ecology (or the equivalent BIOL\u00a02300 ) | 3",
+          "course_code": "AGEC 2370",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ANSC\u00a03530 | The Animal and Its Environment | 3",
+          "course_code": "ANSC 3530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a01410 | Anatomy of the Human Body | 3",
+          "course_code": "BIOL 1410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a01412 | Physiology of the Human Body | 3",
+          "course_code": "BIOL 1412",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PLNT\u00a02510 | Fundamentals of Horticulture | 3",
+          "course_code": "PLNT 2510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOIL\u00a04060 | Physical Properties of Soils | 3",
+          "course_code": "SOIL 4060",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Students planning to complete a specialization, should take note that there are specific courses to be used as science electives. | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "ENG\u00a04100 may be used to meet this requirement when the course content satisfies the requirements of an Indigenous course."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Biosystems Engineering Design Electives",
+      "rows": [
+        {
+          "raw_text": "BIOE\u00a04390 | Unit Operations 1 | 4",
+          "course_code": "BIOE 4390",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04412 | Design of Light-Frame Building Systems | 4",
+          "course_code": "BIOE 4412",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04414 | Imaging and Spectroscopy for Biosystems | 4",
+          "course_code": "BIOE 4414",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04420 | Crop Preservation | 4",
+          "course_code": "BIOE 4420",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04440 | Bioprocessing for Biorefining | 4",
+          "course_code": "BIOE 4440",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04460 | Air Pollution Assessment and Management | 4",
+          "course_code": "BIOE 4460",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04560 | Structural Design in Wood | 4",
+          "course_code": "BIOE 4560",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04590 | Management of By-Products from Animal Production | 4",
+          "course_code": "BIOE 4590",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04600 | Design of Water Management Systems | 4",
+          "course_code": "BIOE 4600",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04610 |  | 4",
+          "course_code": "BIOE 4610",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04620 | Remediation Engineering | 4",
+          "course_code": "BIOE 4620",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04640 | Bioengineering Applications in Medicine | 4",
+          "course_code": "BIOE 4640",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04650 | Textiles in Healthcare and Medical Applications | 4",
+          "course_code": "BIOE 4650",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "ENG\u00a04100 may be used to meet this requirement when the course content satisfies the requirements of an Indigenous course."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Biosystems Engineering Design Electives",
+      "rows": [
+        {
+          "raw_text": "INDG\u00a01200 | Indigenous Peoples in Canada | 6",
+          "course_code": "INDG 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01220 | Indigenous Peoples in Canada, Part 1 | 3",
+          "course_code": "INDG 1220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a01240 | Indigenous Peoples in Canada, Part 2 | 3",
+          "course_code": "INDG 1240",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
+          "course_code": "INDG 2012",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02010 | Indigenous History in Canada (C)",
+          "course_code": "HIST 2010",
+          "is_alternative": true,
+          "hours_text": "Indigenous History in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or HIST\u00a02020 | The M\u00e9tis in Canada (C)",
+          "course_code": "HIST 2020",
+          "is_alternative": true,
+          "hours_text": "The M\u00e9tis in Canada (C)",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a02802 | Introduction to Indigenous Politics | 3",
+          "course_code": "POLS 2802",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a04100 | Contemporary Topics in Engineering Practice 1 | 4",
+          "course_code": "ENG 4100",
+          "is_alternative": false,
+          "hours_text": "4",
+          "footnote_refs": [
+            1
+          ]
+        }
+      ],
+      "footnotes": {
+        "1": "ENG\u00a04100 may be used to meet this requirement when the course content satisfies the requirements of an Indigenous course."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Biomedical Specialization",
+      "rows": [
+        {
+          "raw_text": "Group A: Science Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a01410 | Anatomy of the Human Body | 3",
+          "course_code": "BIOL 1410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a01412 | Physiology of the Human Body | 3",
+          "course_code": "BIOL 1412",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group B: Biosystems Engineering Design Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Three of the following: | 12",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "12",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04414 | Imaging and Spectroscopy for Biosystems | ",
+          "course_code": "BIOE 4414",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04610 |  | ",
+          "course_code": "BIOE 4610",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04640 | Bioengineering Applications in Medicine | ",
+          "course_code": "BIOE 4640",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04650 | Textiles in Healthcare and Medical Applications | ",
+          "course_code": "BIOE 4650",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group C: Complementary Studies Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One of the following: 1 | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "ENG\u00a01900 | Occupational Health and Safety Awareness | ",
+          "course_code": "ENG 1900",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03400 | Introduction to Environment and Health | ",
+          "course_code": "ENVR 3400",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a04660 | History of Health and Disease (G) (counts as two) | ",
+          "course_code": "HIST 4660",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a04680 | Social History of Health and Disease in Modern Canada (C) (counts as two) | ",
+          "course_code": "HIST 4680",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HNSC\u00a01210 | Nutrition for Health and Changing Lifestyles | ",
+          "course_code": "HNSC 1210",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a03240 | Indigenous Medicine and Health | ",
+          "course_code": "INDG 3240",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "KPER\u00a01200 | Physical Activity, Health and Wellness | ",
+          "course_code": "KPER 1200",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02740 | Ethics and Biomedicine | ",
+          "course_code": "PHIL 2740",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "or PHIL\u00a02741 | \u00c9thique et biom\u00e9dicine",
+          "course_code": "PHIL 2741",
+          "is_alternative": true,
+          "hours_text": "\u00c9thique et biom\u00e9dicine",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group D: Free Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Two of the following: 1,2 | 6-8",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "6-8",
+          "footnote_refs": [
+            1,
+            2
+          ]
+        },
+        {
+          "raw_text": "BIOL\u00a02410 | Human Physiology 1 | ",
+          "course_code": "BIOL 2410",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a02420 | Human Physiology 2 | ",
+          "course_code": "BIOL 2420",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a04470 | Physiology of Excitable Cells | ",
+          "course_code": "BIOL 4470",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a02100 | Organic Chemistry 1: Foundations of Organic Chemistry | ",
+          "course_code": "CHEM 2100",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a02700 | Biochemistry 1: Biomolecules and an Introduction to Metabolic Energy | ",
+          "course_code": "CHEM 2700",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CHEM\u00a02710 | Biochemistry 2: Catabolism, Synthesis, and Information Pathways | ",
+          "course_code": "CHEM 2710",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ECE\u00a04610 | Biomedical Instrumentation and Signal Processing | ",
+          "course_code": "ECE 4610",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "KPER\u00a02330 | Biomechanics | ",
+          "course_code": "KPER 2330",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "KIN\u00a04330 | Advanced Biomechanics | ",
+          "course_code": "KIN 4330",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a04360 | Topics in Engineering Materials 2 | ",
+          "course_code": "MECH 4360",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MECH\u00a04832 | Biomaterials in Biomedical Engineering | ",
+          "course_code": "MECH 4832",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a03220 | Medical Physics and Physiological Measurement | ",
+          "course_code": "PHYS 3220",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a04400 | Linear Systems for Imaging | ",
+          "course_code": "PHYS 4400",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Total Hours | 27-29",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "27-29",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Special permission may be granted by the Head of Department for courses not appearing on the list of Group C or Group D. 2 Additional courses from Group B and C can be used to fulfill Group D electives."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Bioresource Specialization",
+      "rows": [
+        {
+          "raw_text": "Group A: Science Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOIL\u00a04060 | Physical Properties of Soils | 3",
+          "course_code": "SOIL 4060",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "And one of the following: | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ANSC\u00a03530 | The Animal and Its Environment | ",
+          "course_code": "ANSC 3530",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PLNT\u00a02510 | Fundamentals of Horticulture | ",
+          "course_code": "PLNT 2510",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group B: Biosystems Engineering Design Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Three of the following: | 12",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "12",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04390 | Unit Operations 1 | ",
+          "course_code": "BIOE 4390",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04412 | Design of Light-Frame Building Systems | ",
+          "course_code": "BIOE 4412",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04420 | Crop Preservation | ",
+          "course_code": "BIOE 4420",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04440 | Bioprocessing for Biorefining | ",
+          "course_code": "BIOE 4440",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04560 | Structural Design in Wood | ",
+          "course_code": "BIOE 4560",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04590 | Management of By-Products from Animal Production | ",
+          "course_code": "BIOE 4590",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04600 | Design of Water Management Systems | ",
+          "course_code": "BIOE 4600",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group C: Complementary Studies Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One of the  following: | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ABIZ\u00a01000 | Introduction to Agribusiness Management | ",
+          "course_code": "ABIZ 1000",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ABIZ\u00a01010 | Economics of World Food Issues and Policies | ",
+          "course_code": "ABIZ 1010",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ABIZ\u00a03530 | Farm Management | ",
+          "course_code": "ABIZ 3530",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FOOD\u00a01000 | Food Safety Today and Tomorrow | ",
+          "course_code": "FOOD 1000",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a02520 | Geography of Natural Resources (HS) | ",
+          "course_code": "GEOG 2520",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group D:  Free Electives 1,2 | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": [
+            1,
+            2
+          ]
+        },
+        {
+          "raw_text": "Two of the following: | 6-8",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "6-8",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "AGRI\u00a01600 | Introduction to Agrifood Systems | ",
+          "course_code": "AGRI 1600",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENTM\u00a03170 | Crop Protection Entomology | ",
+          "course_code": "ENTM 3170",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FOOD\u00a03010 | Food Process 1 | ",
+          "course_code": "FOOD 3010",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FOOD\u00a04260 | Water Management in Food Processing | ",
+          "course_code": "FOOD 4260",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PLNT\u00a02500 | Crop Production | ",
+          "course_code": "PLNT 2500",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PLNT\u00a02510 | Fundamentals of Horticulture 3 | ",
+          "course_code": "PLNT 2510",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "PLNT\u00a03560 | Organic Crop Production on the Prairies | ",
+          "course_code": "PLNT 3560",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOIL\u00a03520 | Pesticides: Environment, Economics and Ethics | ",
+          "course_code": "SOIL 3520",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Total Hours | 27-29",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "27-29",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Special permission may be granted by the Head of Department for courses not appearing on the list of Group C or Group D. 2 Additional Courses from Group B or C can be used to fulfill Group D electives 3 PLNT\u00a02510 can be counted as a Free Elective if ANSC\u00a03530 is taken."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Environmental Specialization",
+      "rows": [
+        {
+          "raw_text": "Group A: Science Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOIL\u00a04060 | Physical Properties of Soils | 3",
+          "course_code": "SOIL 4060",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "And one of the following: | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "AGEC\u00a02370 | Principles of Ecology | ",
+          "course_code": "AGEC 2370",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOL\u00a02300 | Principles of Ecology | ",
+          "course_code": "BIOL 2300",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group B:  Biosystems Engineering Design Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Three of the following: | 12",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "12",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04412 | Design of Light-Frame Building Systems | ",
+          "course_code": "BIOE 4412",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04460 | Air Pollution Assessment and Management | ",
+          "course_code": "BIOE 4460",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04590 | Management of By-Products from Animal Production | ",
+          "course_code": "BIOE 4590",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04600 | Design of Water Management Systems | ",
+          "course_code": "BIOE 4600",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "BIOE\u00a04620 | Remediation Engineering | ",
+          "course_code": "BIOE 4620",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group C:  Complementary Studies Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "One of the following: | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ABIZ\u00a02390 | Introduction to Environmental Economics | ",
+          "course_code": "ABIZ 2390",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a01000 | Environmental Science 1 - Concepts | ",
+          "course_code": "ENVR 1000",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a02000 | Environmental Science 2 - Issues | ",
+          "course_code": "ENVR 2000",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a02810 | Environmental Critical Thinking and Scientific Research | ",
+          "course_code": "ENVR 2810",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03160 | Environmental Responsibilities and the Law | ",
+          "course_code": "ENVR 3160",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03400 | Introduction to Environment and Health | ",
+          "course_code": "ENVR 3400",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03750 | Green Building and Planning | ",
+          "course_code": "ENVR 3750",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03850 | Sustainable Manitoba - Linking Local and Global Sustainability | ",
+          "course_code": "ENVR 3850",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a04050 | Ecosystem Management | ",
+          "course_code": "ENVR 4050",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a04400 | Advanced Issues in Environment and Health | ",
+          "course_code": "ENVR 4400",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a02520 | Geography of Natural Resources (HS) | ",
+          "course_code": "GEOG 2520",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02750 | Ethics and the Environment | ",
+          "course_code": "PHIL 2750",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Group D: Free Electives | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Two of the following: 1,2 | 6-8",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "6-8",
+          "footnote_refs": [
+            1,
+            2
+          ]
+        },
+        {
+          "raw_text": "CIVL\u00a03690 | Environmental Engineering Analysis | ",
+          "course_code": "CIVL 3690",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a03700 | Environmental Engineering Design | ",
+          "course_code": "CIVL 3700",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CIVL\u00a04350 | Hazardous Waste Treatment | ",
+          "course_code": "CIVL 4350",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a02550 | Environmental Chemistry | ",
+          "course_code": "ENVR 2550",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a03110 | Environmental Conservation and Restoration | ",
+          "course_code": "ENVR 3110",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a03730 | Geographic Information Systems (TS) | ",
+          "course_code": "GEOG 3730",
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Total Hours | 27-29",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "27-29",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Special permission may be granted b the Head of Department for courses not appearing on the list for Group C or Group D. 2 Additional courses from Group B or C can be used to fulfill Group D electives."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Preliminary Engineering Program",
+      "rows": [
+        {
+          "raw_text": "CHEM\u00a01100 | Introductory Chemistry 1: Atomic and Molecular Structure and Energetics 1 | 3",
+          "course_code": "CHEM 1100",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "CHEM\u00a01122 | Introduction to Chemistry Techniques for Engineering 1 1 | 1.5",
+          "course_code": "CHEM 1122",
+          "is_alternative": false,
+          "hours_text": "1.5",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "COMP\u00a01012 | Computer Programming for Scientists and Engineers | 3",
+          "course_code": "COMP 1012",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01430 | Design in Engineering | 3",
+          "course_code": "ENG 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01440 | Introduction to Statics | 3",
+          "course_code": "ENG 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01450 | Introduction to Electrical and Computer Engineering | 3",
+          "course_code": "ENG 1450",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENG\u00a01460 | Introduction to Thermal Sciences | 3",
+          "course_code": "ENG 1460",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH\u00a01210 | Techniques of Classical and Linear Algebra 2 | 3",
+          "course_code": "MATH 1210",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01510 | Applied Calculus 1 3 | 3",
+          "course_code": "MATH 1510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "MATH\u00a01710 | Applied Calculus 2 3 | 3",
+          "course_code": "MATH 1710",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            3
+          ]
+        },
+        {
+          "raw_text": "PHIL\u00a01290 | Critical Thinking 4 | 3",
+          "course_code": "PHIL 1290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            4
+          ]
+        },
+        {
+          "raw_text": "PHYS\u00a01050 | Physics 1: Mechanics | 3",
+          "course_code": "PHYS 1050",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Written English Course 5,6 | 3",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            5,
+            6
+          ]
+        },
+        {
+          "raw_text": "Total Hours | 37.5",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "37.5",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "The former CHEM 1300 may be used in lieu of the combination of CHEM\u00a01100 and CHEM\u00a01122 . 2 MATH\u00a01300 is not an acceptable equivalent to MATH\u00a01210 . 3 Students intending to obtain a degree in Engineering are strongly advised to complete MATH\u00a01510 and MATH\u00a01710 . However, MATH\u00a01500 or MATH\u00a01230 may be taken in lieu of MATH\u00a01510 ; MATH\u00a01700 or MATH\u00a01232 may be taken in lieu of MATH\u00a01710 . MATH\u00a01524 is not an acceptable equivalent to MATH\u00a01510 . 4 PHIL\u00a01290 is the recommended complementary studies elective. Students may; however, select any course from the Faculties of Arts or Management (Asper School of Business) at the 1000 level or above, except for ARTS\u00a01110 . 5 Course selected from the list of approved Written English Courses for Engineering students. 6 Three credit hours are required to satisfy the Written English course requirement.\u00a0 Should a student complete a six credit hour course, the additional three credit hours may be used to satisfy general complementary studies requirements within a student's program. 7 Equivalent courses offered through Universit\u00e9 de Saint-Boniface may be used to satisfy program requirements."
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Written English Courses for Engineering Students",
+      "rows": [
+        {
+          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
+          "course_code": "ASIA 1420",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
+          "course_code": "ASIA 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
+          "course_code": "CATH 1190",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01200 | Representative Literary Works | 6",
+          "course_code": "ENGL 1200",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01300 | Literature since 1900 | 6",
+          "course_code": "ENGL 1300",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01340 | Introduction to Literary Analysis | 3",
+          "course_code": "ENGL 1340",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a01400 | Thematic Approaches to the Study of Literature | 3",
+          "course_code": "ENGL 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
+          "course_code": "GPE 2700",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
+          "course_code": "GRMN 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 1310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "Any 1000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "Any 2000 level HIST course 1 | 3-6",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": "3-6",
+          "footnote_refs": [
+            1
+          ]
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
+          "course_code": "POL 1900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
+          "course_code": "POL 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
+          "course_code": "POL 2610",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a01502 | Introduction to Political Science 2 | 3",
+          "course_code": "POLS 1502",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": [
+            2
+          ]
+        },
+        {
+          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
+          "course_code": "RLGN 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
+          "course_code": "RLGN 2036",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
+          "course_code": "RLGN 2140",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
+          "course_code": "RLGN 2160",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
+          "course_code": "RLGN 2170",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
+          "course_code": "RLGN 2222",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
+          "course_code": "RLGN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
+          "course_code": "RUSN 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
+          "course_code": "RUSN 2280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
+          "course_code": "RUSN 2290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
+          "course_code": "RUSN 2310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
+          "course_code": "UKRN 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
+          "course_code": "UKRN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
+          "course_code": "UKRN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
+          "course_code": "UKRN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
+          "course_code": "UKRN 2780",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
+          "course_code": "UKRN 2820",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
+          "course_code": "WOMN 1500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
+          "course_code": "WOMN 1600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
+          "course_code": "WOMN 2560",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {
+        "1": "Unallocated credits may not be used 2 This course requires a laboratory"
+      },
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Written English Courses",
+      "rows": [
+        {
+          "raw_text": "AGRI\u00a02030 | Technical Communications | 3",
+          "course_code": "AGRI 2030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ANTH\u00a02020 | Relatedness in a Globalizing World | 3",
+          "course_code": "ANTH 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ARTS\u00a01110 | Introduction to University | 3",
+          "course_code": "ARTS 1110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
+          "course_code": "ASIA 1420",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
+          "course_code": "ASIA 1430",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
+          "course_code": "CATH 1190",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a02010 | Literature and Catholic Culture 1 | 3",
+          "course_code": "CATH 2010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CATH\u00a02020 | Literature and Catholic Culture 2 | 3",
+          "course_code": "CATH 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CLAS\u00a02612 | Greek Literature in Translation | 3",
+          "course_code": "CLAS 2612",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "CLAS\u00a02622 | Latin Literature in Translation | 3",
+          "course_code": "CLAS 2622",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a00930 | English Composition | 3",
+          "course_code": "ENGL 0930",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL\u00a00940 | Writing About Literature | 3",
+          "course_code": "ENGL 0940",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL 1XXX | All English courses at the 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENGL 2XXX | All English courses at the 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ENVR\u00a02810 | Environmental Critical Thinking and Scientific Research | 3",
+          "course_code": "ENVR 2810",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FAAH\u00a02930 | Writing about Art | 3",
+          "course_code": "FAAH 2930",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FILM\u00a02280 | Film and Literature | 6",
+          "course_code": "FILM 2280",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a02900 | Geography of Canadian Prairie Landscapes (A) | 3",
+          "course_code": "GEOG 2900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOL\u00a03130 | Communication Methods in the Geological Sciences | 3",
+          "course_code": "GEOL 3130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GMGT\u00a01010 | Business and Society | 3",
+          "course_code": "GMGT 1010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GMGT\u00a02010 | Business Communications | 3",
+          "course_code": "GMGT 2010",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
+          "course_code": "GPE 2700",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
+          "course_code": "GRMN 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 1310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02120 | Introduction to German Culture from 1918 to the Present (C) | 3",
+          "course_code": "GRMN 2120",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02130 | Introduction to German Culture from the Beginnings to 1918 (C) | 3",
+          "course_code": "GRMN 2130",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02500 | Special Topics in German in English Translation (C) | 3",
+          "course_code": "GRMN 2500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02510 | German Fairy Tales from the Brothers Grimm to Hollywood (C) | 3",
+          "course_code": "GRMN 2510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02520 | Spies: Stories of Secret Agents, Treason, and Surveillance (C) | 3",
+          "course_code": "GRMN 2520",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02530 | My Friend the Tree: Environment and Ecology in German Culture in English Translation (C) | 3",
+          "course_code": "GRMN 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a02540 | Heroes, Feathers, and Tipis: German Fascination with North American Indigenous Peoples | 3",
+          "course_code": "GRMN 2540",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03262 | Representations of the Holocaust in English Translation (C) | 3",
+          "course_code": "GRMN 3262",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03270 | Studies in Contemporary German Cinema (C) | 3",
+          "course_code": "GRMN 3270",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03282 | Sex, Gender and Cultural Politics in the German-Speaking World in English Translation (C) | 3",
+          "course_code": "GRMN 3282",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03390 | German Representations of War (C) | 3",
+          "course_code": "GRMN 3390",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03510 | Special Topics in German in English Translation (C) | 3",
+          "course_code": "GRMN 3510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GRMN\u00a03530 | Special Topics in Comparative German and Slavic Studies (C) | 3",
+          "course_code": "GRMN 3530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST 1XXX | All History courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST 2XXX | All History courses at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a02530 | History of the Modern Middle East (R) | 3",
+          "course_code": "HIST 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HIST\u00a02540 | History of the Islamic World (R) | 3",
+          "course_code": "HIST 2540",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HNSC\u00a02000 | Research Methods and Presentation | 3",
+          "course_code": "HNSC 2000",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "HYGN\u00a01340 | Communications | 2",
+          "course_code": "HYGN 1340",
+          "is_alternative": false,
+          "hours_text": "2",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
+          "course_code": "INDG 2012",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
+          "course_code": "INDG 2020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02110 | Introduction to Indigenous Community Development | 3",
+          "course_code": "INDG 2110",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "INDG\u00a02530 | Introduction to Indigenous Theory | 3",
+          "course_code": "INDG 2530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "KPER\u00a02120 | Academic Skills in Kinesiology and Recreation Management | 3",
+          "course_code": "KPER 2120",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a01260 | Working for a Living | 3",
+          "course_code": "LABR 1260",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a01290 | Labour Unions and Workers' Rights in Canada | 3",
+          "course_code": "LABR 1290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a02200 | Labour History: Canada and Beyond (C) | 3",
+          "course_code": "LABR 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a02300 | Workers, Employers and the State | 3",
+          "course_code": "LABR 2300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LABR\u00a04510 | Labour Studies Field Placement Seminar | 3",
+          "course_code": "LABR 4510",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LAW\u00a01540 | Legal Methods | 5",
+          "course_code": "LAW 1540",
+          "is_alternative": false,
+          "hours_text": "5",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LAW\u00a02650 | Introduction to Advocacy | 3",
+          "course_code": "LAW 2650",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "LING\u00a02740 | Interpretation Theory | 3",
+          "course_code": "LING 2740",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02612 | A Philosophical History of Science | 3",
+          "course_code": "PHIL 2612",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02614 | Philosophy of Science | 3",
+          "course_code": "PHIL 2614",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a02790 | Moral Philosophy | 6",
+          "course_code": "PHIL 2790",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a03220 | Feminist Philosophy | 3",
+          "course_code": "PHIL 3220",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
+          "course_code": "POL 1900",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
+          "course_code": "POL 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
+          "course_code": "POL 2610",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POL\u00a02660 | Special Topics in Polish Literature and Culture | 3",
+          "course_code": "POL 2660",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "POLS\u00a01502 | Introduction to Political Science | 3",
+          "course_code": "POLS 1502",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a03380 | Nature, Nurture and Behaviour | 3",
+          "course_code": "PSYC 3380",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a04520 | Honours Research Seminar | 6",
+          "course_code": "PSYC 4520",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
+          "course_code": "RLGN 1440",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02032 | Introduction to the Study of Religion | 3",
+          "course_code": "RLGN 2032",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
+          "course_code": "RLGN 2036",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02052 | Conservative Christianity in the United States | 3",
+          "course_code": "RLGN 2052",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02112 | Medicine, Magic, and Miracle in the Ancient World | 3",
+          "course_code": "RLGN 2112",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02116 | Cognitive Science and Religion | 3",
+          "course_code": "RLGN 2116",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
+          "course_code": "RLGN 2140",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
+          "course_code": "RLGN 2160",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02162 | Great Jewish Books | 3",
+          "course_code": "RLGN 2162",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
+          "course_code": "RLGN 2170",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
+          "course_code": "RLGN 2222",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
+          "course_code": "RLGN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a02770 | Contemporary Judaism | 3",
+          "course_code": "RLGN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a03102 | Myth and Mythmaking: Narrative, Ideology, Scholarship | 3",
+          "course_code": "RLGN 3102",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RLGN\u00a03280 | Hasidism | 3",
+          "course_code": "RLGN 3280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
+          "course_code": "RUSN 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a01410 | Love in Russian Culture in English Translation | 3",
+          "course_code": "RUSN 1410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
+          "course_code": "RUSN 2280",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
+          "course_code": "RUSN 2290",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
+          "course_code": "RUSN 2310",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02410 | Russian Literature after Stalin | 3",
+          "course_code": "RUSN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02600 | Special Topics in Russian Culture in English Translation | 3",
+          "course_code": "RUSN 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a02740 | Literature and Revolution | 3",
+          "course_code": "RUSN 2740",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "RUSN\u00a03770 | Tolstoy | 3",
+          "course_code": "RUSN 3770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SLAV\u00a03530 | Special Topics in Comparative German and Slavic Studies | 3",
+          "course_code": "SLAV 3530",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a03100 | Practicum in Criminological/Sociological Research | 6",
+          "course_code": "SOC 3100",
+          "is_alternative": false,
+          "hours_text": "6",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a03350 | Feminism and Sociological Theory | 3",
+          "course_code": "SOC 3350",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
+          "course_code": "UKRN 2200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
+          "course_code": "UKRN 2410",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
+          "course_code": "UKRN 2590",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02600 | Special Topics in Ukrainian Studies | 3",
+          "course_code": "UKRN 2600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
+          "course_code": "UKRN 2770",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
+          "course_code": "UKRN 2780",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
+          "course_code": "UKRN 2820",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "UKRN\u00a03970 | Women and Ukrainian Literature | 3",
+          "course_code": "UKRN 3970",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
+          "course_code": "WOMN 1500",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
+          "course_code": "WOMN 1600",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
+          "course_code": "WOMN 2560",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "WOMN\u00a03520 | Transnational Feminisms | 3",
+          "course_code": "WOMN 3520",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {},
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    },
+    {
+      "label": "Mathematics Courses",
+      "rows": [
+        {
+          "raw_text": "AGRI\u00a02400 | Experimental Methods in Agricultural and Food Sciences | 3",
+          "course_code": "AGRI 2400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "ECON\u00a02040 | Quantitative Methods in Economics | 3",
+          "course_code": "ECON 2040",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "FA\u00a01020 | Mathematics in Art | 3",
+          "course_code": "FA 1020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "GEOG\u00a03810 | Quantitative Research Methods in Geography (TS) | 3",
+          "course_code": "GEOG 3810",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 1XXX | All Mathematics courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 2XXX | All Mathematics at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 3XXX | All Mathematics at 3000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MATH 4XXX | All Mathematics at 4000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "MUSC\u00a03230 | Acoustics of Music | 3",
+          "course_code": "MUSC 3230",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHIL\u00a01300 | Introduction to Logic | 3",
+          "course_code": "PHIL 1300",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a01020 | General Physics 1 | 3",
+          "course_code": "PHYS 1020",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PHYS\u00a01030 | General Physics 2 | 3",
+          "course_code": "PHYS 1030",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "PSYC\u00a02260 | Introduction to Research Methods in Psychology | 3",
+          "course_code": "PSYC 2260",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "SOC\u00a02294 | Understanding Social Statistics | 3",
+          "course_code": "SOC 2294",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 1XXX | All Statistics courses at 1000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 2XXX | All Statistics courses at 2000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 3XXX | All Statistics courses at 3000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        },
+        {
+          "raw_text": "STAT 4XXX | All Statistics courses at 4000 level | ",
+          "course_code": null,
+          "is_alternative": false,
+          "hours_text": null,
+          "footnote_refs": []
+        }
+      ],
+      "footnotes": {},
+      "kind": null,
+      "courses_required": null,
+      "credit_hours_required": null,
+      "patterns": []
+    }
+  ]
+}

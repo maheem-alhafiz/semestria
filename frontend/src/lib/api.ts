@@ -1,9 +1,12 @@
 import type {
   Course,
+  CourseDetailRead,
   CourseSections,
   AcademicRecordCreate,
   AcademicRecordUpdate,
   AcademicRecordRead,
+  DegreeProgramProgressRead,
+  DegreeProgramSummary,
   PlanCreate,
   PlanFinalizeResponse,
   PlanItemsReplace,
@@ -166,6 +169,20 @@ export function updateAcademicRecord(
 
 export function deleteAcademicRecord(recordId: number): Promise<void> {
   return apiFetch<void>(`/academic-record/${recordId}`, { method: "DELETE" });
+}
+
+// -- Degree Programs (Degree Tracker requirements) ------------------------
+
+export function getCourseDetail(courseId: number): Promise<CourseDetailRead> {
+  return apiFetch<CourseDetailRead>(`/courses/${courseId}`);
+}
+
+export function getDegreePrograms(): Promise<DegreeProgramSummary[]> {
+  return apiFetch<DegreeProgramSummary[]>("/degree-programs");
+}
+
+export function getDegreeProgramProgress(programId: number): Promise<DegreeProgramProgressRead> {
+  return apiFetch<DegreeProgramProgressRead>(`/degree-programs/${programId}/progress`);
 }
 
 export { ApiError };
