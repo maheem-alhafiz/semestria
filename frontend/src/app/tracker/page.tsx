@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useTrackerStore } from "@/store/trackerStore";
-import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord, searchCourses } from "@/lib/api";
+import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord, searchCourses, deleteManualFulfillment } from "@/lib/api";
 import type { Term, Course, RequirementGroupRead } from "@/types/api";
 import { CourseDetailsModal } from "@/components/CourseDetailsModal";
 import { CollapsedElectiveBucket, shouldCollapseGroup } from "@/components/CollapsedElectiveBucket";
@@ -77,6 +77,8 @@ export default function TrackerPage() {
   const [searchResults, setSearchResults] = useState<Course[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [assigningGroup, setAssigningGroup] = useState<RequirementGroupRead | null>(null);
+  const [swappingTargetCourseId, setSwappingTargetCourseId] = useState<number | null>(null);
+
 
   // Live search trigger
   useEffect(() => {
@@ -284,22 +286,83 @@ export default function TrackerPage() {
                         {group.courses.length > 0 && (
                           <div className="overflow-hidden rounded-xl border border-hairline bg-transparent divide-y divide-hairline">
                             {group.courses.map((course) => {
-                              const isDone = group.completed_course_ids.includes(course.course_id);
+                              // Check if this specific course row was manually replaced/satisfied by a transcript record
+                              const fulfillment = group.manual_fulfillments?.find(
+                                (mf) => mf.replaced_course_id === course.course_id
+                              );
+                              
+                              // Also check if it's auto-satisfied normally
+                              const isAutoDone = group.completed_course_ids.includes(course.course_id);
+                              
+                              // Find the actual record if it was manually overridden
+                              const assignedRecord = fulfillment
+                                ? records.find((r) => r.id === fulfillment.academic_record_id)
+                                : null;
+
                               return (
                                 <div
                                   key={course.course_id}
-                                  className="flex items-center justify-between bg-transparent px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 cursor-pointer"
-                                  onClick={() => setSelectedCourseId(course.course_id)}
+                                  className="flex items-center justify-between bg-transparent px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40"
                                 >
-                                  <span
-                                    className={
-                                      isDone ? "font-medium text-muted line-through" : "font-medium text-paper"
-                                    }
-                                  >
-                                    {isDone && <span className="mr-1.5 text-accent no-underline">✓</span>}
-                                    {course.subject} {course.course_number}
-                                  </span>
-                                  <span className="text-xs text-muted">{course.credit_hours} CH</span>
+                                  {fulfillment && assignedRecord ? (
+                                    // Render the substituted/swapped course
+                                    <div className="flex flex-1 items-center justify-between pr-2">
+                                      <span className="font-medium text-paper">
+                                        <span className="mr-1.5 text-accent">✓</span>
+                                        <span className="line-through text-muted mr-2">
+                                          {course.subject} {course.course_number}
+                                        </span>
+                                        <span className="text-accent font-semibold">
+                                          {assignedRecord.subject} {assignedRecord.course_number}
+                                        </span>
+                                        <span className="ml-1.5 text-xs text-muted font-normal">
+                                          (Swapped)
+                                        </span>
+                                      </span>
+                                      <div className="flex items-center gap-2">
+                                        <button
+                                          onClick={async () => {
+                                            try {
+                                              await deleteManualFulfillment(fulfillment.id);
+                                              if (selectedProgramId) fetchProgramProgress(selectedProgramId);
+                                            } catch {
+                                              alert("Failed to remove swap");
+                                            }
+                                          }}
+                                          className="text-xs text-muted transition-colors hover:text-danger"
+                                        >
+                                          Reset
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    // Standard course row with a Swap option
+                                    <>
+                                      <span
+                                        className={
+                                          isAutoDone ? "font-medium text-muted line-through cursor-pointer" : "font-medium text-paper cursor-pointer"
+                                        }
+                                        onClick={() => setSelectedCourseId(course.course_id)}
+                                      >
+                                        {isAutoDone && <span className="mr-1.5 text-accent no-underline">✓</span>}
+                                        {course.subject} {course.course_number}
+                                      </span>
+                                      <div className="flex items-center gap-3">
+                                        <span className="text-xs text-muted">{course.credit_hours} CH</span>
+                                        {!isAutoDone && (
+                                          <button
+                                            onClick={() => {
+                                              setAssigningGroup(group);
+                                              setSwappingTargetCourseId(course.course_id);
+                                            }}
+                                            className="rounded border border-hairline bg-elevated px-2 py-0.5 text-[11px] font-medium text-paper transition-colors hover:border-accent"
+                                          >
+                                            Swap
+                                          </button>
+                                        )}
+                                      </div>
+                                    </>
+                                  )}
                                 </div>
                               );
                             })}
@@ -519,7 +582,11 @@ export default function TrackerPage() {
         <AssignCourseModal
           group={assigningGroup}
           records={records}
-          onClose={() => setAssigningGroup(null)}
+          replacedCourseId={swappingTargetCourseId}
+          onClose={() => {
+            setAssigningGroup(null);
+            setSwappingTargetCourseId(null);
+          }}
           onAssigned={() => {
             if (selectedProgramId) fetchProgramProgress(selectedProgramId);
           }}

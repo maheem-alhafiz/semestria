@@ -39,6 +39,7 @@ class ManualFulfillmentRead(BaseModel):
 
     id: int
     academic_record_id: int
+    replaced_course_id: int | None
     credit_hours_applied: float | None
 
 

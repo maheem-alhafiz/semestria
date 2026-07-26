@@ -31,6 +31,7 @@ router = APIRouter(prefix="/manual-fulfillments", tags=["manual-fulfillments"])
 class ManualFulfillmentCreate(BaseModel):
     requirement_group_id: int
     academic_record_id: int
+    replaced_course_id: int | None = None
     # Optional -- see ManualRequirementFulfillment's docstring on the
     # Written English credit-spillover case. Omit for the ordinary case
     # (the whole course's credit hours count toward this group).
@@ -41,6 +42,7 @@ class ManualFulfillmentRead(BaseModel):
     id: int
     requirement_group_id: int
     academic_record_id: int
+    replaced_course_id: int | None
     credit_hours_applied: float | None
 
     class Config:
@@ -92,6 +94,7 @@ def create_manual_fulfillment(
         owner_id=owner_id,
         requirement_group_id=payload.requirement_group_id,
         academic_record_id=payload.academic_record_id,
+        replaced_course_id=payload.replaced_course_id,
         credit_hours_applied=payload.credit_hours_applied,
     )
     db.add(fulfillment)

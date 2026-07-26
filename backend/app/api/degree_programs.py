@@ -159,6 +159,7 @@ def _compute_progress(
                     {
                         "id": mf.id,
                         "academic_record_id": mf.academic_record_id,
+                        "replaced_course_id": mf.replaced_course_id,
                         "credit_hours_applied": (
                             float(mf.credit_hours_applied) if mf.credit_hours_applied is not None else None
                         ),

@@ -8,18 +8,28 @@ import type { AcademicRecordRead, RequirementGroupRead } from "@/types/api";
 interface AssignCourseModalProps {
   group: RequirementGroupRead;
   records: AcademicRecordRead[];
+  replacedCourseId?: number | null; // Optional: target course ID if swapping a specific row
   onClose: () => void;
   onAssigned: () => void; // re-fetch progress after a successful assign
 }
 
-export function AssignCourseModal({ group, records, onClose, onAssigned }: AssignCourseModalProps) {
+export function AssignCourseModal({
+  group,
+  records,
+  replacedCourseId = null,
+  onClose,
+  onAssigned,
+}: AssignCourseModalProps) {
   const [query, setQuery] = useState("");
   const [isSubmitting, setIsSubmitting] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Already-assigned-elsewhere-in-this-group records shouldn't be
-  // offered again -- a course can't fulfill the same bucket twice.
-  const alreadyAssignedIds = new Set((group.manual_fulfillments ?? []).map((mf) => mf.academic_record_id));
+  // Already-assigned-elsewhere records shouldn't be offered again
+  const alreadyAssignedIds = new Set(
+    (group.manual_fulfillments ?? [])
+      .filter((mf) => mf.replaced_course_id === null)
+      .map((mf) => mf.academic_record_id)
+  );
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -40,6 +50,7 @@ export function AssignCourseModal({ group, records, onClose, onAssigned }: Assig
       await createManualFulfillment({
         requirement_group_id: group.id,
         academic_record_id: record.id,
+        replaced_course_id: replacedCourseId,
       });
       onAssigned();
       onClose();
@@ -61,7 +72,9 @@ export function AssignCourseModal({ group, records, onClose, onAssigned }: Assig
       >
         <div className="mb-3 flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-sm font-medium text-paper">Assign a course</h3>
+            <h3 className="text-sm font-medium text-paper">
+              {replacedCourseId ? "Swap course" : "Assign a course"}
+            </h3>
             <p className="text-xs text-muted">to satisfy &ldquo;{group.label}&rdquo;</p>
           </div>
           <button

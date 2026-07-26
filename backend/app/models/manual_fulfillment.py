@@ -65,6 +65,11 @@ class ManualRequirementFulfillment(Base):
     academic_record_id: Mapped[int] = mapped_column(
         ForeignKey("academic_record.id", ondelete="CASCADE"), nullable=False, index=True
     )
+    
+    # If a student manually assigns a course to REPLACE a specific mandatory course
+    # (e.g., taking FIN 1010 instead of PHIL 1290), this stores the ID of the course 
+    # being replaced. NULL means it's just a general addition to the group.
+    replaced_course_id: Mapped[int | None] = mapped_column(nullable=True)
 
     # NULL = the whole course counts toward this group. Set explicitly
     # only for split-credit cases (see module docstring).

@@ -259,15 +259,14 @@ export interface DegreeProgramProgressRead {
 export interface ManualFulfillmentRead {
   id: number;
   academic_record_id: number;
+  replaced_course_id: number | null;
   credit_hours_applied: number | null;
 }
-
-// Add this field to the existing RequirementGroupRead interface:
-//   manual_fulfillments: ManualFulfillmentRead[];
 
 export interface ManualFulfillmentCreate {
   requirement_group_id: number;
   academic_record_id: number;
+  replaced_course_id?: number | null;
   credit_hours_applied?: number | null;
 }
 
