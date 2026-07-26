@@ -25,6 +25,29 @@ function getTermInfo(termCode: string, terms: Term[]): { year: string; termName:
   return { year, termName };
 }
 
+function calculateStats(records: any[]) {
+  let gpaHours = 0;
+  let qualityPoints = 0;
+  let earnedHours = 0;
+  let completedCourses = 0;
+
+  records.forEach((r) => {
+    const pts = getGradePoints(r.grade);
+    if (pts !== null) {
+      const cr = Number(r.credit_hours_snapshot);
+      gpaHours += cr;
+      qualityPoints += pts * cr;
+      if (pts > 0) {
+        earnedHours += cr;
+        completedCourses += 1;
+      }
+    }
+  });
+
+  const gpa = gpaHours > 0 ? (qualityPoints / gpaHours).toFixed(2) : "0.00";
+  return { gpa, earnedHours, completedCourses };
+}
+
 // "3/5 Courses", "12/20 CH", "3/5 Courses · 12/20 CH", or "Satisfied" /
 // "Choose 1" for a ONE_OF group (which has no single meaningful count).
 function formatGroupProgress(group: RequirementGroupRead): string {
@@ -393,90 +416,120 @@ export default function TrackerPage() {
               <p className="text-sm text-muted">Go to the Planner tab and &quot;Finalize&quot; a plan to see it here.</p>
             </div>
           ) : (
-            Object.keys(transcript).sort().map((year) => (
-              <div key={year} className="overflow-hidden rounded-2xl border border-hairline bg-panel shadow-sm">
-                <div className="flex items-end justify-between border-b border-hairline bg-elevated px-6 py-4">
-                  <div>
-                    <h2 className="text-2xl font-bold text-paper">{year}</h2>
+            Object.keys(transcript).sort().map((year) => {
+              // Calculate AGPA and Year Stats
+              const yearRecords = Object.values(transcript[year] || {}).flat();
+              const yearStats = calculateStats(yearRecords);
+
+              return (
+                <div key={year} className="overflow-hidden rounded-2xl border border-hairline bg-panel shadow-sm">
+                  <div className="flex items-end justify-between border-b border-hairline bg-elevated px-6 py-4">
+                    <div>
+                      <h2 className="text-2xl font-bold text-paper">{year}</h2>
+                    </div>
+                    {/* Year Stats Display */}
+                    <div className="flex items-center gap-6 text-right">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-muted">Courses</span>
+                        <span className="text-sm font-medium text-paper">{yearStats.completedCourses}</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-muted">Earned CH</span>
+                        <span className="text-sm font-medium text-paper">{yearStats.earnedHours}</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-accent">AGPA</span>
+                        <span className="text-sm font-medium text-paper">{yearStats.gpa}</span>
+                      </div>
+                    </div>
                   </div>
+
+                  {Object.keys(transcript[year] || {}).map((term) => {
+                    // Calculate TGPA
+                    const termRecords = transcript[year]?.[term] || [];
+                    const termStats = calculateStats(termRecords);
+
+                    return (
+                      <div key={term} className="border-b border-hairline p-6 last:border-0">
+                        <div className="mb-4 flex items-center justify-between">
+                          <h3 className="text-sm font-semibold text-paper">{term}</h3>
+                          {/* TGPA Display */}
+                          <span className="rounded-lg bg-elevated px-2.5 py-1 text-xs font-medium text-muted">
+                            TGPA: <span className="font-semibold text-paper">{termStats.gpa}</span>
+                          </span>
+                        </div>
+
+                        {/* Table Container */}
+                        <div className="overflow-hidden rounded-xl border border-hairline bg-elevated/20">
+                          {/* Table Header */}
+                          <div className="grid grid-cols-12 border-b border-hairline bg-elevated/50 px-4 py-2 text-[10px] font-medium uppercase tracking-wider text-muted">
+                            <span className="col-span-3">Code</span>
+                            <span className="col-span-5">Title</span>
+                            <span className="col-span-1 text-center">CH</span>
+                            <span className="col-span-2 text-center">Grade</span>
+                            <span className="col-span-1 text-right">Points</span>
+                          </div>
+
+                          {/* Table Rows */}
+                          <div className="divide-y divide-hairline">
+                            {(transcript[year]?.[term] || []).map((record) => {
+                              const pts = getGradePoints(record.grade);
+                              const cr = Number(record.credit_hours_snapshot);
+                              const rowPoints = pts !== null ? (pts * cr).toFixed(2) : "—";
+
+                              return (
+                                <div key={record.id} className="grid grid-cols-12 items-center px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 group">
+                                  <span className="col-span-3 font-medium text-paper">
+                                    {`${record.subject} ${record.course_number}`}
+                                  </span>
+                                  <span className="col-span-5 truncate text-muted">{record.title_snapshot}</span>
+                                  <span className="col-span-1 text-center text-muted">{cr.toFixed(0)}</span>
+                                  
+                                  {/* Grade Dropdown */}
+                                  <div className="col-span-2 flex justify-center">
+                                    <select
+                                      value={record.grade || "Planned"}
+                                      onChange={(e) => handleGradeChange(record.id, e.target.value)}
+                                      className="appearance-none rounded-lg border border-hairline bg-elevated px-2 py-1 text-xs text-paper outline-none transition-colors hover:border-muted focus:border-accent"
+                                    >
+                                      <option value="Planned">Planned</option>
+                                      <option value="IP">IP</option>
+                                      <option value="A+">A+</option>
+                                      <option value="A">A</option>
+                                      <option value="B+">B+</option>
+                                      <option value="B">B</option>
+                                      <option value="C+">C+</option>
+                                      <option value="C">C</option>
+                                      <option value="D">D</option>
+                                      <option value="F">F</option>
+                                    </select>
+                                  </div>
+
+                                  {/* Points & Delete Action */}
+                                  <div className="col-span-1 flex items-center justify-end gap-2 text-right">
+                                    <span className="text-muted">{rowPoints}</span>
+                                    <button
+                                      onClick={() => handleDeleteRecord(record.id)}
+                                      className="opacity-0 group-hover:opacity-100 text-muted transition-opacity hover:text-danger"
+                                      title="Remove"
+                                    >
+                                      ✕
+                                    </button>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-
-                {Object.keys(transcript[year] || {}).map((term) => (
-                  <div key={term} className="border-b border-hairline p-6 last:border-0">
-                    <div className="mb-4 flex items-center justify-between">
-                      <h3 className="text-sm font-semibold text-paper">{term}</h3>
-                    </div>
-
-                    {/* Table Container */}
-                    <div className="overflow-hidden rounded-xl border border-hairline bg-elevated/20">
-                      {/* Table Header */}
-                      <div className="grid grid-cols-12 border-b border-hairline bg-elevated/50 px-4 py-2 text-[10px] font-medium uppercase tracking-wider text-muted">
-                        <span className="col-span-3">Code</span>
-                        <span className="col-span-5">Title</span>
-                        <span className="col-span-1 text-center">CH</span>
-                        <span className="col-span-2 text-center">Grade</span>
-                        <span className="col-span-1 text-right">Points</span>
-                      </div>
-
-                      {/* Table Rows */}
-                      <div className="divide-y divide-hairline">
-                        {(transcript[year]?.[term] || []).map((record) => {
-                          const pts = getGradePoints(record.grade);
-                          const cr = Number(record.credit_hours_snapshot);
-                          const rowPoints = pts !== null ? (pts * cr).toFixed(2) : "—";
-
-                          return (
-                            <div key={record.id} className="grid grid-cols-12 items-center px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 group">
-                              <span className="col-span-3 font-medium text-paper">
-                                {`${record.subject} ${record.course_number}`}
-                              </span>
-                              <span className="col-span-5 truncate text-muted">{record.title_snapshot}</span>
-                              <span className="col-span-1 text-center text-muted">{cr.toFixed(0)}</span>
-                              
-                              {/* Grade Dropdown */}
-                              <div className="col-span-2 flex justify-center">
-                                <select
-                                  value={record.grade || "Planned"}
-                                  onChange={(e) => handleGradeChange(record.id, e.target.value)}
-                                  className="appearance-none rounded-lg border border-hairline bg-elevated px-2 py-1 text-xs text-paper outline-none transition-colors hover:border-muted focus:border-accent"
-                                >
-                                  <option value="Planned">Planned</option>
-                                  <option value="IP">IP</option>
-                                  <option value="A+">A+</option>
-                                  <option value="A">A</option>
-                                  <option value="B+">B+</option>
-                                  <option value="B">B</option>
-                                  <option value="C+">C+</option>
-                                  <option value="C">C</option>
-                                  <option value="D">D</option>
-                                  <option value="F">F</option>
-                                </select>
-                              </div>
-
-                              {/* Points & Delete Action */}
-                              <div className="col-span-1 flex items-center justify-end gap-2 text-right">
-                                <span className="text-muted">{rowPoints}</span>
-                                <button
-                                  onClick={() => handleDeleteRecord(record.id)}
-                                  className="opacity-0 group-hover:opacity-100 text-muted transition-opacity hover:text-danger"
-                                  title="Remove"
-                                >
-                                  ✕
-                                </button>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))
+              );
+            })
           )}
         </div>
       </div>
-
       {/* Modal for Adding Past Course */}
       {isAddingCourse && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-canvas/80 p-4 backdrop-blur-sm">
