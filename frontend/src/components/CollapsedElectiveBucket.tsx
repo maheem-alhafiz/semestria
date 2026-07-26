@@ -13,6 +13,8 @@ import type { AcademicRecordRead, RequirementGroupRead } from "@/types/api";
 const COLLAPSE_THRESHOLD = 6;
 
 export function shouldCollapseGroup(group: RequirementGroupRead): boolean {
+  // Only collapse if it's a choice bucket (not "ALL") AND exceeds threshold/patterns
+  if (group.kind === "ALL") return false;
   return (group.courses?.length ?? 0) > COLLAPSE_THRESHOLD || (group.patterns?.length ?? 0) > 0;
 }
 
