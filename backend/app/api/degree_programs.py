@@ -94,8 +94,11 @@ def _compute_progress(
 ) -> list[RequirementGroupRead]:
     # group_id -> {academic_record_id -> credit_hours override}
     manual_by_group: dict[int, dict[int, float | None]] = defaultdict(dict)
+    # group_id -> the full fulfillment rows themselves, for the response
+    mf_objects_by_group: dict[int, list[ManualRequirementFulfillment]] = defaultdict(list)
     for mf in manual_fulfillments:
         manual_by_group[mf.requirement_group_id][mf.academic_record_id] = mf.credit_hours_applied
+        mf_objects_by_group[mf.requirement_group_id].append(mf)
 
     results: list[RequirementGroupRead] = []
     for group in groups:
@@ -152,6 +155,16 @@ def _compute_progress(
                 completed_count=len(matched_course_ids),
                 completed_credit_hours=matched_credit_hours,
                 is_satisfied=is_satisfied,
+                manual_fulfillments=[
+                    {
+                        "id": mf.id,
+                        "academic_record_id": mf.academic_record_id,
+                        "credit_hours_applied": (
+                            float(mf.credit_hours_applied) if mf.credit_hours_applied is not None else None
+                        ),
+                    }
+                    for mf in mf_objects_by_group.get(group.id, [])
+                ],
             )
         )
 

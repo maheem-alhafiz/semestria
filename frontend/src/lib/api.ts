@@ -17,6 +17,8 @@ import type {
   ScheduleGenerateRequest,
   ScheduleGenerateResponse,
   Term,
+  ManualFulfillmentCreate,
+  ManualFulfillmentRead,
 } from "@/types/api";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api/v1";
@@ -184,5 +186,21 @@ export function getDegreePrograms(): Promise<DegreeProgramSummary[]> {
 export function getDegreeProgramProgress(programId: number): Promise<DegreeProgramProgressRead> {
   return apiFetch<DegreeProgramProgressRead>(`/degree-programs/${programId}/progress`);
 }
+
+// --- Add to src/lib/api.ts (imports: add ManualFulfillmentCreate, ManualFulfillmentRead to the type import block) ---
+
+export function createManualFulfillment(
+  payload: ManualFulfillmentCreate,
+): Promise<ManualFulfillmentRead> {
+  return apiFetch<ManualFulfillmentRead>("/manual-fulfillments", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteManualFulfillment(fulfillmentId: number): Promise<void> {
+  return apiFetch<void>(`/manual-fulfillments/${fulfillmentId}`, { method: "DELETE" });
+}
+
 
 export { ApiError };

@@ -5,6 +5,8 @@ import { useTrackerStore } from "@/store/trackerStore";
 import { deleteAcademicRecord, addPastCourse, getTerms, updateAcademicRecord, searchCourses } from "@/lib/api";
 import type { Term, Course, RequirementGroupRead } from "@/types/api";
 import { CourseDetailsModal } from "@/components/CourseDetailsModal";
+import { CollapsedElectiveBucket, shouldCollapseGroup } from "@/components/CollapsedElectiveBucket";
+import { AssignCourseModal } from "@/components/AssignCourseModal";
 
 const getGradePoints = (grade: string | null): number | null => {
   if (!grade) return null;
@@ -61,6 +63,7 @@ export default function TrackerPage() {
   const [isAddingCourse, setIsAddingCourse] = useState(false);
   const [terms, setTerms] = useState<Term[]>([]);
   
+  
   // Course details modal state
   const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null);
   
@@ -73,6 +76,7 @@ export default function TrackerPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<Course[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
+  const [assigningGroup, setAssigningGroup] = useState<RequirementGroupRead | null>(null);
 
   // Live search trigger
   useEffect(() => {
@@ -257,41 +261,52 @@ export default function TrackerPage() {
                         {formatGroupProgress(group)}
                       </span>
                     </div>
-                    <div className="space-y-2">
-                      {group.courses.length === 0 &&
-                        group.patterns.map((p, i) => (
-                          <div
-                            key={i}
-                            className="rounded-lg border border-dashed border-hairline bg-transparent px-3 py-2 text-xs text-muted"
-                          >
-                            {`Any ${p.subject ?? ""} course, level ${p.level_min}–${p.level_max}`.trim()}
-                          </div>
-                        ))}
-                      {group.courses.length > 0 && (
-                        <div className="overflow-hidden rounded-xl border border-hairline bg-transparent divide-y divide-hairline">
-                          {group.courses.map((course) => {
-                            const isDone = group.completed_course_ids.includes(course.course_id);
-                            return (
-                              <div
-                                key={course.course_id}
-                                className="flex items-center justify-between bg-transparent px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 cursor-pointer"
-                                onClick={() => setSelectedCourseId(course.course_id)}
-                              >
-                                <span
-                                  className={
-                                    isDone ? "font-medium text-muted line-through" : "font-medium text-paper"
-                                  }
+                    {shouldCollapseGroup(group) ? (
+                      <CollapsedElectiveBucket
+                        group={group}
+                        records={records}
+                        onAssignClick={() => setAssigningGroup(group)}
+                        onChanged={() => {
+                          if (selectedProgramId) fetchProgramProgress(selectedProgramId);
+                        }}
+                      />
+                    ) : (
+                      <div className="space-y-2">
+                        {group.courses.length === 0 &&
+                          group.patterns.map((p, i) => (
+                            <div
+                              key={i}
+                              className="rounded-lg border border-dashed border-hairline bg-transparent px-3 py-2 text-xs text-muted"
+                            >
+                              {`Any ${p.subject ?? ""} course, level ${p.level_min}–${p.level_max}`.trim()}
+                            </div>
+                          ))}
+                        {group.courses.length > 0 && (
+                          <div className="overflow-hidden rounded-xl border border-hairline bg-transparent divide-y divide-hairline">
+                            {group.courses.map((course) => {
+                              const isDone = group.completed_course_ids.includes(course.course_id);
+                              return (
+                                <div
+                                  key={course.course_id}
+                                  className="flex items-center justify-between bg-transparent px-4 py-2.5 text-sm transition-colors hover:bg-elevated/40 cursor-pointer"
+                                  onClick={() => setSelectedCourseId(course.course_id)}
                                 >
-                                  {isDone && <span className="mr-1.5 text-accent no-underline">✓</span>}
-                                  {course.subject} {course.course_number}
-                                </span>
-                                <span className="text-xs text-muted">{course.credit_hours} CH</span>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+                                  <span
+                                    className={
+                                      isDone ? "font-medium text-muted line-through" : "font-medium text-paper"
+                                    }
+                                  >
+                                    {isDone && <span className="mr-1.5 text-accent no-underline">✓</span>}
+                                    {course.subject} {course.course_number}
+                                  </span>
+                                  <span className="text-xs text-muted">{course.credit_hours} CH</span>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))
             )}
@@ -496,6 +511,18 @@ export default function TrackerPage() {
         <CourseDetailsModal 
           courseId={selectedCourseId} 
           onClose={() => setSelectedCourseId(null)} 
+        />
+      )}
+
+      {/* Assign Course Modal */}
+      {assigningGroup && (
+        <AssignCourseModal
+          group={assigningGroup}
+          records={records}
+          onClose={() => setAssigningGroup(null)}
+          onAssigned={() => {
+            if (selectedProgramId) fetchProgramProgress(selectedProgramId);
+          }}
         />
       )}
     </main>

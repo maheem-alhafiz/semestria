@@ -245,6 +245,7 @@ export interface RequirementGroupRead {
   completed_count: number;
   completed_credit_hours: number;
   is_satisfied: boolean;
+  manual_fulfillments: ManualFulfillmentRead[];
 }
 
 export interface DegreeProgramProgressRead {
@@ -254,3 +255,19 @@ export interface DegreeProgramProgressRead {
   catalog_year: string;
   groups: RequirementGroupRead[];
 }
+
+export interface ManualFulfillmentRead {
+  id: number;
+  academic_record_id: number;
+  credit_hours_applied: number | null;
+}
+
+// Add this field to the existing RequirementGroupRead interface:
+//   manual_fulfillments: ManualFulfillmentRead[];
+
+export interface ManualFulfillmentCreate {
+  requirement_group_id: number;
+  academic_record_id: number;
+  credit_hours_applied?: number | null;
+}
+

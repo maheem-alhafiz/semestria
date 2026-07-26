@@ -34,6 +34,14 @@ class RequirementGroupPatternRead(BaseModel):
     level_max: int
 
 
+class ManualFulfillmentRead(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    academic_record_id: int
+    credit_hours_applied: float | None
+
+
 class RequirementGroupRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -54,6 +62,14 @@ class RequirementGroupRead(BaseModel):
     completed_count: int
     completed_credit_hours: float
     is_satisfied: bool
+    # The manual assignments (see ManualRequirementFulfillment) that
+    # apply to THIS group specifically -- the frontend needs the
+    # fulfillment `id` itself to power a "Remove" action
+    # (DELETE /manual-fulfillments/{id}), not just which course got
+    # matched. A course matched automatically (via explicit_courses or a
+    # pattern) will NOT appear here even if it's also in
+    # completed_course_ids -- this list is only ever manual assignments.
+    manual_fulfillments: list[ManualFulfillmentRead]
 
 
 class DegreeProgramSummary(BaseModel):
