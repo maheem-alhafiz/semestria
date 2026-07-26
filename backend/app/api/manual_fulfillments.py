@@ -16,7 +16,7 @@ never someone else's, even if they somehow guessed a valid id.
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -24,7 +24,6 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.visitor import get_current_owner_id
 from app.models import AcademicRecord, ManualRequirementFulfillment, RequirementGroup
-from fastapi import APIRouter, Depends, HTTPException, Response
 
 router = APIRouter(prefix="/manual-fulfillments", tags=["manual-fulfillments"])
 
@@ -101,19 +100,23 @@ def create_manual_fulfillment(
     return fulfillment
 
 
-@router.delete("/{fulfillment_id}", status_code=204, response_class=Response)
+@router.delete("/{fulfillment_id}")
 def delete_manual_fulfillment(
     fulfillment_id: int,
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
-) -> None:
+):
     fulfillment = db.execute(
         select(ManualRequirementFulfillment).where(
             ManualRequirementFulfillment.id == fulfillment_id,
             ManualRequirementFulfillment.owner_id == owner_id,
         )
     ).scalar_one_or_none()
+    
     if fulfillment is None:
         raise HTTPException(status_code=404, detail=f"Manual fulfillment {fulfillment_id} not found")
+        
     db.delete(fulfillment)
     db.commit()
+    
+    return Response(status_code=204)
