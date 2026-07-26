@@ -79,6 +79,10 @@ def _course_level(course_number: str) -> int | None:
     match = _LEADING_DIGITS_RE.match(course_number)
     return int(match.group()) if match else None
 
+def _is_passing_grade(grade: str | None) -> bool:
+    if grade is None:
+        return True  # Allow planned/in-progress courses to count for planning purposes
+    return grade.upper() in {"A+", "A", "B+", "B", "C+", "C"}
 
 def _course_matches_pattern(course: Course, subject: str | None, level_min: int, level_max: int) -> bool:
     if subject is not None and course.subject != subject:
@@ -110,6 +114,10 @@ def _compute_progress(
         matched_credit_hours = 0.0
 
         for record in academic_records:
+            # Price Faculty of Engineering rule: D and F are failing grades for degree credit
+            if not _is_passing_grade(record.grade):
+                continue
+
             is_explicit = record.course_id in explicit_course_ids
             is_pattern_match = any(
                 _course_matches_pattern(record.course, subj, lo, hi) for subj, lo, hi in patterns
