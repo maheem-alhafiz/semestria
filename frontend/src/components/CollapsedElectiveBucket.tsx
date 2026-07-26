@@ -13,7 +13,7 @@ import type { AcademicRecordRead, RequirementGroupRead } from "@/types/api";
 const COLLAPSE_THRESHOLD = 6;
 
 export function shouldCollapseGroup(group: RequirementGroupRead): boolean {
-  return group.courses.length > COLLAPSE_THRESHOLD || group.patterns.length > 0;
+  return (group.courses?.length ?? 0) > COLLAPSE_THRESHOLD || (group.patterns?.length ?? 0) > 0;
 }
 
 interface CollapsedElectiveBucketProps {
@@ -31,6 +31,14 @@ export function CollapsedElectiveBucket({
 }: CollapsedElectiveBucketProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [removingId, setRemovingId] = useState<number | null>(null);
+
+  // Defensive: if the API response is momentarily out of sync with what
+  // this component expects (backend not yet redeployed with this field,
+  // a partial rollout, etc.), fall back to an empty array rather than
+  // crashing the whole page on `.length`/`.map()` of undefined.
+  const manualFulfillments = group.manual_fulfillments ?? [];
+  const groupCourses = group.courses ?? [];
+  const groupPatterns = group.patterns ?? [];
 
   const recordsById = new Map(records.map((r) => [r.id, r]));
 
@@ -54,9 +62,9 @@ export function CollapsedElectiveBucket({
           that came from the explicit course list still count toward
           is_satisfied/completed_count, they just aren't re-listed here
           individually -- the full option list is behind "Show all". */}
-      {group.manual_fulfillments.length > 0 && (
+      {manualFulfillments.length > 0 && (
         <div className="space-y-1.5">
-          {group.manual_fulfillments.map((mf) => {
+          {manualFulfillments.map((mf) => {
             const record = recordsById.get(mf.academic_record_id);
             return (
               <div
@@ -94,15 +102,15 @@ export function CollapsedElectiveBucket({
         >
           {isExpanded
             ? "Hide options"
-            : group.courses.length > 0
-              ? `Show all ${group.courses.length} options`
+            : groupCourses.length > 0
+              ? `Show all ${groupCourses.length} options`
               : "Show pattern rules"}
         </button>
       </div>
 
       {isExpanded && (
         <div className="max-h-64 space-y-1.5 overflow-y-auto rounded-lg border border-hairline bg-panel p-2 custom-scrollbar">
-          {group.courses.map((course) => {
+          {groupCourses.map((course) => {
             const isDone = group.completed_course_ids.includes(course.course_id);
             return (
               <div
@@ -117,7 +125,7 @@ export function CollapsedElectiveBucket({
               </div>
             );
           })}
-          {group.patterns.map((p, i) => (
+          {groupPatterns.map((p, i) => (
             <div key={i} className="px-2 py-1 text-xs text-muted">
               {`Any ${p.subject ?? ""} course, level ${p.level_min}–${p.level_max}`.trim()}
             </div>

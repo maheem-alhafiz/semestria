@@ -19,7 +19,7 @@ export function AssignCourseModal({ group, records, onClose, onAssigned }: Assig
 
   // Already-assigned-elsewhere-in-this-group records shouldn't be
   // offered again -- a course can't fulfill the same bucket twice.
-  const alreadyAssignedIds = new Set(group.manual_fulfillments.map((mf) => mf.academic_record_id));
+  const alreadyAssignedIds = new Set((group.manual_fulfillments ?? []).map((mf) => mf.academic_record_id));
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

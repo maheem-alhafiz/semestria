@@ -24,6 +24,7 @@ from sqlalchemy.orm import Session
 from app.core.database import get_db
 from app.core.visitor import get_current_owner_id
 from app.models import AcademicRecord, ManualRequirementFulfillment, RequirementGroup
+from fastapi import APIRouter, Depends, HTTPException, Response
 
 router = APIRouter(prefix="/manual-fulfillments", tags=["manual-fulfillments"])
 
@@ -100,7 +101,7 @@ def create_manual_fulfillment(
     return fulfillment
 
 
-@router.delete("/{fulfillment_id}", status_code=204)
+@router.delete("/{fulfillment_id}", status_code=204, response_class=Response)
 def delete_manual_fulfillment(
     fulfillment_id: int,
     db: Session = Depends(get_db),
