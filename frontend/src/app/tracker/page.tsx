@@ -56,6 +56,7 @@ export default function TrackerPage() {
     isLoadingProgress,
     fetchPrograms,
     selectProgram,
+    fetchProgramProgress,
   } = useTrackerStore();
   const [isAddingCourse, setIsAddingCourse] = useState(false);
   const [terms, setTerms] = useState<Term[]>([]);
@@ -132,6 +133,7 @@ export default function TrackerPage() {
     try {
       await deleteAcademicRecord(id);
       fetchRecords(); // Refresh state
+      if (selectedProgramId) fetchProgramProgress(selectedProgramId);
     } catch (err) {
       alert("Failed to delete record");
     }
@@ -142,6 +144,7 @@ export default function TrackerPage() {
     try {
       await updateAcademicRecord(recordId, { grade: gradeVal });
       fetchRecords();
+      if (selectedProgramId) fetchProgramProgress(selectedProgramId);
     } catch {
       alert("Failed to update grade");
     }
@@ -164,6 +167,7 @@ export default function TrackerPage() {
       setSelectedCourse(null);
       setSearchQuery("");
       fetchRecords();
+      if (selectedProgramId) fetchProgramProgress(selectedProgramId);
     } catch (err: any) {
       alert(err.message || "Failed to add course");
     }
