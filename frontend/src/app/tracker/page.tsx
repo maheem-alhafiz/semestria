@@ -105,14 +105,23 @@ export default function TrackerPage() {
     let earnedCredits = 0;
     let gradedCredits = 0;
     let qualityPoints = 0;
+    const earnedCourses = new Set<string>();
 
     records.forEach((record) => {
       const pts = getGradePoints(record.grade);
       if (pts !== null) {
         const credits = Number(record.credit_hours_snapshot);
-        if (pts > 0) earnedCredits += credits; 
+        
+        // Quality Points & CGPA include ALL attempts (U of M standard)
         gradedCredits += credits;
         qualityPoints += pts * credits;
+
+        // Earned credits should only be awarded ONCE per unique course
+        const courseKey = `${record.subject} ${record.course_number}`;
+        if (pts > 0 && !earnedCourses.has(courseKey)) {
+          earnedCredits += credits;
+          earnedCourses.add(courseKey);
+        }
       }
     });
 
