@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { getSharedPlan, createPlan, savePlanItems, getTerms } from "@/lib/api";
-import type { PlanRead, Term } from "@/types/api";
+import { getSharedPlan, createPlan, savePlanItems, getTerms, getCourseDetail } from "@/lib/api";
+import type { PlanRead, Term, CourseDetailRead } from "@/types/api";
 
 export default function SharedPlanPage() {
   const params = useParams();
@@ -14,6 +14,7 @@ export default function SharedPlanPage() {
   const [termLabels, setTermLabels] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);
   const [isCloning, setIsCloning] = useState(false);
+  const [hydratedCourses, setHydratedCourses] = useState<Record<number, CourseDetailRead>>({});
 
   useEffect(() => {
     async function loadSharedPlan() {
@@ -26,6 +27,19 @@ export default function SharedPlanPage() {
         setTermLabels(
           Object.fromEntries(termList.map((t: Term) => [t.term_code, t.description]))
         );
+
+        // --- NEW HYDRATION STEP ---
+        // Fetch the actual course names for every ID in the plan
+        const courseData = await Promise.all(
+          fetchedPlan.items.map((item) => getCourseDetail(item.course_id))
+        );
+        const courseMap: Record<number, CourseDetailRead> = {};
+        for (const course of courseData) {
+          courseMap[course.course_id] = course;
+        }
+        setHydratedCourses(courseMap);
+        // --------------------------
+
       } catch (err) {
         setError("This share link is invalid or has expired.");
       }
@@ -110,17 +124,26 @@ export default function SharedPlanPage() {
             <p className="text-sm text-muted">This plan is currently empty.</p>
           ) : (
             <div className="divide-y divide-hairline rounded-xl border border-hairline bg-elevated/30">
-              {plan.items.map((item) => (
-                <div key={item.id} className="flex items-center justify-between px-4 py-3">
-                  <div className="flex items-center gap-3">
-                    <span className="rounded-md bg-elevated px-2 py-1 text-xs font-medium text-muted">
-                      Course ID: {item.course_id}
-                    </span>
-                    <span className="text-sm text-paper">{item.chosen_sections.length} section(s) selected</span>
+              {plan.items.map((item) => {
+                const course = hydratedCourses[item.course_id];
+                
+                return (
+                  <div key={item.id} className="flex items-center justify-between px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <span className="rounded-md bg-elevated px-2 py-1 text-xs font-bold text-paper">
+                        {course ? `${course.subject} ${course.course_number}` : `ID: ${item.course_id}`}
+                      </span>
+                      <span className="text-sm text-paper font-medium">
+                        {course ? course.title : "Loading..."}
+                      </span>
+                      <span className="text-xs text-muted ml-2">
+                        ({item.chosen_sections.length} section{item.chosen_sections.length > 1 ? 's' : ''})
+                      </span>
+                    </div>
+                    <span className="text-xs text-muted">{termLabel(item.term_code)}</span>
                   </div>
-                  <span className="text-xs text-muted">{termLabel(item.term_code)}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
           <p className="mt-4 text-center text-[11px] text-muted">
