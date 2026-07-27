@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // Added finalizePlan to the imports here
-import { ApiError, deletePlan, getTerms, listPlans, finalizePlan } from "@/lib/api";
+import { ApiError, deletePlan, getTerms, listPlans, finalizePlan, sharePlan } from "@/lib/api";
 import { usePlannerBuilderStore } from "@/store/plannerBuilderStore";
 import type { PlanSummary, Term } from "@/types/api";
 
@@ -31,6 +31,9 @@ export default function PlansPage() {
   
   // Finalize loading state
   const [finalizingId, setFinalizingId] = useState<number | null>(null);
+
+  //for share feature
+  const [copiedId, setCopiedId] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -87,6 +90,19 @@ export default function PlansPage() {
       setError(err instanceof ApiError ? err.message : "Couldn't finalize that plan.");
     } finally {
       setFinalizingId(null);
+    }
+  }
+
+  // new function for share feature
+  async function handleShare(planId: number) {
+    try {
+      const res = await sharePlan(planId);
+      const url = `${window.location.origin}/shared/${res.share_token}`;
+      await navigator.clipboard.writeText(url);
+      setCopiedId(planId);
+      setTimeout(() => setCopiedId(null), 2000); // Reset after 2 seconds
+    } catch (err) {
+      alert(err instanceof ApiError ? err.message : "Couldn't generate share link.");
     }
   }
 
@@ -159,6 +175,29 @@ export default function PlansPage() {
               </div>
 
               <div className="flex items-center gap-2">
+                {/* Share Link */}
+                <button 
+                  onClick={() => handleShare(plan.id)}
+                  title="Share Plan"
+                  className={`mr-1 flex h-8 w-8 items-center justify-center rounded-lg p-1.5 transition-colors ${
+                    copiedId === plan.id ? "bg-success/10 text-success" : "text-muted hover:bg-elevated hover:text-accent"
+                  }`}
+                >
+                  {copiedId === plan.id ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="18" cy="5" r="3"></circle>
+                      <circle cx="6" cy="12" r="3"></circle>
+                      <circle cx="18" cy="19" r="3"></circle>
+                      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                    </svg>
+                  )}
+                </button>
+
                 <Link
                   href={`/planner?planId=${plan.id}`}
                   className="rounded-full border border-hairline px-3 py-1.5 text-sm text-paper transition-colors hover:bg-elevated"
