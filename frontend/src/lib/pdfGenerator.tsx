@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
   dayHeader: { height: 20, borderBottom: "1px solid #e5e5e5", textAlign: "center", fontSize: 9, padding: 4, backgroundColor: "#fafafa", color: "#525252", fontWeight: "bold" },
   
   // Event Block Styles
-  eventBlock: { position: "absolute", left: 1, right: 1, backgroundColor: "#0d9488", borderRadius: 2, padding: 3, overflow: "hidden" },
-  eventTitle: { fontSize: 7, color: "#ffffff", fontWeight: "bold", marginBottom: 2 },
-  eventTime: { fontSize: 6, color: "#ffffff", opacity: 0.9 },
+  eventBlock: { position: "absolute", left: 1, right: 1, backgroundColor: "#ffffff", border: "1px solid #525252", borderRadius: 2, padding: 3, overflow: "hidden" },
+  eventTitle: { fontSize: 7, color: "#171717", fontWeight: "bold", marginBottom: 2 },
+  eventTime: { fontSize: 6, color: "#525252" },
 
   // Table Styles
   sectionTitle: { fontSize: 12, fontWeight: "bold", color: "#171717", marginBottom: 6 },
