@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { ApiError, deletePlan, getTerms, listPlans, finalizePlan, sharePlan } from "@/lib/api";
 import { usePlannerBuilderStore } from "@/store/plannerBuilderStore";
 import type { PlanSummary, Term } from "@/types/api";
+//pdf export feature
+import { downloadPlanPDF } from "@/lib/pdfGenerator";
 
 function formatUpdatedAt(iso: string): string {
   return new Date(iso).toLocaleDateString(undefined, {
@@ -175,6 +177,21 @@ export default function PlansPage() {
               </div>
 
               <div className="flex items-center gap-2">
+                {/* Save as PDF */}
+                <button 
+                  onClick={() => downloadPlanPDF(plan)}
+                  title="Save as PDF"
+                  className="mr-1 flex h-8 w-8 items-center justify-center rounded-lg p-1.5 text-muted transition-colors hover:bg-elevated hover:text-accent"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </button>
+
                 {/* Share Link */}
                 <button 
                   onClick={() => handleShare(plan.id)}
