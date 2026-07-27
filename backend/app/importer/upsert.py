@@ -142,6 +142,8 @@ def replace_meeting_times(session: Session, section: SectionData) -> None:
                 meeting_type=mt.meeting_type,
                 start_time=mt.start_time,
                 end_time=mt.end_time,
+                start_date=mt.start_date,
+                end_date=mt.end_date,
                 monday=mt.monday,
                 tuesday=mt.tuesday,
                 wednesday=mt.wednesday,

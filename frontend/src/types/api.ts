@@ -25,6 +25,8 @@ export interface MeetingTime {
   meeting_type: string;
   start_time: string | null;
   end_time: string | null;
+  start_date: string | null;
+  end_date: string | null;
   monday: boolean;
   tuesday: boolean;
   wednesday: boolean;

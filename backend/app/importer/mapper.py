@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import html
 from dataclasses import dataclass, field
-from datetime import time
+from datetime import date, time
 from typing import Any
 
 _TERM_SUFFIX_NAMES = {
@@ -32,6 +32,15 @@ class MeetingTimeData:
     meeting_type: str
     start_time: time | None
     end_time: time | None
+    # Per-meeting, not per-term: Aurora sends these on every meetingTime
+    # block, and for irregular-schedule courses (a lab that only meets
+    # five specific Mondays, not every week of term) each block's own
+    # start_date/end_date is the ONLY correct source of truth -- a single
+    # term-wide date range would be wrong for exactly these courses. When
+    # start_date == end_date, this is a genuine one-off occurrence (see
+    # CHEM 1126's standalone lab dates), not a data error.
+    start_date: date | None
+    end_date: date | None
     monday: bool
     tuesday: bool
     wednesday: bool
@@ -88,6 +97,21 @@ def _parse_clock_time(raw: str | None) -> time | None:
     return time(hour=hour, minute=minute)
 
 
+def _parse_aurora_date(raw: str | None) -> date | None:
+    """
+    Aurora sends dates as "MM/DD/YYYY" strings (e.g. "09/09/2026"). Blank,
+    missing, or malformed means no date on that meeting block -- treated
+    the same as a missing clock time (async/TBA), not an error.
+    """
+    if not raw:
+        return None
+    try:
+        month, day, year = raw.strip().split("/")
+        return date(int(year), int(month), int(day))
+    except (ValueError, AttributeError):
+        return None
+
+
 def _extract_instructor(faculty: list[dict[str, Any]] | None) -> str | None:
     if not faculty:
         return None
@@ -120,6 +144,8 @@ def map_meeting_time(raw_meeting: dict[str, Any]) -> MeetingTimeData | None:
         meeting_type=mt.get("meetingType") or "UNK",
         start_time=_parse_clock_time(mt.get("beginTime")),
         end_time=_parse_clock_time(mt.get("endTime")),
+        start_date=_parse_aurora_date(mt.get("startDate")),
+        end_date=_parse_aurora_date(mt.get("endDate")),
         monday=bool(mt.get("monday")),
         tuesday=bool(mt.get("tuesday")),
         wednesday=bool(mt.get("wednesday")),
@@ -138,18 +164,9 @@ def map_section(raw: dict[str, Any]) -> SectionData:
         if (parsed := map_meeting_time(raw_meeting)) is not None
     ]
 
-    #OLD code for credit hours
-    #credit_hours = raw.get("creditHours")
-    #if credit_hours is None:
-    #    credit_hours = raw.get("creditHourLow")
-    # Extract the highest available credit hour value across lecture/lab variations
-
-    #NEW code for credit hours
-    credit_hours = max(
-        float(raw.get("creditHourHigh") or 0.0),
-        float(raw.get("creditHours") or 0.0),
-        float(raw.get("creditHourLow") or 0.0)
-    )
+    credit_hours = raw.get("creditHours")
+    if credit_hours is None:
+        credit_hours = raw.get("creditHourLow")
 
     return SectionData(
         crn=str(raw["courseReferenceNumber"]),

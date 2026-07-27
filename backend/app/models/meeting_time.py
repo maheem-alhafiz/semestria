@@ -26,10 +26,10 @@ patterns have no clock time at all.
 
 from __future__ import annotations
 
-from datetime import time
+from datetime import date, time
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Boolean, ForeignKeyConstraint, String, Time
+from sqlalchemy import Boolean, Date, ForeignKeyConstraint, String, Time
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
@@ -58,6 +58,16 @@ class MeetingTime(Base):
 
     start_time: Mapped[time | None] = mapped_column(Time, nullable=True)
     end_time: Mapped[time | None] = mapped_column(Time, nullable=True)
+
+    # Per-meeting, not per-term -- see app.importer.mapper.MeetingTimeData's
+    # docstring. Needed for irregular-schedule courses (a lab meeting only
+    # five specific Mondays, not weekly for the whole term -- e.g. CHEM
+    # 1126) where a single term-wide date range would be wrong. When
+    # start_date == end_date, this is a genuine one-off occurrence, not a
+    # data error -- the ICS generator treats that as a single VEVENT with
+    # no RRULE, rather than a weekly-recurring one.
+    start_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    end_date: Mapped[date | None] = mapped_column(Date, nullable=True)
 
     monday: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     tuesday: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
