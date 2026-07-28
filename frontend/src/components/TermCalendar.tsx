@@ -81,8 +81,12 @@ export function TermCalendar({ slot, terms }: TermCalendarProps) {
   const totalCredits = useMemo(() => {
     let sum = 0;
     for (const [idStr, sel] of Object.entries(selections)) {
+      // Check if the course is assigned to this slot AND hasn't been visually toggled off
       const active = slot === "top" ? sel.activeTop : sel.activeBottom;
-      if (!active) continue;
+      const enabled = slot === "top" ? (sel.topEnabled ?? true) : (sel.bottomEnabled ?? true);
+      
+      if (!active || !enabled) continue;
+      
       const course = knownCourses[Number(idStr)];
       if (course) sum += course.credit_hours;
     }
