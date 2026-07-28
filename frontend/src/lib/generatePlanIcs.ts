@@ -123,8 +123,8 @@ function durationMinutes(start: string, end: string): number {
 }
 
 function meetingToEvent(m: ResolvedMeeting): EventAttributes {
-  const [sy, smo, sd] = m.startDate.split("-").map(Number);
-  const [hh, mi] = m.startTime.split(":").map(Number);
+  const [sy = 0, smo = 0, sd = 0] = m.startDate.split("-").map(Number);
+  const [hh = 0, mi = 0] = m.startTime.split(":").map(Number);
 
   // Aurora's per-meeting start_date/end_date (see backend's MeetingTime
   // model) is the source of truth for whether this is a single
