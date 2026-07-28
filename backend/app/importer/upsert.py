@@ -39,7 +39,7 @@ _UPSERT_COURSE_SQL = text(
     )
     ON CONFLICT (subject, course_number) DO UPDATE
     SET title = COALESCE(:title, courses.title),
-        credit_hours = COALESCE(:credit_hours, courses.credit_hours)
+        credit_hours = GREATEST(COALESCE(:credit_hours, 0), courses.credit_hours)
     RETURNING course_id
     """
 )
