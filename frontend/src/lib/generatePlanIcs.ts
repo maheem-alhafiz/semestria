@@ -115,8 +115,8 @@ function toIcsUntil(dateStr: string): string {
 }
 
 function durationMinutes(start: string, end: string): number {
-  const [sh, sm] = start.split(":").map(Number);
-  const [eh, em] = end.split(":").map(Number);
+  const [sh = 0, sm = 0] = start.split(":").map(Number);
+  const [eh = 0, em = 0] = end.split(":").map(Number);
   let minutes = eh * 60 + em - (sh * 60 + sm);
   if (minutes <= 0) minutes += 24 * 60; // guard against an overnight/malformed pair rather than emitting a negative duration
   return minutes;
