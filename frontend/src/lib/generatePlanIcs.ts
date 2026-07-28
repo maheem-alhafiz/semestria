@@ -122,8 +122,36 @@ function durationMinutes(start: string, end: string): number {
   return minutes;
 }
 
+function getTrueStartDate(dateStr: string, m: ResolvedMeeting): [number, number, number] {
+  const [y = 0, mo = 0, d = 0] = dateStr.split("-").map(Number);
+  
+  // Set to noon to avoid any weird midnight Daylight Saving Time shifts
+  const current = new Date(y, mo - 1, d, 12, 0, 0);
+
+  const daysMap: Record<number, keyof ResolvedMeeting> = {
+    0: "sunday",
+    1: "monday",
+    2: "tuesday",
+    3: "wednesday",
+    4: "thursday",
+    5: "friday",
+    6: "saturday",
+  };
+
+  // Fast-forward day by day until we hit a weekday this class actually meets on.
+  // (Caps at 7 to prevent infinite loops on malformed data)
+  let attempts = 0;
+  while (!m[daysMap[current.getDay()]] && attempts < 7) {
+    current.setDate(current.getDate() + 1);
+    attempts++;
+  }
+
+  return [current.getFullYear(), current.getMonth() + 1, current.getDate()];
+}
+
 function meetingToEvent(m: ResolvedMeeting): EventAttributes {
-  const [sy = 0, smo = 0, sd = 0] = m.startDate.split("-").map(Number);
+  // Calculate the true first day instead of blindly trusting Aurora's term start date
+  const [sy, smo, sd] = getTrueStartDate(m.startDate, m);
   const [hh = 0, mi = 0] = m.startTime.split(":").map(Number);
 
   // Aurora's per-meeting start_date/end_date (see backend's MeetingTime
