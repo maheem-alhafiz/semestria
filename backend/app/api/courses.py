@@ -120,15 +120,24 @@ def get_course_sections(
         for link_group_id, slots_by_name in linked_groups.items()
     ]
 
-    for section in standalone:
+    if standalone:
+        # Group standalone sections by the first letter of their section number
+        # (e.g., all 'A' sections together). This correctly bundles A01, A02, A03
+        # into a single dropdown instead of making them separate mandatory components.
+        standalone_by_prefix: dict[str, list[Section]] = defaultdict(list)
+        for section in standalone:
+            prefix = section.section_number[0].upper() if section.section_number else "SECTION"
+            standalone_by_prefix[prefix].append(section)
+
         groups.append(
             SectionGroupRead(
                 link_group_id=None,
                 slots=[
                     SectionSlotRead(
-                        link_slot=section.link_slot or "SECTION",
-                        options=[to_option(section)],
+                        link_slot=f"Standalone {prefix}",
+                        options=[to_option(s) for s in members],
                     )
+                    for prefix, members in standalone_by_prefix.items()
                 ],
             )
         )
