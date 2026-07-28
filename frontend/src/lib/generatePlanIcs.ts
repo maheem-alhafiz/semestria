@@ -139,9 +139,11 @@ function getTrueStartDate(dateStr: string, m: ResolvedMeeting): [number, number,
   };
 
   // Fast-forward day by day until we hit a weekday this class actually meets on.
-  // (Caps at 7 to prevent infinite loops on malformed data)
   let attempts = 0;
-  while (!m[daysMap[current.getDay()]] && attempts < 7) {
+  while (attempts < 7) {
+    const dayKey = daysMap[current.getDay()] as keyof ResolvedMeeting;
+    if (m[dayKey]) break; // Found a valid meeting day, stop looping
+    
     current.setDate(current.getDate() + 1);
     attempts++;
   }
