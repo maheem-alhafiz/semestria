@@ -10,6 +10,8 @@ import { usePlannerBuilderStore } from "@/store/plannerBuilderStore";
 import type { PlanSummary, Term } from "@/types/api";
 //pdf export feature
 import { downloadPlanPDF } from "@/lib/pdfGenerator";
+//export to calendar feature
+import { ExportIcsButton } from "@/components/ExportIcsButton";
 
 function formatUpdatedAt(iso: string): string {
   return new Date(iso).toLocaleDateString(undefined, {
@@ -214,6 +216,9 @@ export default function PlansPage() {
                     </svg>
                   )}
                 </button>
+
+                {/* Add to Calendar */}
+                <ExportIcsButton planId={plan.id} planName={plan.name} />
 
                 <Link
                   href={`/planner?planId=${plan.id}`}
