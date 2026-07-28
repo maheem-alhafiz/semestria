@@ -29,7 +29,7 @@ nothing to choose between.
 
 from __future__ import annotations
 
-from datetime import time
+from datetime import date, time
 
 from pydantic import BaseModel, ConfigDict
 
@@ -40,6 +40,8 @@ class MeetingTimeRead(BaseModel):
     meeting_type: str
     start_time: time | None
     end_time: time | None
+    start_date: date | None
+    end_date: date | None
     monday: bool
     tuesday: bool
     wednesday: bool
