@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_ITEMS = [
   { href: "/planner", label: "Planner" },
@@ -21,24 +22,32 @@ export function NavBar() {
           semestria<span className="text-accent">.</span>
         </Link>
 
-        <nav className="flex items-center gap-1">
-          {NAV_ITEMS.map((item) => {
-            const isActive = pathname.startsWith(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={
-                  isActive
-                    ? "rounded-full bg-elevated px-3.5 py-1.5 text-sm font-medium text-paper"
-                    : "rounded-full px-3.5 py-1.5 text-sm text-muted transition-colors hover:text-paper"
-                }
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+        {/* Right side container: Links + Divider + Theme Toggle */}
+        <div className="flex items-center gap-4">
+          <nav className="flex items-center gap-1">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={
+                    isActive
+                      ? "rounded-full bg-elevated px-3.5 py-1.5 text-sm font-medium text-paper"
+                      : "rounded-full px-3.5 py-1.5 text-sm text-muted transition-colors hover:text-paper"
+                  }
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+          
+          {/* Subtle vertical line and the toggle button */}
+          <div className="flex items-center border-l border-hairline pl-4">
+            <ThemeToggle />
+          </div>
+        </div>
       </div>
     </header>
   );

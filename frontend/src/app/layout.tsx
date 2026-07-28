@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { NavBar } from "@/components/NavBar";
+import { ThemeProvider } from "@/components/ThemeProvider"; // Add this
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -12,10 +13,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.variable}>
+    // suppressHydrationWarning is required by next-themes
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen bg-canvas font-sans text-paper antialiased">
-        <NavBar />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <NavBar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

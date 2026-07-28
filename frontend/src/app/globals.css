@@ -2,13 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Retaining the glass effect you liked for the NavBar */
-body {
-  background-color: #0A0A0A;
+@layer base {
+  :root {
+    /* Light Mode Palette */
+    --canvas: #F9F9F9;
+    --panel: #FFFFFF;
+    --elevated: #F3F4F6;
+    --hairline: #E5E7EB;
+    --paper: #111827;
+    --muted: #6B7280;
+    --accent: #0891B2; /* A deeper teal for light mode contrast */
+    --success: #16A34A;
+    --warning: #D97706;
+    --danger: #DC2626;
+    
+    /* Scrollbar */
+    --scrollbar-thumb: #D1D5DB;
+    --scrollbar-thumb-hover: #9CA3AF;
+  }
+
+  .dark {
+    /* Dark Mode Palette (Your exact original colors) */
+    --canvas: #0A0A0A;
+    --panel: #1A1A1A;
+    --elevated: #242424;
+    --hairline: #333333;
+    --paper: #F2ECE0;
+    --muted: #9A9A9A;
+    --accent: #5EC8D8;
+    --success: #8CD17D;
+    --warning: #E8C468;
+    --danger: #F27983;
+
+    /* Scrollbar */
+    --scrollbar-thumb: #262626;
+    --scrollbar-thumb-hover: #404040;
+  }
 }
+
+body {
+  background-color: var(--canvas);
+}
+
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #262626 transparent;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
@@ -17,9 +55,9 @@ body {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #262626;
+  background-color: var(--scrollbar-thumb);
   border-radius: 9999px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #404040;
+  background-color: var(--scrollbar-thumb-hover);
 }
