@@ -153,3 +153,34 @@ def replace_meeting_times(session: Session, section: SectionData) -> None:
                 sunday=mt.sunday,
             )
         )
+
+
+_REFRESH_TERM_DATE_RANGE_SQL = text(
+    """
+    UPDATE terms
+    SET start_date = agg.min_start, end_date = agg.max_end
+    FROM (
+        SELECT MIN(start_date) AS min_start, MAX(end_date) AS max_end
+        FROM meeting_times
+        WHERE term_code = :term_code
+          AND start_date IS NOT NULL
+          AND end_date IS NOT NULL
+    ) AS agg
+    WHERE terms.term_code = :term_code
+    """
+)
+
+
+def refresh_term_date_range(session: Session, term_code: str) -> None:
+    """
+    Recomputes Term.start_date/end_date for one term from its meeting
+    times, and caches the result on the row. See Term's docstring for why
+    this is derived rather than scraped directly -- Aurora has no
+    term-level date field, only per-meeting ones.
+
+    Call this AFTER all of a term's sections/meeting_times have been
+    written for the current import run (see importer.import_term), so the
+    aggregate reflects the fresh data rather than whatever was left over
+    from a previous run.
+    """
+    session.execute(_REFRESH_TERM_DATE_RANGE_SQL, {"term_code": term_code})

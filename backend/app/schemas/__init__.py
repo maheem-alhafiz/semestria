@@ -3,6 +3,15 @@ from app.schemas.academic_record import (
     AcademicRecordRead,
     AcademicRecordUpdate,
 )
+from app.schemas.assessment import (
+    AssessmentCourseRead,
+    AssessmentCreate,
+    AssessmentRead,
+    AssessmentUpdate,
+    TrackedCourseCreate,
+    WeeklyTopicRead,
+    WeeklyTopicUpsert,
+)
 from app.schemas.course import CourseBrief, CourseRead
 from app.schemas.plan import (
     PlanCreate,
@@ -54,4 +63,11 @@ __all__ = [
     "AcademicRecordCreate",
     "AcademicRecordUpdate",
     "AcademicRecordRead",
+    "AssessmentCreate",
+    "AssessmentUpdate",
+    "AssessmentRead",
+    "WeeklyTopicUpsert",
+    "WeeklyTopicRead",
+    "AssessmentCourseRead",
+    "TrackedCourseCreate",
 ]

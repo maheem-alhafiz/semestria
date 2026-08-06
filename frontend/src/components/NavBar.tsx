@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/planner", label: "Planner" },
   { href: "/plans", label: "Plans" },
   { href: "/tracker", label: "Degree Tracker" },
+  { href: "/assessments", label: "Assessments" },
 ] as const;
 
 export function NavBar() {

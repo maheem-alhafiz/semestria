@@ -14,7 +14,13 @@ from sqlalchemy.orm import Session
 from app.importer.aurora_client import AuroraClient
 from app.importer.link_resolver import resolve_link_groups
 from app.importer.mapper import SectionData, map_section
-from app.importer.upsert import replace_meeting_times, upsert_course, upsert_section, upsert_term
+from app.importer.upsert import (
+    refresh_term_date_range,
+    replace_meeting_times,
+    upsert_course,
+    upsert_section,
+    upsert_term,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -51,6 +57,11 @@ def import_term(session: Session, term_code: str, client: AuroraClient) -> int:
 
         assert course_id is not None  # course_sections is never empty here
         resolve_link_groups(session, course_id, term_code, course_sections)
+
+    # Must run after every section's meeting_times are written above, so
+    # the MIN/MAX aggregate reflects this run's fresh data -- see
+    # refresh_term_date_range's docstring.
+    refresh_term_date_range(session, term_code)
 
     session.commit()
     logger.info("Term %s: imported %d sections", term_code, count)

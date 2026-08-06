@@ -3,6 +3,10 @@
 export interface Term {
   term_code: string;
   description: string;
+  // Derived on the backend, may be null for a term with no imported
+  // sections yet -- see backend app.models.term's docstring.
+  start_date: string | null;
+  end_date: string | null;
 }
 
 export interface Course {
@@ -272,3 +276,75 @@ export interface ManualFulfillmentCreate {
   credit_hours_applied?: number | null;
 }
 
+
+// -- Assessments tab -------------------------------------------------------
+// Mirrors app.schemas.assessment exactly. See app.models.assessment for the
+// full reasoning behind the three-table shape.
+
+export type AssessmentType = "ASSIGNMENT" | "QUIZ" | "EXAM" | "LAB" | "PROJECT" | "OTHER";
+
+export interface AssessmentRead {
+  id: number;
+  term_code: string;
+  course_id: number;
+  title: string;
+  assessment_type: AssessmentType;
+  due_date: string | null;
+  weight_percent: number | null;
+  is_done: boolean;
+  grade_received: number | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AssessmentCreate {
+  term_code: string;
+  course_id: number;
+  title: string;
+  assessment_type: AssessmentType;
+  due_date?: string | null;
+  weight_percent?: number | null;
+  notes?: string | null;
+}
+
+export interface AssessmentUpdate {
+  title?: string;
+  assessment_type?: AssessmentType;
+  due_date?: string | null;
+  weight_percent?: number | null;
+  is_done?: boolean;
+  grade_received?: number | null;
+  notes?: string | null;
+}
+
+export interface WeeklyTopicRead {
+  id: number;
+  term_code: string;
+  course_id: number;
+  week_start_date: string;
+  topic_text: string;
+}
+
+export interface WeeklyTopicUpsert {
+  term_code: string;
+  course_id: number;
+  week_start_date: string;
+  topic_text: string;
+}
+
+// `source` tells the UI whether a "remove" action makes sense -- a
+// plan-sourced course would just reappear (see backend docstring), so only
+// "manual" courses get a remove button.
+export interface AssessmentCourseRead {
+  course_id: number;
+  subject: string;
+  course_number: string;
+  title: string;
+  source: "plan" | "manual";
+}
+
+export interface TrackedCourseCreate {
+  term_code: string;
+  course_id: number;
+}

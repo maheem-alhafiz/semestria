@@ -3,6 +3,7 @@
 from fastapi import APIRouter
 
 from app.api.academic_record import router as academic_record_router
+from app.api.assessments import router as assessments_router
 from app.api.courses import router as courses_router
 from app.api.degree_programs import router as degree_programs_router
 from app.api.manual_fulfillments import router as manual_fulfillments_router
@@ -18,5 +19,6 @@ api_router.include_router(plans_router)
 api_router.include_router(academic_record_router)
 api_router.include_router(degree_programs_router)
 api_router.include_router(manual_fulfillments_router)
+api_router.include_router(assessments_router)
 
 __all__ = ["api_router"]

@@ -102,6 +102,13 @@
           "footnote_refs": []
         },
         {
+          "raw_text": "Written English Requirement (Swap this out)",
+          "course_code": "ENGL 1400",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
+        },
+        {
           "raw_text": "Total Hours | 37.5",
           "course_code": null,
           "is_alternative": false,
@@ -362,80 +369,19 @@
           "is_alternative": false,
           "hours_text": "163-165",
           "footnote_refs": []
+        },
+        {
+          "raw_text": "Indigenous Knowledge Requirement (Swap this out)",
+          "course_code": "INDG 1200",
+          "is_alternative": false,
+          "hours_text": "3",
+          "footnote_refs": []
         }
       ],
       "footnotes": {
         "1": "A minimum of 20 credit hours of technical electives is required with 18 hours required if completing MECH\u00a04162 (5 courses at 4 credit hours each or 3 courses at 4 credit hours each plus MECH\u00a04162 at 6 credit hours). 2 For courses continuing through both terms, credit is given on completion of course 3 Students admitted to Mechanical Engineering in Fall 2021 who have completed two complementary studies elective courses prior to admission to the program, may use on of those courses in place of the Indigenous knowledge course.\u00a0 A complementary studies course is any course from the Faculty of Arts or the Faculty of Management at the 1000 level or above, with the exception of ARTS 1110 Introduction to the University which may not\u00a0 be used for credit in the Price Faculty of Engineering. 4 Student must select one course from the list of Indigenous Knowledge Courses"
       },
       "kind": "ALL",
-      "courses_required": null,
-      "credit_hours_required": null,
-      "patterns": []
-    },
-    {
-      "label": "Indigenous Knowledge Courses",
-      "rows": [
-        {
-          "raw_text": "INDG\u00a01200 | Indigenous Peoples in Canada | 6",
-          "course_code": "INDG 1200",
-          "is_alternative": false,
-          "hours_text": "6",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "INDG\u00a01220 | Indigenous Peoples in Canada, Part 1 | 3",
-          "course_code": "INDG 1220",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "INDG\u00a01240 | Indigenous Peoples in Canada, Part 2 | 3",
-          "course_code": "INDG 1240",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "INDG\u00a02012 | Indigenous History in Canada | 6",
-          "course_code": "INDG 2012",
-          "is_alternative": false,
-          "hours_text": "6",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "or HIST\u00a02010 | Indigenous History in Canada (C)",
-          "course_code": "HIST 2010",
-          "is_alternative": true,
-          "hours_text": "Indigenous History in Canada (C)",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
-          "course_code": "INDG 2020",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "or HIST\u00a02020 | The M\u00e9tis in Canada (C)",
-          "course_code": "HIST 2020",
-          "is_alternative": true,
-          "hours_text": "The M\u00e9tis in Canada (C)",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "POLS\u00a02802 | Introduction to Indigenous Politics | 3",
-          "course_code": "POLS 2802",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        }
-      ],
-      "footnotes": {
-        "1": "A minimum of 20 credit hours of technical electives is required with 18 hours required if completing MECH\u00a04162 (5 courses at 4 credit hours each or 3 courses at 4 credit hours each plus MECH\u00a04162 at 6 credit hours). 2 For courses continuing through both terms, credit is given on completion of course 3 Students admitted to Mechanical Engineering in Fall 2021 who have completed two complementary studies elective courses prior to admission to the program, may use on of those courses in place of the Indigenous knowledge course.\u00a0 A complementary studies course is any course from the Faculty of Arts or the Faculty of Management at the 1000 level or above, with the exception of ARTS 1110 Introduction to the University which may not\u00a0 be used for credit in the Price Faculty of Engineering. 4 Student must select one course from the list of Indigenous Knowledge Courses"
-      },
-      "kind": "ONE_OF",
       "courses_required": null,
       "credit_hours_required": null,
       "patterns": []
@@ -451,290 +397,6 @@
       "courses_required": null,
       "credit_hours_required": 20,
       "patterns": []
-    },
-    {
-      "label": "Written English Courses for Engineering Students",
-      "parent_label": "Preliminary Engineering Program",
-      "rows": [
-        {
-          "raw_text": "ASIA\u00a01420 | Asian Civilizations to 1500 (B) | 3",
-          "course_code": "ASIA 1420",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "ASIA\u00a01430 | Asian Civilization from 1500 (B) | 3",
-          "course_code": "ASIA 1430",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "CATH\u00a01190 | Introduction to Catholic Studies | 3",
-          "course_code": "CATH 1190",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "ENGL\u00a01200 | Representative Literary Works | 6",
-          "course_code": "ENGL 1200",
-          "is_alternative": false,
-          "hours_text": "6",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "ENGL\u00a01300 | Literature since 1900 | 6",
-          "course_code": "ENGL 1300",
-          "is_alternative": false,
-          "hours_text": "6",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "ENGL\u00a01340 | Introduction to Literary Analysis | 3",
-          "course_code": "ENGL 1340",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "ENGL\u00a01400 | Thematic Approaches to the Study of Literature | 3",
-          "course_code": "ENGL 1400",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "GPE\u00a02700 | Perspectives on Global Political Economy | 3",
-          "course_code": "GPE 2700",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "GRMN\u00a01300 | Masterpieces of German Literature in English Translation (C) | 3",
-          "course_code": "GRMN 1300",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "GRMN\u00a01310 | Love in German Culture in English Translation (C) | 3",
-          "course_code": "GRMN 1310",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "Any 1000 level HIST course 1 | 3-6",
-          "course_code": null,
-          "is_alternative": false,
-          "hours_text": "3-6",
-          "footnote_refs": [
-            1
-          ]
-        },
-        {
-          "raw_text": "Any 2000 level HIST course 1 | 3-6",
-          "course_code": null,
-          "is_alternative": false,
-          "hours_text": "3-6",
-          "footnote_refs": [
-            1
-          ]
-        },
-        {
-          "raw_text": "INDG\u00a02020 | The M\u00e9tis in Canada | 3",
-          "course_code": "INDG 2020",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "POL\u00a01900 | Love, Heroes and Patriotism in Contemporary Poland | 3",
-          "course_code": "POL 1900",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "POL\u00a02600 | Polish Culture until 1918 | 3",
-          "course_code": "POL 2600",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "POL\u00a02610 | Polish Culture 1918 to the Present | 3",
-          "course_code": "POL 2610",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "POLS\u00a01502 | Introduction to Political Science 2 | 3",
-          "course_code": "POLS 1502",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": [
-            2
-          ]
-        },
-        {
-          "raw_text": "RLGN\u00a01440 | Evil in World Religions | 3",
-          "course_code": "RLGN 1440",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02036 | Introduction to Christianity | 3",
-          "course_code": "RLGN 2036",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02140 | Introduction to Judaism | 3",
-          "course_code": "RLGN 2140",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02160 | Hebrew Bible (Tanakh/\"Old Testament\") | 3",
-          "course_code": "RLGN 2160",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02170 | Introduction to the New Testament | 3",
-          "course_code": "RLGN 2170",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02222 | The Supernatural in Popular Culture | 3",
-          "course_code": "RLGN 2222",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RLGN\u00a02590 | Religion and Social Issues | 3",
-          "course_code": "RLGN 2590",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RUSN\u00a01400 | Masterpieces of Russian Literature in Translation | 3",
-          "course_code": "RUSN 1400",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RUSN\u00a02280 | Russian Culture until 1900 | 3",
-          "course_code": "RUSN 2280",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RUSN\u00a02290 | Russian Culture from 1900 to the Present | 3",
-          "course_code": "RUSN 2290",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "RUSN\u00a02310 | Exploring Russia through Film | 3",
-          "course_code": "RUSN 2310",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02200 | Ukrainian Myth, Rites and Rituals | 3",
-          "course_code": "UKRN 2200",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02410 | Ukrainian Canadian Cultural Experience | 3",
-          "course_code": "UKRN 2410",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02590 | Ukrainian Literature and Film | 3",
-          "course_code": "UKRN 2590",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02770 | Ukrainian Culture until 1900 | 3",
-          "course_code": "UKRN 2770",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02780 | Ukrainian Culture from 1900 to the Present | 3",
-          "course_code": "UKRN 2780",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "UKRN\u00a02820 | Holodomor and Holocaust in Ukrainian Literature and Culture | 3",
-          "course_code": "UKRN 2820",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "WOMN\u00a01500 | Introduction to Women's and Gender Studies in the Humanities | 3",
-          "course_code": "WOMN 1500",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "WOMN\u00a01600 | Introduction to Women's and Gender Studies in the Social Sciences | 3",
-          "course_code": "WOMN 1600",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        },
-        {
-          "raw_text": "WOMN\u00a02560 | Women, Science and Technology | 3",
-          "course_code": "WOMN 2560",
-          "is_alternative": false,
-          "hours_text": "3",
-          "footnote_refs": []
-        }
-      ],
-      "footnotes": {
-        "1": "Unallocated credits may not be used 2 This course requires a laboratory"
-      },
-      "kind": "ONE_OF",
-      "courses_required": null,
-      "credit_hours_required": null,
-      "patterns": [
-        {
-          "subject": "HIST",
-          "level_min": 1000,
-          "level_max": 2999
-        }
-      ]
     }
   ]
 }

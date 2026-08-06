@@ -1,5 +1,6 @@
 from app.core.database import Base
 from app.models.academic_record import AcademicRecord
+from app.models.assessment import Assessment, TrackedCourse, WeeklyTopic
 from app.models.course import Course
 from app.models.course_relationship import CourseRelationship
 from app.models.degree_program import DegreeProgram, DegreeProgramInclude
@@ -34,4 +35,7 @@ __all__ = [
     "RequirementGroupPattern",
     "CourseRelationship",
     "ManualRequirementFulfillment",
+    "Assessment",
+    "WeeklyTopic",
+    "TrackedCourse",
 ]

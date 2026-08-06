@@ -19,6 +19,13 @@ import type {
   Term,
   ManualFulfillmentCreate,
   ManualFulfillmentRead,
+  AssessmentRead,
+  AssessmentCreate,
+  AssessmentUpdate,
+  WeeklyTopicRead,
+  WeeklyTopicUpsert,
+  AssessmentCourseRead,
+  TrackedCourseCreate,
 } from "@/types/api";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000/api/v1";
@@ -202,5 +209,67 @@ export function deleteManualFulfillment(fulfillmentId: number): Promise<void> {
   return apiFetch<void>(`/manual-fulfillments/${fulfillmentId}`, { method: "DELETE" });
 }
 
+
+// -- Assessments tab -----------------------------------------------------
+
+export function getAssessmentCourses(termCode: string): Promise<AssessmentCourseRead[]> {
+  const params = new URLSearchParams({ term_code: termCode });
+  return apiFetch<AssessmentCourseRead[]>(`/assessments/courses?${params}`);
+}
+
+export function addAssessmentCourse(
+  payload: TrackedCourseCreate
+): Promise<AssessmentCourseRead> {
+  return apiFetch<AssessmentCourseRead>("/assessments/courses", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function removeAssessmentCourse(termCode: string, courseId: number): Promise<void> {
+  return apiFetch<void>(`/assessments/courses/${termCode}/${courseId}`, { method: "DELETE" });
+}
+
+export function getAssessments(termCode: string): Promise<AssessmentRead[]> {
+  const params = new URLSearchParams({ term_code: termCode });
+  return apiFetch<AssessmentRead[]>(`/assessments?${params}`);
+}
+
+export function createAssessment(payload: AssessmentCreate): Promise<AssessmentRead> {
+  return apiFetch<AssessmentRead>("/assessments", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function updateAssessment(
+  assessmentId: number,
+  payload: AssessmentUpdate
+): Promise<AssessmentRead> {
+  return apiFetch<AssessmentRead>(`/assessments/${assessmentId}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteAssessment(assessmentId: number): Promise<void> {
+  return apiFetch<void>(`/assessments/${assessmentId}`, { method: "DELETE" });
+}
+
+export function getWeeklyTopics(termCode: string): Promise<WeeklyTopicRead[]> {
+  const params = new URLSearchParams({ term_code: termCode });
+  return apiFetch<WeeklyTopicRead[]>(`/assessments/topics?${params}`);
+}
+
+export function upsertWeeklyTopic(payload: WeeklyTopicUpsert): Promise<WeeklyTopicRead> {
+  return apiFetch<WeeklyTopicRead>("/assessments/topics", {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteWeeklyTopic(topicId: number): Promise<void> {
+  return apiFetch<void>(`/assessments/topics/${topicId}`, { method: "DELETE" });
+}
 
 export { ApiError };
