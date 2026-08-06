@@ -34,7 +34,10 @@ export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeek
   const term = useAssessmentsStore((s) => s.term);
 
   const weekStart = parseISO(viewedWeekStart);
-  const days = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(weekStart, i)), [viewedWeekStart]);
+  const days = useMemo(
+    () => Array.from({ length: 7 }, (_, i) => addDays(parseISO(viewedWeekStart), i)),
+    [viewedWeekStart]
+  );
 
   const unscheduled = assessments.filter((a) => !a.due_date);
 

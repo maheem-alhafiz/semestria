@@ -115,7 +115,7 @@ def add_tracked_course(
     )
 
 
-@router.delete("/courses/{term_code}/{course_id}", status_code=204)
+@router.delete("/courses/{term_code}/{course_id}", status_code=204, response_model=None)
 def remove_tracked_course(
     term_code: str,
     course_id: int,
@@ -190,7 +190,7 @@ def update_assessment(
     return assessment
 
 
-@router.delete("/{assessment_id}", status_code=204)
+@router.delete("/{assessment_id}", status_code=204, response_model=None)
 def delete_assessment(
     assessment_id: int,
     db: Session = Depends(get_db),
@@ -243,7 +243,7 @@ def upsert_topic(
     return topic
 
 
-@router.delete("/topics/{topic_id}", status_code=204)
+@router.delete("/topics/{topic_id}", status_code=204, response_model=None)
 def delete_topic(
     topic_id: int,
     db: Session = Depends(get_db),

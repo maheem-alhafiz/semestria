@@ -163,7 +163,7 @@ export default function AssessmentsPage() {
 
       {!isLoading && courses.length === 0 && term && (
         <p className="mt-6 text-sm text-muted">
-          No courses tracked yet for {term.description}. They'll auto-pull from any Plan that
+          No courses tracked yet for {term.description}. They&apos;ll auto-pull from any Plan that
           includes this term, or add one manually above.
         </p>
       )}
