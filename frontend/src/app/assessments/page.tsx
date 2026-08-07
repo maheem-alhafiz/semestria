@@ -17,7 +17,7 @@ export default function AssessmentsPage() {
 
   const term = useAssessmentsStore((s) => s.term);
   const setTerm = useAssessmentsStore((s) => s.setTerm);
-  const loadGradeScale = useAssessmentsStore((s) => s.loadGradeScale);
+  const loadGradeScales = useAssessmentsStore((s) => s.loadGradeScales);
   const courses = useAssessmentsStore((s) => s.courses);
   const addAssessment = useAssessmentsStore((s) => s.addAssessment);
   const editAssessment = useAssessmentsStore((s) => s.editAssessment);
@@ -38,7 +38,7 @@ export default function AssessmentsPage() {
       })
       .catch(() => {})
       .finally(() => setLoadingTerms(false));
-    loadGradeScale();
+    loadGradeScales();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
