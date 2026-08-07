@@ -46,16 +46,12 @@ have to be about any one course (general term to-dos are just as valid).
 `term_code` IS required though, matching the rest of this tab being a
 per-term view.
 
-`GradeScaleCutoff` is NOT per-term or per-course -- it's the student's own
-personal percent-to-letter mapping, one row per (owner, letter_grade),
-used only to turn a computed percentage into a letter/GPA-point estimate
-for display. This exists because the University of Manitoba does not
-publish a universal percentage cutoff table (grading weight/scale is set
-per instructor -- see the Registrar's "Methods of evaluation" section), so
-there is no single correct scale to hardcode. The GPA POINT value per
-letter (A+ = 4.5 ... Fail = 0.0) IS standardized and fixed in code (see
-GRADE_POINTS in app.api.assessments) -- only the percent-to-letter cutoff
-is student-editable.
+`GradeScaleCutoff` is scoped per-course (owner, course_id, letter_grade).
+This exists because the University of Manitoba does not publish a universal
+percentage cutoff table (grading weight/scale is set per instructor -- see 
+the Registrar's "Methods of evaluation" section). The GPA POINT value per
+letter (A+ = 4.5 ... Fail = 0.0) IS standardized and fixed in code -- 
+only the percent-to-letter cutoff is student-editable per course.
 """
 
 from __future__ import annotations
@@ -107,20 +103,12 @@ class Assessment(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     assessment_type: Mapped[str] = mapped_column(String(20), nullable=False)
 
-    # Nullable -- see module docstring on "unscheduled" items.
     due_date: Mapped[date | None] = mapped_column(Date, nullable=True)
-    # Independently nullable -- a date can be known before a time is.
     due_time: Mapped[time | None] = mapped_column(Time, nullable=True)
-
-    # Percent of final grade, e.g. 15.00. Nullable -- not every item is
-    # weighted (a practice quiz, an ungraded lab check-in).
     weight_percent: Mapped[float | None] = mapped_column(Numeric(5, 2), nullable=True)
 
     is_done: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
-
-    # Percent grade received once marked, e.g. 87.50. Nullable until graded.
     grade_received: Mapped[float | None] = mapped_column(Numeric(5, 2), nullable=True)
-
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(
@@ -138,10 +126,6 @@ class Assessment(Base):
 
 
 class WeeklyTopic(Base):
-    """A single logged topic entry -- see module docstring for why this is
-    an append-only log (multiple rows per week are allowed) rather than a
-    singleton per (owner, term, course, week)."""
-
     __tablename__ = "weekly_topics"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -154,8 +138,6 @@ class WeeklyTopic(Base):
         ForeignKey("courses.course_id", ondelete="CASCADE"), nullable=False, index=True
     )
 
-    # Snapped to the Monday of whatever date the student entered -- see
-    # app.api.assessments's topic endpoints.
     week_start_date: Mapped[date] = mapped_column(Date, nullable=False)
     topic_text: Mapped[str] = mapped_column(Text, nullable=False)
 
@@ -174,8 +156,6 @@ class WeeklyTopic(Base):
 
 
 class TrackedCourse(Base):
-    """Manually-added courses only -- see module docstring."""
-
     __tablename__ = "assessment_tracked_courses"
     __table_args__ = (
         UniqueConstraint(
@@ -205,9 +185,6 @@ class TrackedCourse(Base):
 
 
 class Todo(Base):
-    """Personal task notes -- see module docstring for why this is kept
-    separate from Assessment (no weight/grade, not a graded item)."""
-
     __tablename__ = "assessment_todos"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
@@ -216,7 +193,6 @@ class Todo(Base):
     term_code: Mapped[str] = mapped_column(
         ForeignKey("terms.term_code", ondelete="CASCADE"), nullable=False, index=True
     )
-    # Nullable -- a todo doesn't have to be about any one course.
     course_id: Mapped[int | None] = mapped_column(
         ForeignKey("courses.course_id", ondelete="CASCADE"), nullable=True, index=True
     )
@@ -240,19 +216,22 @@ class Todo(Base):
 
 
 class GradeScaleCutoff(Base):
-    """The student's own percent-to-letter mapping -- see module
-    docstring for why this can't be a fixed, hardcoded table."""
-
     __tablename__ = "grade_scale_cutoffs"
     __table_args__ = (
-        UniqueConstraint("owner_id", "letter_grade", name="uq_grade_scale_cutoffs_owner_letter"),
+        UniqueConstraint("owner_id", "course_id", "letter_grade", name="uq_grade_scale_cutoffs_owner_course_letter"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     owner_id: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
 
+    course_id: Mapped[int] = mapped_column(
+        ForeignKey("courses.course_id", ondelete="CASCADE"), nullable=False, index=True
+    )
+
     letter_grade: Mapped[str] = mapped_column(String(10), nullable=False)
     min_percent: Mapped[float] = mapped_column(Numeric(5, 2), nullable=False)
 
+    course: Mapped["Course"] = relationship()
+
     def __repr__(self) -> str:
-        return f"<GradeScaleCutoff owner={self.owner_id} {self.letter_grade}={self.min_percent}>"
+        return f"<GradeScaleCutoff owner={self.owner_id} course={self.course_id} {self.letter_grade}={self.min_percent}>"

@@ -29,6 +29,7 @@ import type {
   TodoCreate,
   TodoUpdate,
   GradeScaleCutoffItem,
+  GradeScaleCourseRead,
   AssessmentCourseRead,
   TrackedCourseCreate,
 } from "@/types/api";
@@ -311,14 +312,14 @@ export function deleteTodo(todoId: number): Promise<void> {
   return apiFetch<void>(`/assessments/todos/${todoId}`, { method: "DELETE" });
 }
 
-// -- Grade scale (personal percent-to-letter cutoffs) ----------------------
+// -- Grade scale (personal percent-to-letter cutoffs per course) -----------
 
-export function getGradeScale(): Promise<GradeScaleCutoffItem[]> {
-  return apiFetch<GradeScaleCutoffItem[]>("/assessments/grade-scale");
+export function getGradeScales(): Promise<GradeScaleCourseRead[]> {
+  return apiFetch<GradeScaleCourseRead[]>("/assessments/grade-scales");
 }
 
-export function setGradeScale(cutoffs: GradeScaleCutoffItem[]): Promise<GradeScaleCutoffItem[]> {
-  return apiFetch<GradeScaleCutoffItem[]>("/assessments/grade-scale", {
+export function setGradeScale(courseId: number, cutoffs: GradeScaleCutoffItem[]): Promise<GradeScaleCourseRead> {
+  return apiFetch<GradeScaleCourseRead>(`/assessments/grade-scales/${courseId}`, {
     method: "PUT",
     body: JSON.stringify({ cutoffs }),
   });

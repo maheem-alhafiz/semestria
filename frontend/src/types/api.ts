@@ -395,3 +395,8 @@ export interface TrackedCourseCreate {
   term_code: string;
   course_id: number;
 }
+
+export interface GradeScaleCourseRead {
+  course_id: number;
+  cutoffs: GradeScaleCutoffItem[];
+}

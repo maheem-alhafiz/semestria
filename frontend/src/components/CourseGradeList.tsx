@@ -10,15 +10,16 @@ import { useAssessmentsStore } from "@/store/assessmentsStore";
 export function CourseGradeList({ termCode }: { termCode: string }) {
   const courses = useAssessmentsStore((s) => s.courses);
   const assessments = useAssessmentsStore((s) => s.assessments);
-  const gradeScale = useAssessmentsStore((s) => s.gradeScale);
+  const gradeScales = useAssessmentsStore((s) => s.gradeScales);
   const removeCourse = useAssessmentsStore((s) => s.removeCourse);
 
-  const [scaleModalOpen, setScaleModalOpen] = useState(false);
+  const [scaleModalCourseId, setScaleModalCourseId] = useState<number | null>(null);
 
   const rows = courses.map((c) => {
     const courseAssessments = assessments.filter((a) => a.course_id === c.course_id);
-    const projection = projectCourseGrade(courseAssessments, gradeScale);
-    return { course: c, projection };
+    const scale = gradeScales[c.course_id];
+    const projection = projectCourseGrade(courseAssessments, scale || []);
+    return { course: c, projection, hasScale: !!scale };
   });
 
   const termGpa = projectTermGpa(
@@ -37,12 +38,6 @@ export function CourseGradeList({ termCode }: { termCode: string }) {
           )}
         </div>
         <div className="flex items-center gap-2">
-          <button
-            onClick={() => setScaleModalOpen(true)}
-            className="rounded-full border border-hairline px-3 py-1.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-paper"
-          >
-            Grade scale
-          </button>
           <AddAssessmentCourseSearch termCode={termCode} />
         </div>
       </div>
@@ -54,8 +49,8 @@ export function CourseGradeList({ termCode }: { termCode: string }) {
         </p>
       ) : (
         <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-          {rows.map(({ course, projection }) => (
-            <div key={course.course_id} className="rounded-xl border border-hairline bg-elevated p-3">
+          {rows.map(({ course, projection, hasScale }) => (
+            <div key={course.course_id} className="flex flex-col rounded-xl border border-hairline bg-elevated p-3">
               <div className="flex items-start justify-between gap-2">
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium text-paper">
@@ -81,33 +76,53 @@ export function CourseGradeList({ termCode }: { termCode: string }) {
                     style={{ width: `${Math.min(100, projection.gradedWeightPercent)}%` }}
                   />
                 </div>
-                <p className="mt-1 text-[11px] text-muted">
-                  {projection.gradedWeightPercent.toFixed(0)}% of graded weight recorded
-                </p>
+                <div className="mt-1 flex items-center justify-between">
+                  <p className="text-[11px] text-muted">
+                    {projection.gradedWeightPercent.toFixed(0)}% of graded weight recorded
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-2 text-xs">
-                {projection.predictedFinalPercent != null ? (
-                  <p className="text-paper">
-                    Current standing:{" "}
-                    <span className="font-medium">{projection.predictedFinalPercent.toFixed(1)}%</span>
-                    {projection.predictedLetter && (
-                      <span className="text-muted">
-                        {" "}
-                        ({projection.predictedLetter})
-                      </span>
-                    )}
-                  </p>
-                ) : (
-                  <p className="text-muted">No grades recorded yet</p>
-                )}
+              <div className="mt-2 flex flex-1 items-end justify-between">
+                <div className="text-xs">
+                  {projection.predictedFinalPercent != null ? (
+                    <p className="text-paper">
+                      Current standing:{" "}
+                      <span className="font-medium">{projection.predictedFinalPercent.toFixed(1)}%</span>
+                      {projection.predictedLetter && (
+                        <span className="text-muted">
+                          {" "}
+                          ({projection.predictedLetter})
+                        </span>
+                      )}
+                    </p>
+                  ) : (
+                    <p className="text-muted">No grades recorded yet</p>
+                  )}
+                  {!hasScale && (
+                    <p className="mt-1 text-[11px] font-medium text-warning">
+                      Grading scale not added
+                    </p>
+                  )}
+                </div>
+                
+                <button
+                  onClick={() => setScaleModalCourseId(course.course_id)}
+                  className="shrink-0 rounded-lg border border-hairline bg-panel px-2 py-1 text-[11px] font-medium text-muted transition-colors hover:border-accent hover:text-paper"
+                >
+                  Set Scale
+                </button>
               </div>
             </div>
           ))}
         </div>
       )}
 
-      <GradeScaleModal isOpen={scaleModalOpen} onClose={() => setScaleModalOpen(false)} />
+      <GradeScaleModal 
+        courseId={scaleModalCourseId} 
+        isOpen={scaleModalCourseId !== null} 
+        onClose={() => setScaleModalCourseId(null)} 
+      />
     </div>
   );
 }

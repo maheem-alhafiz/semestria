@@ -9,6 +9,7 @@ app.core.visitor), same as Plans/AcademicRecord.
 from __future__ import annotations
 
 from datetime import date, timedelta
+from collections import defaultdict
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import delete, select
@@ -32,6 +33,7 @@ from app.schemas.assessment import (
     AssessmentCreate,
     AssessmentRead,
     AssessmentUpdate,
+    GradeScaleCourseRead,
     GradeScaleCutoffItem,
     GradeScaleUpdate,
     TodoCreate,
@@ -363,62 +365,64 @@ def delete_todo(
     db.commit()
 
 
-# -- Grade scale (personal percent-to-letter cutoffs) ------------------
+# -- Grade scale (personal percent-to-letter cutoffs per course) -------
 
-# NOT an official University of Manitoba scale -- UM does not publish one
-# (grading weight/scale is set per instructor). This is only a starting
-# point shown until the student sets their own; see GradeScaleCutoff's
-# docstring.
 _SUGGESTED_DEFAULT_CUTOFFS: dict[str, float] = {
-    "A+": 90,
-    "A": 80,
-    "B+": 75,
-    "B": 70,
-    "C+": 65,
-    "C": 60,
-    "D": 50,
-    "Fail": 0,
+    "A+": 90.0,
+    "A": 80.0,
+    "B+": 75.0,
+    "B": 70.0,
+    "C+": 65.0,
+    "C": 60.0,
+    "D": 50.0,
+    "Fail": 0.0,
 }
 
-
-@router.get("/grade-scale", response_model=list[GradeScaleCutoffItem])
-def get_grade_scale(
+@router.get("/grade-scales", response_model=list[GradeScaleCourseRead])
+def get_all_grade_scales(
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
-) -> list[GradeScaleCutoffItem]:
-    """Not term-scoped -- this is the student's own personal scale, reused
-    across every term. Returns their saved cutoffs, or an unsaved
-    suggested default (see _SUGGESTED_DEFAULT_CUTOFFS) if they haven't
-    set one yet."""
+) -> list[GradeScaleCourseRead]:
+    """Returns all custom grade scales the student has set, grouped by course."""
     rows = db.execute(
         select(GradeScaleCutoff).where(GradeScaleCutoff.owner_id == owner_id)
     ).scalars().all()
-    if rows:
-        return [GradeScaleCutoffItem(letter_grade=r.letter_grade, min_percent=r.min_percent) for r in rows]
+    
+    grouped = defaultdict(list)
+    for r in rows:
+        grouped[r.course_id].append(GradeScaleCutoffItem(letter_grade=r.letter_grade, min_percent=r.min_percent))
+        
     return [
-        GradeScaleCutoffItem(letter_grade=letter, min_percent=pct)
-        for letter, pct in _SUGGESTED_DEFAULT_CUTOFFS.items()
+        GradeScaleCourseRead(course_id=cid, cutoffs=cutoffs)
+        for cid, cutoffs in grouped.items()
     ]
 
-
-@router.put("/grade-scale", response_model=list[GradeScaleCutoffItem])
+@router.put("/grade-scales/{course_id}", response_model=GradeScaleCourseRead)
 def set_grade_scale(
+    course_id: int,
     payload: GradeScaleUpdate,
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
-) -> list[GradeScaleCutoffItem]:
-    """Full replace: every letter in LETTER_GRADES must be present.
-    Simpler and safer than a partial-upsert for an 8-row settings table
-    the frontend always submits as a whole form."""
+) -> GradeScaleCourseRead:
+    """Full replace of the grade scale for a specific course."""
     provided = {c.letter_grade for c in payload.cutoffs}
     missing = set(LETTER_GRADES) - provided
     if missing:
         raise HTTPException(status_code=422, detail=f"Missing cutoffs for: {sorted(missing)}")
 
-    db.execute(delete(GradeScaleCutoff).where(GradeScaleCutoff.owner_id == owner_id))
+    db.execute(delete(GradeScaleCutoff).where(
+        GradeScaleCutoff.owner_id == owner_id, 
+        GradeScaleCutoff.course_id == course_id
+    ))
+    
     for cutoff in payload.cutoffs:
         db.add(
-            GradeScaleCutoff(owner_id=owner_id, letter_grade=cutoff.letter_grade, min_percent=cutoff.min_percent)
+            GradeScaleCutoff(
+                owner_id=owner_id,
+                course_id=course_id,
+                letter_grade=cutoff.letter_grade,
+                min_percent=cutoff.min_percent
+            )
         )
     db.commit()
-    return payload.cutoffs
+    return GradeScaleCourseRead(course_id=course_id, cutoffs=payload.cutoffs)

@@ -119,6 +119,11 @@ class GradeScaleCutoffItem(BaseModel):
     min_percent: float
 
 
+class GradeScaleCourseRead(BaseModel):
+    course_id: int
+    cutoffs: list[GradeScaleCutoffItem]
+
+
 class GradeScaleUpdate(BaseModel):
     cutoffs: list[GradeScaleCutoffItem]
 

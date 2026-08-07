@@ -7,26 +7,39 @@ import type { GradeScaleCutoffItem, LetterGrade } from "@/types/api";
 
 const LETTERS: LetterGrade[] = ["A+", "A", "B+", "B", "C+", "C", "D", "Fail"];
 
-export function GradeScaleModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const gradeScale = useAssessmentsStore((s) => s.gradeScale);
-  const loadGradeScale = useAssessmentsStore((s) => s.loadGradeScale);
-  const saveGradeScale = useAssessmentsStore((s) => s.saveGradeScale);
+const SUGGESTED_DEFAULT_CUTOFFS: Record<LetterGrade, string> = {
+  "A+": "90",
+  "A": "80",
+  "B+": "75",
+  "B": "70",
+  "C+": "65",
+  "C": "60",
+  "D": "50",
+  "Fail": "0",
+};
 
-  const [values, setValues] = useState<Record<LetterGrade, string>>(() => defaultValues(gradeScale));
+export function GradeScaleModal({ courseId, isOpen, onClose }: { courseId: number | null; isOpen: boolean; onClose: () => void }) {
+  const gradeScales = useAssessmentsStore((s) => s.gradeScales);
+  const saveGradeScale = useAssessmentsStore((s) => s.saveGradeScale);
+  const courses = useAssessmentsStore((s) => s.courses);
+
+  const [values, setValues] = useState<Record<LetterGrade, string>>(SUGGESTED_DEFAULT_CUTOFFS);
   const [saving, setSaving] = useState(false);
 
+  const course = courses.find((c) => c.course_id === courseId);
+
   useEffect(() => {
-    if (isOpen) {
-      loadGradeScale();
+    if (isOpen && courseId !== null) {
+      const existingScale = gradeScales[courseId];
+      if (existingScale && existingScale.length > 0) {
+        setValues(defaultValues(existingScale));
+      } else {
+        setValues(SUGGESTED_DEFAULT_CUTOFFS);
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [isOpen, courseId, gradeScales]);
 
-  useEffect(() => {
-    setValues(defaultValues(gradeScale));
-  }, [gradeScale]);
-
-  if (!isOpen) return null;
+  if (!isOpen || courseId === null) return null;
 
   async function handleSave() {
     setSaving(true);
@@ -35,7 +48,7 @@ export function GradeScaleModal({ isOpen, onClose }: { isOpen: boolean; onClose:
         letter_grade: letter,
         min_percent: Number(values[letter]) || 0,
       }));
-      await saveGradeScale(cutoffs);
+      await saveGradeScale(courseId, cutoffs);
       onClose();
     } finally {
       setSaving(false);
@@ -45,11 +58,11 @@ export function GradeScaleModal({ isOpen, onClose }: { isOpen: boolean; onClose:
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
       <div className="w-full max-w-sm rounded-2xl border border-hairline bg-panel p-5 shadow-2xl">
-        <h2 className="text-sm font-semibold text-paper">Your grade scale</h2>
+        <h2 className="text-sm font-semibold text-paper">
+          {course ? `${course.subject} ${course.course_number} Grade Scale` : "Grade scale"}
+        </h2>
         <p className="mt-1 text-xs text-muted">
-          UM doesn&apos;t publish one universal percent cutoff table -- grading scale is set per
-          instructor. Set the minimum percent for each letter grade to match your own courses;
-          this is used to estimate predicted letter grades and term GPA.
+          Enter the minimum percentage required for each letter grade based on this course&apos;s syllabus.
         </p>
 
         <div className="mt-3 space-y-1.5">

@@ -8,6 +8,7 @@ from app.schemas.assessment import (
     AssessmentCreate,
     AssessmentRead,
     AssessmentUpdate,
+    GradeScaleCourseRead,
     GradeScaleCutoffItem,
     GradeScaleUpdate,
     TodoCreate,
@@ -80,6 +81,7 @@ __all__ = [
     "TodoCreate",
     "TodoUpdate",
     "TodoRead",
+    "GradeScaleCourseRead",
     "GradeScaleCutoffItem",
     "GradeScaleUpdate",
 ]

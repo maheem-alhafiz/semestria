@@ -11,7 +11,7 @@ import {
   deleteTopic,
   getAssessmentCourses,
   getAssessments,
-  getGradeScale,
+  getGradeScales,
   getTodos,
   getTopics,
   removeAssessmentCourse,
@@ -52,8 +52,8 @@ interface AssessmentsState {
   assessments: AssessmentRead[];
   topics: TopicEntryRead[];
   todos: TodoRead[];
-  // Not term-scoped -- the student's own personal scale, loaded once.
-  gradeScale: GradeScaleCutoffItem[];
+  // Maps course_id to its specific grade scale
+  gradeScales: Record<number, GradeScaleCutoffItem[]>;
 
   isLoading: boolean;
   error: string | null;
@@ -64,8 +64,8 @@ interface AssessmentsState {
   goToWeekOf: (date: Date) => void;
 
   loadAll: (termCode: string) => Promise<void>;
-  loadGradeScale: () => Promise<void>;
-  saveGradeScale: (cutoffs: GradeScaleCutoffItem[]) => Promise<void>;
+  loadGradeScales: () => Promise<void>;
+  saveGradeScale: (courseId: number, cutoffs: GradeScaleCutoffItem[]) => Promise<void>;
 
   addCourse: (courseId: number) => Promise<void>;
   removeCourse: (courseId: number) => Promise<void>;
@@ -91,7 +91,7 @@ export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
   assessments: [],
   topics: [],
   todos: [],
-  gradeScale: [],
+  gradeScales: {},
 
   isLoading: false,
   error: null,
@@ -138,18 +138,24 @@ export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
     }
   },
 
-  loadGradeScale: async () => {
+  loadGradeScales: async () => {
     try {
-      const gradeScale = await getGradeScale();
-      set({ gradeScale });
+      const scales = await getGradeScales();
+      const map: Record<number, GradeScaleCutoffItem[]> = {};
+      for (const s of scales) {
+        map[s.course_id] = s.cutoffs;
+      }
+      set({ gradeScales: map });
     } catch {
       // Non-fatal -- course cards just won't show a predicted letter/GPA.
     }
   },
 
-  saveGradeScale: async (cutoffs) => {
-    const saved = await setGradeScale(cutoffs);
-    set({ gradeScale: saved });
+  saveGradeScale: async (courseId, cutoffs) => {
+    const updated = await setGradeScale(courseId, cutoffs);
+    set((state) => ({
+      gradeScales: { ...state.gradeScales, [courseId]: updated.cutoffs },
+    }));
   },
 
   addCourse: async (courseId) => {
