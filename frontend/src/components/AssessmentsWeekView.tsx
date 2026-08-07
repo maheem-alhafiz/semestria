@@ -38,6 +38,8 @@ export function AssessmentsWeekView({ onOpenTask }: AssessmentsWeekViewProps) {
   const viewedWeekStart = useAssessmentsStore((s) => s.viewedWeekStart);
   const assessments = useAssessmentsStore((s) => s.assessments);
   const courses = useAssessmentsStore((s) => s.courses);
+  const goToNextWeek = useAssessmentsStore((s) => s.goToNextWeek);
+  const goToPrevWeek = useAssessmentsStore((s) => s.goToPrevWeek);
 
   const weekStart = parseISO(viewedWeekStart);
   const weekDays = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(weekStart, i)), [weekStart]);
@@ -63,7 +65,14 @@ export function AssessmentsWeekView({ onOpenTask }: AssessmentsWeekViewProps) {
     <div className="mt-4 flex flex-col items-start gap-6 lg:flex-row">
       {/* LEFT: Mini-Map */}
       <div className="w-full shrink-0 rounded-2xl border border-hairline bg-panel p-4 lg:w-72">
-        <h3 className="text-sm font-semibold text-paper">{format(weekStart, "MMMM yyyy")}</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-paper">{format(weekStart, "MMMM yyyy")}</h3>
+          <div className="flex items-center gap-1 rounded-lg border border-hairline bg-elevated p-0.5">
+            <button onClick={goToPrevWeek} className="rounded-md px-2 py-1 text-xs text-muted hover:text-paper" aria-label="Previous week">←</button>
+            <button onClick={goToNextWeek} className="rounded-md px-2 py-1 text-xs text-muted hover:text-paper" aria-label="Next week">→</button>
+          </div>
+        </div>
+        
         <div className="mt-4 grid grid-cols-7 gap-1 text-center text-xs font-medium text-muted">
           <div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
         </div>
@@ -130,14 +139,11 @@ export function AssessmentsWeekView({ onOpenTask }: AssessmentsWeekViewProps) {
             {agendaDays.map(({ day, items }) => {
               const isToday = isSameDay(day, new Date());
               return (
-                <div key={day.toISOString()} className="relative pl-4">
-                  {/* Timeline indicator line */}
-                  <div className={`absolute left-0 top-1.5 h-full w-[2px] rounded-full ${isToday ? "bg-accent" : "bg-hairline"}`}></div>
-                  
+                <div key={day.toISOString()} className="space-y-2">
                   <h3 className={`text-sm font-medium ${isToday ? "text-accent" : "text-paper"}`}>
                     {format(day, "EEEE, MMM d")}
                   </h3>
-                  <div className="mt-2 space-y-2">
+                  <div className="space-y-2">
                     {items.map((a) => (
                       <button
                         key={a.id}

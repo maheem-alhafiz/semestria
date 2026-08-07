@@ -1,6 +1,5 @@
 "use client";
 
-import { addDays, format, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
 
 import { AssessmentTaskModal, type AssessmentFormValues } from "@/components/AssessmentTaskModal";
@@ -19,9 +18,6 @@ export default function AssessmentsPage() {
   const term = useAssessmentsStore((s) => s.term);
   const setTerm = useAssessmentsStore((s) => s.setTerm);
   const loadGradeScale = useAssessmentsStore((s) => s.loadGradeScale);
-  const viewedWeekStart = useAssessmentsStore((s) => s.viewedWeekStart);
-  const goToNextWeek = useAssessmentsStore((s) => s.goToNextWeek);
-  const goToPrevWeek = useAssessmentsStore((s) => s.goToPrevWeek);
   const courses = useAssessmentsStore((s) => s.courses);
   const addAssessment = useAssessmentsStore((s) => s.addAssessment);
   const editAssessment = useAssessmentsStore((s) => s.editAssessment);
@@ -45,13 +41,6 @@ export default function AssessmentsPage() {
     loadGradeScale();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const weekStartDate = parseISO(viewedWeekStart);
-  const weekEndDate = addDays(weekStartDate, 6);
-  const weekLabel =
-    term?.start_date != null
-      ? `Week ${Math.max(1, Math.round((weekStartDate.getTime() - parseISO(term.start_date).getTime()) / (7 * 86400000)) + 1)}`
-      : "Week";
 
   function openAddModal() {
     setEditing(null);
@@ -101,18 +90,6 @@ export default function AssessmentsPage() {
               </option>
             ))}
           </select>
-
-          <div className="flex items-center gap-1.5 rounded-xl border border-hairline bg-elevated px-1.5 py-1">
-            <button onClick={goToPrevWeek} className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper" aria-label="Previous week">
-              ←
-            </button>
-            <span className="px-1.5 text-xs font-medium text-paper">
-              {weekLabel} · {format(weekStartDate, "MMM d")}–{format(weekEndDate, "MMM d")}
-            </span>
-            <button onClick={goToNextWeek} className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper" aria-label="Next week">
-              →
-            </button>
-          </div>
 
           <button
             onClick={openAddModal}
