@@ -13,28 +13,46 @@ const TYPE_OPTIONS: { value: AssessmentType; label: string }[] = [
   { value: "OTHER", label: "Other" },
 ];
 
+export interface AssessmentFormValues {
+  course_id: number;
+  title: string;
+  assessment_type: AssessmentType;
+  due_date: string | null;
+  due_time: string | null;
+  weight_percent: number | null;
+  is_done: boolean;
+  grade_received: number | null;
+  notes: string | null;
+}
+
 interface AssessmentTaskModalProps {
   isOpen: boolean;
   courses: AssessmentCourseRead[];
-  // Pre-fills the course dropdown and/or due date -- e.g. clicking "+" on
-  // a specific course row, or on a specific day cell.
   defaultCourseId?: number | null;
   defaultDueDate?: string | null;
   editing?: AssessmentRead | null;
   isSaving: boolean;
   onCancel: () => void;
   onDelete?: (id: number) => void;
-  onSave: (values: {
-    course_id: number;
-    title: string;
-    assessment_type: AssessmentType;
-    due_date: string | null;
-    weight_percent: number | null;
-    is_done: boolean;
-    grade_received: number | null;
-    notes: string | null;
-  }) => void;
+  // `keepOpen` is true when "Save & add another" was clicked -- lets the
+  // caller reset the form instead of closing the modal, so a whole
+  // syllabus's worth of due dates can be entered in one sitting without
+  // navigating the calendar between each one (see AssessmentsWeekView's
+  // docstring on why the old per-day-cell "+" approach was replaced).
+  onSave: (values: AssessmentFormValues, keepOpen: boolean) => void;
 }
+
+const emptyValues = (courses: AssessmentCourseRead[], defaultCourseId?: number | null) => ({
+  courseId: defaultCourseId ?? courses[0]?.course_id ?? null,
+  title: "",
+  type: "ASSIGNMENT" as AssessmentType,
+  dueDate: "",
+  dueTime: "",
+  weight: "",
+  isDone: false,
+  grade: "",
+  notes: "",
+});
 
 export function AssessmentTaskModal({
   isOpen,
@@ -53,6 +71,7 @@ export function AssessmentTaskModal({
   const [title, setTitle] = useState(editing?.title ?? "");
   const [type, setType] = useState<AssessmentType>(editing?.assessment_type ?? "ASSIGNMENT");
   const [dueDate, setDueDate] = useState(editing?.due_date ?? defaultDueDate ?? "");
+  const [dueTime, setDueTime] = useState(editing?.due_time?.slice(0, 5) ?? "");
   const [weight, setWeight] = useState(editing?.weight_percent?.toString() ?? "");
   const [isDone, setIsDone] = useState(editing?.is_done ?? false);
   const [grade, setGrade] = useState(editing?.grade_received?.toString() ?? "");
@@ -62,18 +81,42 @@ export function AssessmentTaskModal({
 
   const canSave = courseId !== null && title.trim().length > 0;
 
-  function handleSave() {
-    if (!canSave || courseId === null) return;
-    onSave({
+  function buildValues(): AssessmentFormValues | null {
+    if (!canSave || courseId === null) return null;
+    return {
       course_id: courseId,
       title: title.trim(),
       assessment_type: type,
       due_date: dueDate || null,
+      due_time: dueTime ? `${dueTime}:00` : null,
       weight_percent: weight.trim() ? Number(weight) : null,
       is_done: isDone,
       grade_received: grade.trim() ? Number(grade) : null,
       notes: notes.trim() || null,
-    });
+    };
+  }
+
+  function handleSave() {
+    const values = buildValues();
+    if (!values) return;
+    onSave(values, false);
+  }
+
+  function handleSaveAndAddAnother() {
+    const values = buildValues();
+    if (!values) return;
+    onSave(values, true);
+    // Reset everything except the course -- bulk entry is almost always
+    // for the same course's syllabus.
+    const reset = emptyValues(courses, courseId);
+    setTitle(reset.title);
+    setType(reset.type);
+    setDueDate(reset.dueDate);
+    setDueTime(reset.dueTime);
+    setWeight(reset.weight);
+    setIsDone(reset.isDone);
+    setGrade(reset.grade);
+    setNotes(reset.notes);
   }
 
   return (
@@ -132,6 +175,15 @@ export function AssessmentTaskModal({
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
+                className="mt-1 w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper focus:outline-none focus:ring-1 focus:ring-accent"
+              />
+            </div>
+            <div className="w-28">
+              <label className="text-xs font-medium text-muted">Time</label>
+              <input
+                type="time"
+                value={dueTime}
+                onChange={(e) => setDueTime(e.target.value)}
                 className="mt-1 w-full rounded-xl border border-hairline bg-elevated px-3 py-2 text-sm text-paper focus:outline-none focus:ring-1 focus:ring-accent"
               />
             </div>
@@ -195,12 +247,18 @@ export function AssessmentTaskModal({
             )}
           </div>
           <div className="flex gap-2">
-            <button
-              onClick={onCancel}
-              className="rounded-xl px-3 py-1.5 text-sm text-muted transition-colors hover:text-paper"
-            >
+            <button onClick={onCancel} className="rounded-xl px-3 py-1.5 text-sm text-muted hover:text-paper">
               Cancel
             </button>
+            {!editing && (
+              <button
+                onClick={handleSaveAndAddAnother}
+                disabled={isSaving || !canSave}
+                className="rounded-xl border border-hairline px-3 py-1.5 text-sm font-medium text-paper disabled:opacity-40"
+              >
+                Save &amp; add another
+              </button>
+            )}
             <button
               onClick={handleSave}
               disabled={isSaving || !canSave}

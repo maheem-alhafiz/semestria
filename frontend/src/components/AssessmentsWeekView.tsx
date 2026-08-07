@@ -1,7 +1,18 @@
 "use client";
 
+/**
+ * The old version put a small "+" button and an empty box in every day
+ * cell, plus a per-course topic textbox pinned to whatever week you'd
+ * navigated to. Both were bad for bulk entry: adding a whole syllabus's
+ * worth of due dates meant clicking through every week one at a time.
+ * This version is pure display -- the grid shows what's due, all adding
+ * happens through one "+ Add assessment" button in the page header (see
+ * app/assessments/page.tsx), and topics moved out entirely into
+ * TopicsLogSection, which isn't tied to calendar navigation at all.
+ */
+
 import { addDays, format, isSameDay, parseISO } from "date-fns";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { useAssessmentsStore } from "@/store/assessmentsStore";
 import type { AssessmentRead } from "@/types/api";
@@ -20,20 +31,25 @@ function courseLabel(courses: { course_id: number; subject: string; course_numbe
   return c ? `${c.subject} ${c.course_number}` : "";
 }
 
+function formatTime(dueTime: string | null): string {
+  if (!dueTime) return "";
+  const parts = dueTime.split(":").map(Number);
+  const h = parts[0] ?? 0;
+  const m = parts[1] ?? 0;
+  const period = h >= 12 ? "PM" : "AM";
+  const hour12 = h % 12 === 0 ? 12 : h % 12;
+  return ` · ${hour12}:${String(m).padStart(2, "0")} ${period}`;
+}
+
 interface AssessmentsWeekViewProps {
-  onAddForDay: (dueDate: string) => void;
   onOpenTask: (assessment: AssessmentRead) => void;
 }
 
-export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeekViewProps) {
+export function AssessmentsWeekView({ onOpenTask }: AssessmentsWeekViewProps) {
   const viewedWeekStart = useAssessmentsStore((s) => s.viewedWeekStart);
   const assessments = useAssessmentsStore((s) => s.assessments);
   const courses = useAssessmentsStore((s) => s.courses);
-  const topics = useAssessmentsStore((s) => s.topics);
-  const saveTopic = useAssessmentsStore((s) => s.saveTopic);
-  const term = useAssessmentsStore((s) => s.term);
 
-  const weekStart = parseISO(viewedWeekStart);
   const days = useMemo(
     () => Array.from({ length: 7 }, (_, i) => addDays(parseISO(viewedWeekStart), i)),
     [viewedWeekStart]
@@ -43,34 +59,23 @@ export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeek
 
   return (
     <div className="mt-4 space-y-4">
-      {/* 7-day grid */}
       <div className="grid grid-cols-7 gap-2">
         {days.map((day) => {
           const dayIso = format(day, "yyyy-MM-dd");
-          const dayAssessments = assessments.filter(
-            (a) => a.due_date && isSameDay(parseISO(a.due_date), day)
-          );
+          const dayAssessments = assessments.filter((a) => a.due_date && isSameDay(parseISO(a.due_date), day));
           const isToday = isSameDay(day, new Date());
           return (
             <div
               key={dayIso}
-              className={`min-h-[140px] rounded-2xl border p-2 ${
+              className={`min-h-[110px] rounded-2xl border p-2 ${
                 isToday ? "border-accent" : "border-hairline"
               } bg-panel`}
             >
-              <div className="flex items-center justify-between">
-                <p className="text-xs font-medium text-muted">
-                  {format(day, "EEE")} <span className="text-paper">{format(day, "d")}</span>
-                </p>
-                <button
-                  onClick={() => onAddForDay(dayIso)}
-                  className="text-xs text-muted hover:text-paper"
-                  aria-label="Add assessment"
-                >
-                  +
-                </button>
-              </div>
+              <p className="text-xs font-medium text-muted">
+                {format(day, "EEE")} <span className="text-paper">{format(day, "d")}</span>
+              </p>
               <div className="mt-1.5 space-y-1">
+                {dayAssessments.length === 0 && <p className="text-[11px] text-muted/50">—</p>}
                 {dayAssessments.map((a) => (
                   <button
                     key={a.id}
@@ -81,6 +86,7 @@ export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeek
                     title={a.title}
                   >
                     {courseLabel(courses, a.course_id)} · {a.title}
+                    {formatTime(a.due_time)}
                   </button>
                 ))}
               </div>
@@ -89,7 +95,6 @@ export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeek
         })}
       </div>
 
-      {/* Unscheduled bucket */}
       {unscheduled.length > 0 && (
         <div className="rounded-2xl border border-hairline bg-panel p-3">
           <p className="text-xs font-medium text-muted">Unscheduled (no due date yet)</p>
@@ -108,82 +113,6 @@ export function AssessmentsWeekView({ onAddForDay, onOpenTask }: AssessmentsWeek
           </div>
         </div>
       )}
-
-      {/* Per-course topic notes for this week */}
-      {courses.length > 0 && (
-        <div className="rounded-2xl border border-hairline bg-panel p-3">
-          <p className="text-xs font-medium text-muted">Topics covered this week</p>
-          <div className="mt-2 space-y-2">
-            {courses.map((c) => (
-              <TopicRow
-                key={c.course_id}
-                courseId={c.course_id}
-                courseLabel={`${c.subject} ${c.course_number}`}
-                weekStartDate={viewedWeekStart}
-                initialText={
-                  topics.find(
-                    (t) => t.course_id === c.course_id && t.week_start_date === viewedWeekStart
-                  )?.topic_text ?? ""
-                }
-                termCode={term?.term_code ?? ""}
-                onSave={saveTopic}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function TopicRow({
-  courseId,
-  courseLabel,
-  weekStartDate,
-  initialText,
-  termCode,
-  onSave,
-}: {
-  courseId: number;
-  courseLabel: string;
-  weekStartDate: string;
-  initialText: string;
-  termCode: string;
-  onSave: (payload: {
-    term_code: string;
-    course_id: number;
-    week_start_date: string;
-    topic_text: string;
-  }) => Promise<void>;
-}) {
-  const [text, setText] = useState(initialText);
-  const [saving, setSaving] = useState(false);
-
-  return (
-    <div className="flex items-start gap-2">
-      <span className="w-20 shrink-0 pt-2 text-xs font-medium text-paper">{courseLabel}</span>
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onBlur={async () => {
-          if (text === initialText) return;
-          setSaving(true);
-          try {
-            await onSave({
-              term_code: termCode,
-              course_id: courseId,
-              week_start_date: weekStartDate,
-              topic_text: text,
-            });
-          } finally {
-            setSaving(false);
-          }
-        }}
-        placeholder="What did this course cover this week?"
-        className="flex-1 rounded-lg border border-hairline bg-elevated px-2.5 py-1.5 text-xs text-paper placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-accent disabled:opacity-60"
-        disabled={saving}
-      />
     </div>
   );
 }

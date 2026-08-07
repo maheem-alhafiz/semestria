@@ -1,12 +1,14 @@
 """
 API for the Assessments tab. See app.models.assessment for the full
-reasoning behind the three-table shape.
+reasoning behind each table's shape.
 
 Every route filters by owner_id (the anonymous visitor cookie -- see
 app.core.visitor), same as Plans/AcademicRecord.
 """
 
 from __future__ import annotations
+
+from datetime import date, timedelta
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import delete, select
@@ -15,18 +17,39 @@ from sqlalchemy.orm import Session
 
 from app.core.database import get_db
 from app.core.visitor import get_current_owner_id
-from app.models import Assessment, Course, Plan, PlanItem, TrackedCourse, WeeklyTopic
+from app.models import (
+    AcademicRecord,
+    Assessment,
+    Course,
+    GradeScaleCutoff,
+    Todo,
+    TrackedCourse,
+    WeeklyTopic,
+)
 from app.schemas.assessment import (
+    LETTER_GRADES,
     AssessmentCourseRead,
     AssessmentCreate,
     AssessmentRead,
     AssessmentUpdate,
+    GradeScaleCutoffItem,
+    GradeScaleUpdate,
+    TodoCreate,
+    TodoRead,
+    TodoUpdate,
+    TopicEntryCreate,
+    TopicEntryRead,
+    TopicEntryUpdate,
     TrackedCourseCreate,
-    WeeklyTopicRead,
-    WeeklyTopicUpsert,
 )
 
 router = APIRouter(prefix="/assessments", tags=["assessments"])
+
+
+def _monday_of(d: date) -> date:
+    """Snaps any date to that week's Monday -- see WeeklyTopic's
+    docstring on why entries are stored by week rather than exact date."""
+    return d - timedelta(days=d.weekday())
 
 
 def _get_owned_assessment_or_404(db: Session, assessment_id: int, owner_id: str) -> Assessment:
@@ -48,18 +71,19 @@ def list_tracked_courses(
     owner_id: str = Depends(get_current_owner_id),
 ) -> list[AssessmentCourseRead]:
     """
-    Union of two sources -- see app.models.assessment's docstring on why
-    there's no single "tracked courses" table:
-      - "plan": every distinct course_id in one of this owner's plan_items
-        for this term, across all their Plans.
-      - "manual": every course_id explicitly added via POST /courses below.
+    Union of two sources -- see app.models.assessment's docstring:
+      - "finalized": every course_id in this owner's AcademicRecord for
+        this term (i.e. an actually-finalized schedule, via "Mark as
+        Final" on a Plan -- NOT every course sitting in some throwaway
+        what-if Plan that was never finalized).
+      - "manual": every course_id explicitly added via POST /courses
+        below.
     """
-    plan_course_ids = set(
+    finalized_course_ids = set(
         db.execute(
-            select(PlanItem.course_id)
-            .join(Plan, Plan.id == PlanItem.plan_id)
-            .where(Plan.owner_id == owner_id, PlanItem.term_code == term_code)
-            .distinct()
+            select(AcademicRecord.course_id).where(
+                AcademicRecord.owner_id == owner_id, AcademicRecord.term_code == term_code
+            )
         ).scalars()
     )
     manual_course_ids = set(
@@ -70,7 +94,7 @@ def list_tracked_courses(
         ).scalars()
     )
 
-    all_ids = plan_course_ids | manual_course_ids
+    all_ids = finalized_course_ids | manual_course_ids
     if not all_ids:
         return []
 
@@ -81,7 +105,8 @@ def list_tracked_courses(
             subject=c.subject,
             course_number=c.course_number,
             title=c.title,
-            source="plan" if c.course_id in plan_course_ids else "manual",
+            credit_hours=c.credit_hours,
+            source="finalized" if c.course_id in finalized_course_ids else "manual",
         )
         for c in sorted(courses, key=lambda c: (c.subject, c.course_number))
     ]
@@ -100,9 +125,7 @@ def add_tracked_course(
     stmt = pg_insert(TrackedCourse).values(
         owner_id=owner_id, term_code=payload.term_code, course_id=payload.course_id
     )
-    stmt = stmt.on_conflict_do_nothing(
-        index_elements=["owner_id", "term_code", "course_id"]
-    )
+    stmt = stmt.on_conflict_do_nothing(index_elements=["owner_id", "term_code", "course_id"])
     db.execute(stmt)
     db.commit()
 
@@ -111,6 +134,7 @@ def add_tracked_course(
         subject=course.subject,
         course_number=course.course_number,
         title=course.title,
+        credit_hours=course.credit_hours,
         source="manual",
     )
 
@@ -124,10 +148,10 @@ def remove_tracked_course(
 ) -> None:
     """
     Removes a MANUALLY-added course only. If this course_id is also in
-    one of the owner's Plans for this term, it'll keep showing up (see
-    list_tracked_courses) -- that's by design, this endpoint has no say
-    over Plan membership. Existing Assessment/WeeklyTopic rows for the
-    course are left untouched either way.
+    the owner's AcademicRecord for this term, it'll keep showing up (see
+    list_tracked_courses) -- that's by design. Existing
+    Assessment/WeeklyTopic rows for the course are left untouched either
+    way.
     """
     db.execute(
         delete(TrackedCourse).where(
@@ -149,13 +173,11 @@ def list_assessments(
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
 ) -> list[Assessment]:
-    stmt = select(Assessment).where(
-        Assessment.owner_id == owner_id, Assessment.term_code == term_code
-    )
+    stmt = select(Assessment).where(Assessment.owner_id == owner_id, Assessment.term_code == term_code)
     if course_id is not None:
         stmt = stmt.where(Assessment.course_id == course_id)
     # Nulls last: unscheduled items (no due_date yet) sort after dated ones.
-    stmt = stmt.order_by(Assessment.due_date.is_(None), Assessment.due_date, Assessment.title)
+    stmt = stmt.order_by(Assessment.due_date.is_(None), Assessment.due_date, Assessment.due_time, Assessment.title)
     return db.execute(stmt).scalars().all()
 
 
@@ -201,43 +223,63 @@ def delete_assessment(
     db.commit()
 
 
-# -- Weekly topics ------------------------------------------------------
+# -- Topics log ---------------------------------------------------------
 
 
-@router.get("/topics", response_model=list[WeeklyTopicRead])
+@router.get("/topics", response_model=list[TopicEntryRead])
 def list_topics(
     term_code: str = Query(...),
     course_id: int | None = Query(default=None),
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
 ) -> list[WeeklyTopic]:
-    stmt = select(WeeklyTopic).where(
-        WeeklyTopic.owner_id == owner_id, WeeklyTopic.term_code == term_code
-    )
+    stmt = select(WeeklyTopic).where(WeeklyTopic.owner_id == owner_id, WeeklyTopic.term_code == term_code)
     if course_id is not None:
         stmt = stmt.where(WeeklyTopic.course_id == course_id)
-    stmt = stmt.order_by(WeeklyTopic.week_start_date)
+    stmt = stmt.order_by(WeeklyTopic.week_start_date, WeeklyTopic.created_at)
     return db.execute(stmt).scalars().all()
 
 
-@router.put("/topics", response_model=WeeklyTopicRead)
-def upsert_topic(
-    payload: WeeklyTopicUpsert,
+@router.post("/topics", response_model=TopicEntryRead, status_code=201)
+def create_topic(
+    payload: TopicEntryCreate,
     db: Session = Depends(get_db),
     owner_id: str = Depends(get_current_owner_id),
 ) -> WeeklyTopic:
-    """One topic note per (owner, term, course, week) -- editing an
-    existing week just overwrites topic_text rather than accumulating
-    duplicate rows."""
     if db.get(Course, payload.course_id) is None:
         raise HTTPException(status_code=404, detail=f"Course {payload.course_id} not found")
 
-    stmt = pg_insert(WeeklyTopic).values(owner_id=owner_id, **payload.model_dump())
-    stmt = stmt.on_conflict_do_update(
-        index_elements=["owner_id", "term_code", "course_id", "week_start_date"],
-        set_={"topic_text": stmt.excluded.topic_text},
-    ).returning(WeeklyTopic)
-    topic = db.execute(stmt).scalar_one()
+    topic = WeeklyTopic(
+        owner_id=owner_id,
+        term_code=payload.term_code,
+        course_id=payload.course_id,
+        week_start_date=_monday_of(payload.entry_date),
+        topic_text=payload.topic_text,
+    )
+    db.add(topic)
+    db.commit()
+    db.refresh(topic)
+    return topic
+
+
+@router.patch("/topics/{topic_id}", response_model=TopicEntryRead)
+def update_topic(
+    topic_id: int,
+    payload: TopicEntryUpdate,
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> WeeklyTopic:
+    topic = db.execute(
+        select(WeeklyTopic).where(WeeklyTopic.id == topic_id, WeeklyTopic.owner_id == owner_id)
+    ).scalar_one_or_none()
+    if topic is None:
+        raise HTTPException(status_code=404, detail=f"Topic {topic_id} not found")
+
+    if payload.topic_text is not None:
+        topic.topic_text = payload.topic_text
+    if payload.entry_date is not None:
+        topic.week_start_date = _monday_of(payload.entry_date)
+
     db.commit()
     db.refresh(topic)
     return topic
@@ -256,3 +298,127 @@ def delete_topic(
         raise HTTPException(status_code=404, detail=f"Topic {topic_id} not found")
     db.delete(topic)
     db.commit()
+
+
+# -- To-dos ---------------------------------------------------------------
+
+
+@router.get("/todos", response_model=list[TodoRead])
+def list_todos(
+    term_code: str = Query(...),
+    course_id: int | None = Query(default=None),
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> list[Todo]:
+    stmt = select(Todo).where(Todo.owner_id == owner_id, Todo.term_code == term_code)
+    if course_id is not None:
+        stmt = stmt.where(Todo.course_id == course_id)
+    stmt = stmt.order_by(Todo.is_done, Todo.due_date.is_(None), Todo.due_date, Todo.created_at)
+    return db.execute(stmt).scalars().all()
+
+
+@router.post("/todos", response_model=TodoRead, status_code=201)
+def create_todo(
+    payload: TodoCreate,
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> Todo:
+    if payload.course_id is not None and db.get(Course, payload.course_id) is None:
+        raise HTTPException(status_code=404, detail=f"Course {payload.course_id} not found")
+
+    todo = Todo(owner_id=owner_id, **payload.model_dump())
+    db.add(todo)
+    db.commit()
+    db.refresh(todo)
+    return todo
+
+
+@router.patch("/todos/{todo_id}", response_model=TodoRead)
+def update_todo(
+    todo_id: int,
+    payload: TodoUpdate,
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> Todo:
+    todo = db.execute(select(Todo).where(Todo.id == todo_id, Todo.owner_id == owner_id)).scalar_one_or_none()
+    if todo is None:
+        raise HTTPException(status_code=404, detail=f"Todo {todo_id} not found")
+    for field, value in payload.model_dump(exclude_unset=True).items():
+        setattr(todo, field, value)
+    db.commit()
+    db.refresh(todo)
+    return todo
+
+
+@router.delete("/todos/{todo_id}", status_code=204, response_model=None)
+def delete_todo(
+    todo_id: int,
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> None:
+    todo = db.execute(select(Todo).where(Todo.id == todo_id, Todo.owner_id == owner_id)).scalar_one_or_none()
+    if todo is None:
+        raise HTTPException(status_code=404, detail=f"Todo {todo_id} not found")
+    db.delete(todo)
+    db.commit()
+
+
+# -- Grade scale (personal percent-to-letter cutoffs) ------------------
+
+# NOT an official University of Manitoba scale -- UM does not publish one
+# (grading weight/scale is set per instructor). This is only a starting
+# point shown until the student sets their own; see GradeScaleCutoff's
+# docstring.
+_SUGGESTED_DEFAULT_CUTOFFS: dict[str, float] = {
+    "A+": 90,
+    "A": 80,
+    "B+": 75,
+    "B": 70,
+    "C+": 65,
+    "C": 60,
+    "D": 50,
+    "Fail": 0,
+}
+
+
+@router.get("/grade-scale", response_model=list[GradeScaleCutoffItem])
+def get_grade_scale(
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> list[GradeScaleCutoffItem]:
+    """Not term-scoped -- this is the student's own personal scale, reused
+    across every term. Returns their saved cutoffs, or an unsaved
+    suggested default (see _SUGGESTED_DEFAULT_CUTOFFS) if they haven't
+    set one yet."""
+    rows = db.execute(
+        select(GradeScaleCutoff).where(GradeScaleCutoff.owner_id == owner_id)
+    ).scalars().all()
+    if rows:
+        return [GradeScaleCutoffItem(letter_grade=r.letter_grade, min_percent=r.min_percent) for r in rows]
+    return [
+        GradeScaleCutoffItem(letter_grade=letter, min_percent=pct)
+        for letter, pct in _SUGGESTED_DEFAULT_CUTOFFS.items()
+    ]
+
+
+@router.put("/grade-scale", response_model=list[GradeScaleCutoffItem])
+def set_grade_scale(
+    payload: GradeScaleUpdate,
+    db: Session = Depends(get_db),
+    owner_id: str = Depends(get_current_owner_id),
+) -> list[GradeScaleCutoffItem]:
+    """Full replace: every letter in LETTER_GRADES must be present.
+    Simpler and safer than a partial-upsert for an 8-row settings table
+    the frontend always submits as a whole form."""
+    provided = {c.letter_grade for c in payload.cutoffs}
+    missing = set(LETTER_GRADES) - provided
+    if missing:
+        raise HTTPException(status_code=422, detail=f"Missing cutoffs for: {sorted(missing)}")
+
+    db.execute(delete(GradeScaleCutoff).where(GradeScaleCutoff.owner_id == owner_id))
+    for cutoff in payload.cutoffs:
+        db.add(
+            GradeScaleCutoff(owner_id=owner_id, letter_grade=cutoff.letter_grade, min_percent=cutoff.min_percent)
+        )
+    db.commit()
+    return payload.cutoffs

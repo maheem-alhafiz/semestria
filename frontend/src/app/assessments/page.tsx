@@ -3,23 +3,14 @@
 import { addDays, format, parseISO } from "date-fns";
 import { useEffect, useState } from "react";
 
-import { AddAssessmentCourseSearch } from "@/components/AddAssessmentCourseSearch";
-import { AssessmentTaskModal } from "@/components/AssessmentTaskModal";
+import { AssessmentTaskModal, type AssessmentFormValues } from "@/components/AssessmentTaskModal";
 import { AssessmentsWeekView } from "@/components/AssessmentsWeekView";
+import { CourseGradeList } from "@/components/CourseGradeList";
+import { TodosSection } from "@/components/TodosSection";
+import { TopicsLogSection } from "@/components/TopicsLogSection";
 import { getTerms } from "@/lib/api";
 import { useAssessmentsStore } from "@/store/assessmentsStore";
-import type { AssessmentRead, AssessmentType, Term } from "@/types/api";
-
-interface TaskFormValues {
-  course_id: number;
-  title: string;
-  assessment_type: AssessmentType;
-  due_date: string | null;
-  weight_percent: number | null;
-  is_done: boolean;
-  grade_received: number | null;
-  notes: string | null;
-}
+import type { AssessmentRead, Term } from "@/types/api";
 
 export default function AssessmentsPage() {
   const [terms, setTerms] = useState<Term[]>([]);
@@ -27,11 +18,11 @@ export default function AssessmentsPage() {
 
   const term = useAssessmentsStore((s) => s.term);
   const setTerm = useAssessmentsStore((s) => s.setTerm);
+  const loadGradeScale = useAssessmentsStore((s) => s.loadGradeScale);
   const viewedWeekStart = useAssessmentsStore((s) => s.viewedWeekStart);
   const goToNextWeek = useAssessmentsStore((s) => s.goToNextWeek);
   const goToPrevWeek = useAssessmentsStore((s) => s.goToPrevWeek);
   const courses = useAssessmentsStore((s) => s.courses);
-  const removeCourse = useAssessmentsStore((s) => s.removeCourse);
   const addAssessment = useAssessmentsStore((s) => s.addAssessment);
   const editAssessment = useAssessmentsStore((s) => s.editAssessment);
   const removeAssessment = useAssessmentsStore((s) => s.removeAssessment);
@@ -39,7 +30,6 @@ export default function AssessmentsPage() {
   const error = useAssessmentsStore((s) => s.error);
 
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalDefaults, setModalDefaults] = useState<{ courseId?: number | null; dueDate?: string | null }>({});
   const [editing, setEditing] = useState<AssessmentRead | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -52,6 +42,7 @@ export default function AssessmentsPage() {
       })
       .catch(() => {})
       .finally(() => setLoadingTerms(false));
+    loadGradeScale();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -62,28 +53,28 @@ export default function AssessmentsPage() {
       ? `Week ${Math.max(1, Math.round((weekStartDate.getTime() - parseISO(term.start_date).getTime()) / (7 * 86400000)) + 1)}`
       : "Week";
 
-  function openAddModal(defaults: { courseId?: number | null; dueDate?: string | null } = {}) {
+  function openAddModal() {
     setEditing(null);
-    setModalDefaults(defaults);
     setModalOpen(true);
   }
 
   function openEditModal(assessment: AssessmentRead) {
     setEditing(assessment);
-    setModalDefaults({});
     setModalOpen(true);
   }
 
-  async function handleSave(values: TaskFormValues) {
+  async function handleSave(values: AssessmentFormValues, keepOpen: boolean) {
     if (!term) return;
     setIsSaving(true);
     try {
       if (editing) {
         await editAssessment(editing.id, values);
+        setModalOpen(false);
+        setEditing(null);
       } else {
         await addAssessment({ term_code: term.term_code, ...values });
+        if (!keepOpen) setModalOpen(false);
       }
-      setModalOpen(false);
     } finally {
       setIsSaving(false);
     }
@@ -112,82 +103,61 @@ export default function AssessmentsPage() {
           </select>
 
           <div className="flex items-center gap-1.5 rounded-xl border border-hairline bg-elevated px-1.5 py-1">
-            <button
-              onClick={goToPrevWeek}
-              className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper"
-              aria-label="Previous week"
-            >
+            <button onClick={goToPrevWeek} className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper" aria-label="Previous week">
               ←
             </button>
             <span className="px-1.5 text-xs font-medium text-paper">
               {weekLabel} · {format(weekStartDate, "MMM d")}–{format(weekEndDate, "MMM d")}
             </span>
-            <button
-              onClick={goToNextWeek}
-              className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper"
-              aria-label="Next week"
-            >
+            <button onClick={goToNextWeek} className="rounded-lg px-2 py-1 text-sm text-muted hover:text-paper" aria-label="Next week">
               →
             </button>
           </div>
+
+          <button
+            onClick={openAddModal}
+            disabled={courses.length === 0}
+            className="rounded-xl bg-accent px-4 py-1.5 text-sm font-medium text-canvas disabled:opacity-40"
+          >
+            + Add assessment
+          </button>
         </div>
       </div>
 
       {error && <p className="mt-3 text-sm text-danger">{error}</p>}
 
-      {/* Tracked courses row */}
-      <div className="mt-4 flex flex-wrap items-center gap-2">
-        {courses.map((c) => (
-          <div
-            key={c.course_id}
-            className="flex items-center gap-1.5 rounded-full border border-hairline bg-panel px-3 py-1.5 text-xs text-paper"
-          >
-            <button onClick={() => openAddModal({ courseId: c.course_id })} className="hover:text-accent">
-              {c.subject} {c.course_number}
-            </button>
-            {c.source === "manual" && (
-              <button
-                onClick={() => removeCourse(c.course_id)}
-                className="text-muted hover:text-danger"
-                aria-label={`Remove ${c.subject} ${c.course_number}`}
-              >
-                ×
-              </button>
-            )}
-          </div>
-        ))}
-        {term && <AddAssessmentCourseSearch termCode={term.term_code} />}
-      </div>
+      {term && (
+        <div className="mt-4">
+          <CourseGradeList termCode={term.term_code} />
+        </div>
+      )}
 
       {isLoading && <p className="mt-4 text-sm text-muted">Loading…</p>}
 
-      {!isLoading && courses.length === 0 && term && (
-        <p className="mt-6 text-sm text-muted">
-          No courses tracked yet for {term.description}. They&apos;ll auto-pull from any Plan that
-          includes this term, or add one manually above.
-        </p>
-      )}
+      {!isLoading && courses.length > 0 && <AssessmentsWeekView onOpenTask={openEditModal} />}
 
-      {!isLoading && courses.length > 0 && (
-        <AssessmentsWeekView
-          onAddForDay={(dueDate) => openAddModal({ dueDate })}
-          onOpenTask={openEditModal}
-        />
+      {!isLoading && (
+        <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <TopicsLogSection />
+          <TodosSection />
+        </div>
       )}
 
       <AssessmentTaskModal
         isOpen={modalOpen}
         courses={courses}
-        defaultCourseId={modalDefaults.courseId}
-        defaultDueDate={modalDefaults.dueDate}
         editing={editing}
         isSaving={isSaving}
-        onCancel={() => setModalOpen(false)}
+        onCancel={() => {
+          setModalOpen(false);
+          setEditing(null);
+        }}
         onDelete={async (id) => {
           setIsSaving(true);
           try {
             await removeAssessment(id);
             setModalOpen(false);
+            setEditing(null);
           } finally {
             setIsSaving(false);
           }

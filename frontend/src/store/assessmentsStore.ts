@@ -4,23 +4,35 @@ import { startOfWeek } from "date-fns";
 import {
   addAssessmentCourse,
   createAssessment,
+  createTodo,
+  createTopic,
   deleteAssessment,
-  deleteWeeklyTopic,
+  deleteTodo,
+  deleteTopic,
   getAssessmentCourses,
   getAssessments,
-  getWeeklyTopics,
+  getGradeScale,
+  getTodos,
+  getTopics,
   removeAssessmentCourse,
+  setGradeScale,
   updateAssessment,
-  upsertWeeklyTopic,
+  updateTodo,
+  updateTopic,
 } from "@/lib/api";
 import type {
   AssessmentCourseRead,
   AssessmentCreate,
   AssessmentRead,
   AssessmentUpdate,
+  GradeScaleCutoffItem,
   Term,
-  WeeklyTopicRead,
-  WeeklyTopicUpsert,
+  TodoCreate,
+  TodoRead,
+  TodoUpdate,
+  TopicEntryCreate,
+  TopicEntryRead,
+  TopicEntryUpdate,
 } from "@/types/api";
 
 function isoDate(d: Date): string {
@@ -38,7 +50,10 @@ interface AssessmentsState {
 
   courses: AssessmentCourseRead[];
   assessments: AssessmentRead[];
-  topics: WeeklyTopicRead[];
+  topics: TopicEntryRead[];
+  todos: TodoRead[];
+  // Not term-scoped -- the student's own personal scale, loaded once.
+  gradeScale: GradeScaleCutoffItem[];
 
   isLoading: boolean;
   error: string | null;
@@ -49,6 +64,8 @@ interface AssessmentsState {
   goToWeekOf: (date: Date) => void;
 
   loadAll: (termCode: string) => Promise<void>;
+  loadGradeScale: () => Promise<void>;
+  saveGradeScale: (cutoffs: GradeScaleCutoffItem[]) => Promise<void>;
 
   addCourse: (courseId: number) => Promise<void>;
   removeCourse: (courseId: number) => Promise<void>;
@@ -57,8 +74,13 @@ interface AssessmentsState {
   editAssessment: (id: number, payload: AssessmentUpdate) => Promise<void>;
   removeAssessment: (id: number) => Promise<void>;
 
-  saveTopic: (payload: WeeklyTopicUpsert) => Promise<void>;
+  addTopic: (payload: TopicEntryCreate) => Promise<void>;
+  editTopic: (id: number, payload: TopicEntryUpdate) => Promise<void>;
   removeTopic: (id: number) => Promise<void>;
+
+  addTodo: (payload: TodoCreate) => Promise<void>;
+  editTodo: (id: number, payload: TodoUpdate) => Promise<void>;
+  removeTodo: (id: number) => Promise<void>;
 }
 
 export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
@@ -68,6 +90,8 @@ export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
   courses: [],
   assessments: [],
   topics: [],
+  todos: [],
+  gradeScale: [],
 
   isLoading: false,
   error: null,
@@ -102,22 +126,41 @@ export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
   loadAll: async (termCode) => {
     set({ isLoading: true, error: null });
     try {
-      const [courses, assessments, topics] = await Promise.all([
+      const [courses, assessments, topics, todos] = await Promise.all([
         getAssessmentCourses(termCode),
         getAssessments(termCode),
-        getWeeklyTopics(termCode),
+        getTopics(termCode),
+        getTodos(termCode),
       ]);
-      set({ courses, assessments, topics, isLoading: false });
+      set({ courses, assessments, topics, todos, isLoading: false });
     } catch (err: any) {
       set({ error: err.message || "Failed to load assessments.", isLoading: false });
     }
+  },
+
+  loadGradeScale: async () => {
+    try {
+      const gradeScale = await getGradeScale();
+      set({ gradeScale });
+    } catch {
+      // Non-fatal -- course cards just won't show a predicted letter/GPA.
+    }
+  },
+
+  saveGradeScale: async (cutoffs) => {
+    const saved = await setGradeScale(cutoffs);
+    set({ gradeScale: saved });
   },
 
   addCourse: async (courseId) => {
     const term = get().term;
     if (!term) return;
     const course = await addAssessmentCourse({ term_code: term.term_code, course_id: courseId });
-    set((s) => ({ courses: [...s.courses, course].sort((a, b) => a.subject.localeCompare(b.subject) || a.course_number.localeCompare(b.course_number)) }));
+    set((s) => ({
+      courses: [...s.courses, course].sort(
+        (a, b) => a.subject.localeCompare(b.subject) || a.course_number.localeCompare(b.course_number)
+      ),
+    }));
   },
 
   removeCourse: async (courseId) => {
@@ -142,21 +185,33 @@ export const useAssessmentsStore = create<AssessmentsState>((set, get) => ({
     set((s) => ({ assessments: s.assessments.filter((a) => a.id !== id) }));
   },
 
-  saveTopic: async (payload) => {
-    const saved = await upsertWeeklyTopic(payload);
-    set((s) => ({
-      topics: [
-        ...s.topics.filter(
-          (t) =>
-            !(t.course_id === saved.course_id && t.week_start_date === saved.week_start_date)
-        ),
-        saved,
-      ],
-    }));
+  addTopic: async (payload) => {
+    const created = await createTopic(payload);
+    set((s) => ({ topics: [...s.topics, created] }));
+  },
+
+  editTopic: async (id, payload) => {
+    const updated = await updateTopic(id, payload);
+    set((s) => ({ topics: s.topics.map((t) => (t.id === id ? updated : t)) }));
   },
 
   removeTopic: async (id) => {
-    await deleteWeeklyTopic(id);
+    await deleteTopic(id);
     set((s) => ({ topics: s.topics.filter((t) => t.id !== id) }));
+  },
+
+  addTodo: async (payload) => {
+    const created = await createTodo(payload);
+    set((s) => ({ todos: [...s.todos, created] }));
+  },
+
+  editTodo: async (id, payload) => {
+    const updated = await updateTodo(id, payload);
+    set((s) => ({ todos: s.todos.map((t) => (t.id === id ? updated : t)) }));
+  },
+
+  removeTodo: async (id) => {
+    await deleteTodo(id);
+    set((s) => ({ todos: s.todos.filter((t) => t.id !== id) }));
   },
 }));

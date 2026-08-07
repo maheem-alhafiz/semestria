@@ -279,7 +279,7 @@ export interface ManualFulfillmentCreate {
 
 // -- Assessments tab -------------------------------------------------------
 // Mirrors app.schemas.assessment exactly. See app.models.assessment for the
-// full reasoning behind the three-table shape.
+// full reasoning behind each table's shape.
 
 export type AssessmentType = "ASSIGNMENT" | "QUIZ" | "EXAM" | "LAB" | "PROJECT" | "OTHER";
 
@@ -290,6 +290,7 @@ export interface AssessmentRead {
   title: string;
   assessment_type: AssessmentType;
   due_date: string | null;
+  due_time: string | null; // "HH:MM:SS", null if not set
   weight_percent: number | null;
   is_done: boolean;
   grade_received: number | null;
@@ -304,6 +305,7 @@ export interface AssessmentCreate {
   title: string;
   assessment_type: AssessmentType;
   due_date?: string | null;
+  due_time?: string | null;
   weight_percent?: number | null;
   notes?: string | null;
 }
@@ -312,36 +314,81 @@ export interface AssessmentUpdate {
   title?: string;
   assessment_type?: AssessmentType;
   due_date?: string | null;
+  due_time?: string | null;
   weight_percent?: number | null;
   is_done?: boolean;
   grade_received?: number | null;
   notes?: string | null;
 }
 
-export interface WeeklyTopicRead {
+// Log entry -- see backend WeeklyTopic's docstring on why this is
+// append-only (multiple entries per week allowed) rather than one
+// editable box per week.
+export interface TopicEntryRead {
   id: number;
   term_code: string;
   course_id: number;
   week_start_date: string;
   topic_text: string;
+  created_at: string;
+  updated_at: string;
 }
 
-export interface WeeklyTopicUpsert {
+export interface TopicEntryCreate {
   term_code: string;
   course_id: number;
-  week_start_date: string;
+  // Any date -- the backend snaps it to that week's Monday.
+  entry_date: string;
   topic_text: string;
 }
 
+export interface TopicEntryUpdate {
+  entry_date?: string;
+  topic_text?: string;
+}
+
+export interface TodoRead {
+  id: number;
+  term_code: string;
+  course_id: number | null;
+  text: string;
+  is_done: boolean;
+  due_date: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TodoCreate {
+  term_code: string;
+  course_id?: number | null;
+  text: string;
+  due_date?: string | null;
+}
+
+export interface TodoUpdate {
+  text?: string;
+  is_done?: boolean;
+  due_date?: string | null;
+  course_id?: number | null;
+}
+
+export type LetterGrade = "A+" | "A" | "B+" | "B" | "C+" | "C" | "D" | "Fail";
+
+export interface GradeScaleCutoffItem {
+  letter_grade: LetterGrade;
+  min_percent: number;
+}
+
 // `source` tells the UI whether a "remove" action makes sense -- a
-// plan-sourced course would just reappear (see backend docstring), so only
-// "manual" courses get a remove button.
+// finalized (AcademicRecord) course would just reappear (see backend
+// docstring), so only "manual" courses get a remove button.
 export interface AssessmentCourseRead {
   course_id: number;
   subject: string;
   course_number: string;
   title: string;
-  source: "plan" | "manual";
+  credit_hours: number;
+  source: "finalized" | "manual";
 }
 
 export interface TrackedCourseCreate {

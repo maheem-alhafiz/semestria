@@ -22,8 +22,13 @@ import type {
   AssessmentRead,
   AssessmentCreate,
   AssessmentUpdate,
-  WeeklyTopicRead,
-  WeeklyTopicUpsert,
+  TopicEntryRead,
+  TopicEntryCreate,
+  TopicEntryUpdate,
+  TodoRead,
+  TodoCreate,
+  TodoUpdate,
+  GradeScaleCutoffItem,
   AssessmentCourseRead,
   TrackedCourseCreate,
 } from "@/types/api";
@@ -256,20 +261,67 @@ export function deleteAssessment(assessmentId: number): Promise<void> {
   return apiFetch<void>(`/assessments/${assessmentId}`, { method: "DELETE" });
 }
 
-export function getWeeklyTopics(termCode: string): Promise<WeeklyTopicRead[]> {
+// -- Topics log ------------------------------------------------------------
+
+export function getTopics(termCode: string): Promise<TopicEntryRead[]> {
   const params = new URLSearchParams({ term_code: termCode });
-  return apiFetch<WeeklyTopicRead[]>(`/assessments/topics?${params}`);
+  return apiFetch<TopicEntryRead[]>(`/assessments/topics?${params}`);
 }
 
-export function upsertWeeklyTopic(payload: WeeklyTopicUpsert): Promise<WeeklyTopicRead> {
-  return apiFetch<WeeklyTopicRead>("/assessments/topics", {
-    method: "PUT",
+export function createTopic(payload: TopicEntryCreate): Promise<TopicEntryRead> {
+  return apiFetch<TopicEntryRead>("/assessments/topics", {
+    method: "POST",
     body: JSON.stringify(payload),
   });
 }
 
-export function deleteWeeklyTopic(topicId: number): Promise<void> {
+export function updateTopic(topicId: number, payload: TopicEntryUpdate): Promise<TopicEntryRead> {
+  return apiFetch<TopicEntryRead>(`/assessments/topics/${topicId}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteTopic(topicId: number): Promise<void> {
   return apiFetch<void>(`/assessments/topics/${topicId}`, { method: "DELETE" });
+}
+
+// -- To-dos ------------------------------------------------------------
+
+export function getTodos(termCode: string): Promise<TodoRead[]> {
+  const params = new URLSearchParams({ term_code: termCode });
+  return apiFetch<TodoRead[]>(`/assessments/todos?${params}`);
+}
+
+export function createTodo(payload: TodoCreate): Promise<TodoRead> {
+  return apiFetch<TodoRead>("/assessments/todos", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function updateTodo(todoId: number, payload: TodoUpdate): Promise<TodoRead> {
+  return apiFetch<TodoRead>(`/assessments/todos/${todoId}`, {
+    method: "PATCH",
+    body: JSON.stringify(payload),
+  });
+}
+
+export function deleteTodo(todoId: number): Promise<void> {
+  return apiFetch<void>(`/assessments/todos/${todoId}`, { method: "DELETE" });
+}
+
+// -- Grade scale (personal percent-to-letter cutoffs) ----------------------
+
+export function getGradeScale(): Promise<GradeScaleCutoffItem[]> {
+  return apiFetch<GradeScaleCutoffItem[]>("/assessments/grade-scale");
+}
+
+export function setGradeScale(cutoffs: GradeScaleCutoffItem[]): Promise<GradeScaleCutoffItem[]> {
+  return apiFetch<GradeScaleCutoffItem[]>("/assessments/grade-scale", {
+    method: "PUT",
+    body: JSON.stringify({ cutoffs }),
+  });
 }
 
 export { ApiError };
