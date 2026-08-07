@@ -1,7 +1,7 @@
 "use client";
 
 import { format, parseISO } from "date-fns";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { TopicEntryModal } from "@/components/TopicEntryModal";
 import { useAssessmentsStore } from "@/store/assessmentsStore";
@@ -19,7 +19,20 @@ export function TopicsLogSection() {
   const [editing, setEditing] = useState<TopicEntryRead | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
-  const sorted = [...topics].sort((a, b) => a.week_start_date.localeCompare(b.week_start_date));
+  // Group by course, then sort weeks within each course
+  const groupedTopics = useMemo(() => {
+    const groups = new Map<number, TopicEntryRead[]>();
+    for (const t of topics) {
+      if (!groups.has(t.course_id)) groups.set(t.course_id, []);
+      groups.get(t.course_id)!.push(t);
+    }
+    
+    // Sort each course's topics chronologically by week
+    for (const [_, courseTopics] of groups) {
+      courseTopics.sort((a, b) => a.week_start_date.localeCompare(b.week_start_date));
+    }
+    return groups;
+  }, [topics]);
 
   function courseLabel(courseId: number) {
     const c = courses.find((c) => c.course_id === courseId);
@@ -46,7 +59,7 @@ export function TopicsLogSection() {
 
   return (
     <div className="rounded-2xl border border-hairline bg-panel p-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between border-b border-hairline pb-3">
         <h2 className="text-sm font-semibold text-paper">Topics covered</h2>
         <button
           onClick={() => {
@@ -56,33 +69,39 @@ export function TopicsLogSection() {
           disabled={courses.length === 0}
           className="rounded-full border border-hairline px-3 py-1.5 text-xs font-medium text-muted transition-colors hover:border-accent hover:text-paper disabled:opacity-40"
         >
-          + Log topic
+          + Add topic
         </button>
       </div>
 
-      {sorted.length === 0 ? (
-        <p className="mt-3 text-sm text-muted">
+      {topics.length === 0 ? (
+        <p className="mt-4 text-sm text-muted">
           Nothing logged yet. Add topics anytime -- no need to visit each week on the calendar.
         </p>
       ) : (
-        <div className="mt-3 space-y-1.5">
-          {sorted.map((topic) => (
-            <button
-              key={topic.id}
-              onClick={() => {
-                setEditing(topic);
-                setModalOpen(true);
-              }}
-              className="flex w-full items-start gap-3 rounded-xl px-2 py-1.5 text-left text-sm hover:bg-elevated"
-            >
-              <span className="w-24 shrink-0 text-xs text-muted">
-                Week of {format(parseISO(topic.week_start_date), "MMM d")}
-              </span>
-              <span className="w-20 shrink-0 text-xs font-medium text-paper">
-                {courseLabel(topic.course_id)}
-              </span>
-              <span className="min-w-0 flex-1 truncate text-paper">{topic.topic_text}</span>
-            </button>
+        <div className="mt-4 space-y-6">
+          {Array.from(groupedTopics.entries()).map(([courseId, courseTopics]) => (
+            <div key={courseId}>
+              <h3 className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+                {courseLabel(courseId)}
+              </h3>
+              <div className="space-y-1.5 border-l-2 border-hairline pl-3">
+                {courseTopics.map((topic) => (
+                  <button
+                    key={topic.id}
+                    onClick={() => {
+                      setEditing(topic);
+                      setModalOpen(true);
+                    }}
+                    className="flex w-full flex-col items-start gap-0.5 rounded-xl px-2 py-1.5 text-left text-sm hover:bg-elevated"
+                  >
+                    <span className="text-[10px] font-medium text-muted">
+                      Week of {format(parseISO(topic.week_start_date), "MMM d")}
+                    </span>
+                    <span className="text-paper">{topic.topic_text}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}

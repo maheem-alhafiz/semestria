@@ -89,16 +89,12 @@ export function CourseGradeList({ termCode }: { termCode: string }) {
               <div className="mt-2 text-xs">
                 {projection.predictedFinalPercent != null ? (
                   <p className="text-paper">
-                    Predicted:{" "}
+                    Current standing:{" "}
                     <span className="font-medium">{projection.predictedFinalPercent.toFixed(1)}%</span>
                     {projection.predictedLetter && (
                       <span className="text-muted">
                         {" "}
-                        ({projection.predictedLetter}
-                        {projection.predictedGpaPoints != null
-                          ? `, ${projection.predictedGpaPoints.toFixed(1)} pts`
-                          : ""}
-                        )
+                        ({projection.predictedLetter})
                       </span>
                     )}
                   </p>
