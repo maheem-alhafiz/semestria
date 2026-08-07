@@ -42,6 +42,8 @@ export function GradeScaleModal({ courseId, isOpen, onClose }: { courseId: numbe
   if (!isOpen || courseId === null) return null;
 
   async function handleSave() {
+    if (courseId === null) return; // TS strict check
+    
     setSaving(true);
     try {
       const cutoffs: GradeScaleCutoffItem[] = LETTERS.map((letter) => ({
